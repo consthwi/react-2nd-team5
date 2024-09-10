@@ -14,9 +14,6 @@ function App() {
         <Route path="recipes" element={<RecipePage />} />
         {/* <Route index element={<RecipePage1 />} /> */}
         {/* <Route path=":id" element={<RecipeDetailPage />} /> */}
-      </Route>
-    </Route>
-
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
