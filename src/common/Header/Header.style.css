@@ -1,0 +1,29 @@
+.header {
+  /* border: 2px solid red; */
+  min-height: 105px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Pretendard';
+}
+
+.header .header-logo {
+  border: 1px solid blue;
+  width: 139px;
+  height: 48px;
+}
+
+.header .header-nav-bar {
+  /* border: 1px solid green; */
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.header .header-nav-bar a {
+  color: #191919;
+  text-decoration: none;
+  padding: 20px 10px;
+}
