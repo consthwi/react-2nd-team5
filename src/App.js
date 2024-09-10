@@ -8,14 +8,16 @@ import "./common/styles/font.css";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<AppLayout />}>
-        <Route index element={<Home />} />
-        <Route path="recipes" element={<RecipePage />} />
-        {/* <Route index element={<RecipePage1 />} /> */}
-        {/* <Route path=":id" element={<RecipeDetailPage />} /> */}
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+<Routes>
+  <Route path="/" element={<AppLayout />}>
+    <Route index element={<Home />} />
+    <Route path="recipes" element={<RecipePage />} />
+    {/* <Route index element={<RecipePage1 />} /> */}
+    {/* <Route path=":id" element={<RecipeDetailPage />} /> */}
+  </Route>
+  <Route path="*" element={<NotFoundPage />} />
+</Routes>
+
   );
 }
 
