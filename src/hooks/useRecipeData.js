@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import api from "../untils/api";
 
 const fetchRecipeData = () => {
-  return api.get(`1/10`);
+  return api.get(`1/500`);
 };
 
 export const useRecipeDataQuery = () => {
