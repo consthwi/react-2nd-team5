@@ -1,0 +1,116 @@
+@keyframes slideRight {
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+/* 모달 레이어 전체 */
+.modal-layer {
+  display: none;
+  font-family: "Pretendard";
+}
+
+.modal-layer.open {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+/* 모달 닫기 버튼 */
+.modal-layer .btn-modal-close {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.modal-layer .btn-modal-close .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #191919;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+.modal-layer .btn-modal-close.open .bar:nth-child(1) {
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.modal-layer .btn-modal-close.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.modal-layer .btn-modal-close.open .bar:nth-child(3) {
+  transform: rotate(-45deg);
+  position: absolute;
+}
+
+.modal-layer .btn-modal-close:hover {
+  background: #ED0C0C;
+}
+
+.modal-layer .btn-modal-close:hover .bar {
+  background-color: #fff;
+}
+
+.modal-layer .btn-modal-close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+/* 모달 컨텐츠 */
+.modal-nav {
+  background: #fff;
+  width: 50%;
+  min-width: 250px;
+  height: 100vh;
+  padding-top: 100px;
+}
+
+.modal-nav.active {
+  animation: 0.3s slideRight forwards;
+}
+
+.modal-nav .modal-nav-menu {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.modal-nav .modal-nav-a {
+  text-decoration: none;
+  color: #191919;
+  font-size: 1.1em;
+  transition: 0.3s all;
+}
+
+.modal-nav .modal-nav-a:hover {
+  color: #ED0C0C;
+}
+
+/* 모달 데코레이션 */
+.modal-layer p {
+  border: 3px solid red;
+}
+
+@media (min-width: 768px) {
+  .modal-layer {
+    display: none;
+  }
+}
