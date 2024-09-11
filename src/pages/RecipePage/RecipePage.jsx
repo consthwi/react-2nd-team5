@@ -5,12 +5,14 @@ import "./RecipePage.style.css";
 import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
 
-const ITEM_PER_PAGE = 21;
+const ITEM_PER_PAGE = 12;
 
 const RecipePage = () => {
-  const [sortState, setSortState] = useState("all");
+  const [filter, setFilter] = useState("");
+  const [initialRecipes, setInitialRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [sortedRecipes, setSortedRecipes] = useState([]);
+  const [sortState, setSortState] = useState("all");
   const [currentPage, setCurrentPage] = useState(0);
 
   const { data, isLoading, error } = useRecipeDataQuery();
@@ -21,6 +23,7 @@ const RecipePage = () => {
         ...recipe,
         isBookmarked: false,
       }));
+      setInitialRecipes(recipesWithBookmark);
       setFilteredRecipes(recipesWithBookmark);
       setSortedRecipes(recipesWithBookmark);
     }
@@ -37,14 +40,35 @@ const RecipePage = () => {
       setSortState("sortByLowSodium");
     }
   };
+
+  //데이터가 가지고 있는 카테고리
+  //(6) ['반찬', '국&찌개', '후식', '일품', '밥', '기타']
+
+  const handleFilterClick = (filterType) => {
+    if (filter === filterType) {
+      setFilteredRecipes(initialRecipes);
+      setSortState("all");
+    } else {
+      setFilter(filterType);
+      if (filterType === "반찬") {
+        setFilteredRecipes(
+          initialRecipes.filter((recipe) =>
+            recipe.RCP_PAT2.includes(filterType)
+          )
+        );
+      }
+    }
+  };
   const handleReset = () => {
-    setSortedRecipes(filteredRecipes);
+    setSortedRecipes(initialRecipes);
     setSortState("all");
   };
-  const handleBookMark = (index) => {
-    setSortedRecipes((prevRecipes) =>
-      prevRecipes.map((recipe, i) =>
-        i === index ? { ...recipe, isBookmarked: !recipe.isBookmarked } : recipe
+  const handleBookMark = (recipeId) => {
+    setInitialRecipes((prevRecipes) =>
+      prevRecipes.map((recipe) =>
+        recipe.RCP_SEQ === recipeId
+          ? { ...recipe, isBookmarked: !recipe.isBookmarked }
+          : recipe
       )
     );
   };
@@ -64,11 +88,11 @@ const RecipePage = () => {
 
   const startIndex = currentPage * ITEM_PER_PAGE;
   const endIndex = startIndex + ITEM_PER_PAGE;
-  const paginateRecipes = sortedRecipes.slice(startIndex, endIndex);
-  const totalPage = Math.ceil(sortedRecipes.length / ITEM_PER_PAGE);
+  const paginateRecipes = filteredRecipes.slice(startIndex, endIndex);
+  const totalPage = Math.ceil(filteredRecipes.length / ITEM_PER_PAGE);
 
   return (
-    <Container>
+    <Container className="recipe-page">
       <Row>
         <Col>
           <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
@@ -78,12 +102,12 @@ const RecipePage = () => {
         <Col className="text-center">
           <div>
             <Button
-              variant={sortState === "all" ? "success" : "primary"}
+              variant={sortState === "반찬" ? "success" : "primary"}
               size="lg"
               className="me-2"
-              onClick={handleReset}
+              onClick={() => handleFilterClick("반찬")}
             >
-              all
+              반찬
             </Button>
             <Button variant="primary" size="lg" className="me-2">
               저열량 레시피
@@ -104,12 +128,11 @@ const RecipePage = () => {
       </Row>
       <Row className="g-3">
         {paginateRecipes &&
-          paginateRecipes.map((recipe, index) => (
+          paginateRecipes.map((recipe) => (
             <CardComponent
-              key={index}
+              key={recipe.RCP_SEQ}
               recipe={recipe}
-              index={index}
-              handleBookMark={handleBookMark}
+              handleBookMark={() => handleBookMark(recipe.RCP_SEQ)}
             />
           ))}
       </Row>

@@ -1,4 +1,14 @@
 .bookmark-icon {
+  margin-top: 1.5rem;
   font-size: 4rem;
   color: #616161;
+  cursor: pointer;
+}
+.card-img {
+  height: 20rem;
+  object-fit: cover;
+}
+.card-container {
+  height: 40rem;
+  cursor: pointer;
 }
