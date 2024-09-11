@@ -9,7 +9,8 @@ const HomepageSlider = ({data,responsive}) => {
   return (
   
     <Container>
-        <h4 className="slidertitle">냉털한 요리</h4>
+      <div  className="slidertitle_big"><h4 className="slidertitle">뭘 좋아할지 몰라서 다!</h4></div>
+        
          <Carousel
  infinite={true}
  centerMode={true}
