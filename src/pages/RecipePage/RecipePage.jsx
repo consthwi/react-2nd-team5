@@ -5,7 +5,7 @@ import "./RecipePage.style.css";
 import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
 
-const ITEM_PER_PAGE = 21;
+const ITEM_PER_PAGE = 12;
 
 const RecipePage = () => {
   const [sortState, setSortState] = useState("all");
@@ -14,6 +14,8 @@ const RecipePage = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const { data, isLoading, error } = useRecipeDataQuery();
+  //데이터가 가지고 있는 카테고리
+  //(6) ['반찬', '국&찌개', '후식', '일품', '밥', '기타']
 
   useEffect(() => {
     if (data) {
@@ -41,10 +43,12 @@ const RecipePage = () => {
     setSortedRecipes(filteredRecipes);
     setSortState("all");
   };
-  const handleBookMark = (index) => {
+  const handleBookMark = (recipeId) => {
     setSortedRecipes((prevRecipes) =>
       prevRecipes.map((recipe, i) =>
-        i === index ? { ...recipe, isBookmarked: !recipe.isBookmarked } : recipe
+        recipe.RCP_SEQ === recipeId
+          ? { ...recipe, isBookmarked: !recipe.isBookmarked }
+          : recipe
       )
     );
   };
@@ -68,7 +72,7 @@ const RecipePage = () => {
   const totalPage = Math.ceil(sortedRecipes.length / ITEM_PER_PAGE);
 
   return (
-    <Container>
+    <Container className="recipe-page">
       <Row>
         <Col>
           <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
@@ -104,12 +108,11 @@ const RecipePage = () => {
       </Row>
       <Row className="g-3">
         {paginateRecipes &&
-          paginateRecipes.map((recipe, index) => (
+          paginateRecipes.map((recipe) => (
             <CardComponent
-              key={index}
+              key={recipe.RCP_SEQ}
               recipe={recipe}
-              index={index}
-              handleBookMark={handleBookMark}
+              handleBookMark={() => handleBookMark(recipe.RCP_SEQ)}
             />
           ))}
       </Row>
