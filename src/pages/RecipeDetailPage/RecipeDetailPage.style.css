@@ -1,0 +1,64 @@
+body {
+  font-family: "Pretendard";
+}
+.title-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detail-img {
+  width: 95%;
+  height: 380px;
+  background-size: cover;
+  border-radius: 25px;
+}
+.tag {
+  color: #ed0c0c;
+  font-weight: 700;
+  font-size: 20px;
+}
+.text-1 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #191919;
+}
+.text-title {
+  font-size: 33px;
+  font-weight: bold;
+  color: #191919;
+}
+.text-2 {
+  width: 70%;
+  font-size: 16px;
+  color: #6a6a6a;
+}
+.button {
+  border: 1px solid #616161;
+  width: 30%;
+  height: 54px;
+  border-radius: 5px;
+  color: #616161;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button-two {
+  display: flex;
+}
+
+.item {
+  width: 300px;
+}
+.pre {
+  font-size: 18px;
+}
+.pre-item {
+  display: flex;
+  justify-content: center;
+}
+.pre-title {
+  font-size: 24px;
+  font-weight: 700;
+}
