@@ -1,6 +1,17 @@
+/* react-bootstrap-breakpoint */
+/*
+xs:  break: 576,    maxWidth: 100%,     padding: 15px 
+sm:  break: 576,    maxWidth: 540px,    padding: 15px 
+md:  break: 768,    maxWidth: 720px,    padding: 15px 
+lg:  break: 992,    maxWidth: 960px,    padding: 15px 
+xl:  break: 1200,   maxWidth: 1140px,   padding: 15px 
+xxl: break: 1400,   maxWidth: 1320px,   padding: 15px 
+*/
+
 .header {
-  /* border: 2px solid red; */
   min-height: 105px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,13 +19,18 @@
 }
 
 .header .header-logo {
-  border: 1px solid blue;
-  width: 139px;
-  height: 48px;
+  /* logo너비 소폭 감소 */
+  /* width: 184px; */
+  width: 160px;
+  min-height: 60px;
+  margin: 0;
+}
+
+.header .header-logo img {
+  width: 100%;
 }
 
 .header .header-nav-bar {
-  /* border: 1px solid green; */
   display: flex;
   list-style: none;
   padding: 0;
@@ -22,8 +38,89 @@
   font-weight: 600;
 }
 
+.header .header-nav-bar li {
+  transition: 0.3s transform;
+}
+
+.header .header-nav-bar li:hover {
+  transform: translateY(-5px)
+}
+
+.header .header-nav-bar li:hover > a {
+  color: #ED0C0C;
+}
+
 .header .header-nav-bar a {
   color: #191919;
   text-decoration: none;
   padding: 20px 10px;
+  transition: 0.3s all;
+}
+
+.header .header-right {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 60px;
+
+}
+
+.header .header-right li {
+  transition: 0.3s transform;
+}
+
+.header .header-right li:hover {
+  transform: translateY(-5px)
+}
+
+.header .header-right a {
+  padding: 10px;
+  /* background: orange; */
+}
+
+.header .header-right a:hover svg {
+  color: #ED0C0C;
+}
+
+.header .header-right svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #191919;
+  transition: 0.3s color;
+}
+
+
+
+.header .header-right svg.btn-login {
+  transform: scale(1.2)
+}
+
+/* Hide .header-search and .header-mobile-menu on PC */
+@media (min-width: 768px) {
+  .header .header-search,
+  .header .header-mobile-menu {
+    display: none;
+  }
+}
+
+/* Hide .header-search and .header-mobile-menu on PC */
+@media (max-width: 768px) {
+  .header {
+    min-height: 60px;
+  }
+  .header .header-logo {
+    width: 120px;
+  }
+
+  .header .header-search,
+  .header .header-mobile-menu {
+    display: block;
+  }
+
+  .header .header-nav-bar {
+    display: none;
+  }
 }
