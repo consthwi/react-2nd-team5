@@ -5,7 +5,7 @@ import "./RecipePage.style.css";
 import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
 
-const ITEM_PER_PAGE = 20;
+const ITEM_PER_PAGE = 21;
 
 const RecipePage = () => {
   const [sortState, setSortState] = useState("all");
