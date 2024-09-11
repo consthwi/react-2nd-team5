@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useRecipeDataQuery } from "../../hooks/useRecipeData";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import "./RecipePage.style.css";
+import CardComponent from "./components/CardComponent";
+import ReactPaginate from "react-paginate";
+
+const ITEM_PER_PAGE = 20;
+
 const RecipePage = () => {
   const [sortState, setSortState] = useState("all");
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [sortedRecipes, setSortedRecipes] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+
   const { data, isLoading, error } = useRecipeDataQuery();
 
   useEffect(() => {
     if (data) {
-      setFilteredRecipes(data);
-      setSortedRecipes(data);
+      const recipesWithBookmark = data.map((recipe) => ({
+        ...recipe,
+        isBookmarked: false,
+      }));
+      setFilteredRecipes(recipesWithBookmark);
+      setSortedRecipes(recipesWithBookmark);
     }
   }, [data]);
   const sortByLowSodium = () => {
-    if (filteredRecipes.length > 0) {
-      const sorted = [...filteredRecipes].sort((a, b) => {
+    if (sortedRecipes.length > 0) {
+      const sorted = [...sortedRecipes].sort((a, b) => {
         const naA = parseInt(a.INFO_NA, 10);
         const naB = parseInt(b.INFO_NA, 10);
 
@@ -27,9 +38,19 @@ const RecipePage = () => {
     }
   };
   const handleReset = () => {
-    setSortedRecipes(data);
+    setSortedRecipes(filteredRecipes);
     setSortState("all");
   };
+  const handleBookMark = (index) => {
+    setSortedRecipes((prevRecipes) =>
+      prevRecipes.map((recipe, i) =>
+        i === index ? { ...recipe, isBookmarked: !recipe.isBookmarked } : recipe
+      )
+    );
+  };
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [filteredRecipes, sortState]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -40,6 +61,12 @@ const RecipePage = () => {
   }
   console.log(filteredRecipes);
   console.log(sortedRecipes);
+
+  const startIndex = currentPage * ITEM_PER_PAGE;
+  const endIndex = startIndex + ITEM_PER_PAGE;
+  const paginateRecipes = sortedRecipes.slice(startIndex, endIndex);
+  const totalPage = Math.ceil(sortedRecipes.length / ITEM_PER_PAGE);
+
   return (
     <Container>
       <Row>
@@ -76,26 +103,30 @@ const RecipePage = () => {
         </Col>
       </Row>
       <Row className="g-3">
-        {sortedRecipes &&
-          sortedRecipes.map((recipe, index) => (
-            <Col md={4} key={index}>
-              <Card>
-                <Card.Img variant="top" src={recipe.ATT_FILE_NO_MAIN} />{" "}
-                <Card.Body>
-                  <Card.Text
-                    className="text-ellipsis"
-                    style={{ fontSize: "0.8rem" }}
-                  >
-                    {recipe.RCP_PAT2}
-                  </Card.Text>
-                  <Card.Title>{recipe.RCP_NM}</Card.Title>
-                  <Card.Text className="text-ellipsis">
-                    {recipe.RCP_NA_TIP}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
+        {paginateRecipes &&
+          paginateRecipes.map((recipe, index) => (
+            <CardComponent
+              key={index}
+              recipe={recipe}
+              index={index}
+              handleBookMark={handleBookMark}
+            />
           ))}
+      </Row>
+      <Row className="mt-4">
+        <Col className="text-center">
+          <ReactPaginate
+            previousLabel={"‹"}
+            nextLabel={"›"}
+            breakLabel={"..."}
+            pageCount={totalPage}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={(selected) => setCurrentPage(selected.selected)}
+            containerClassName={"pagination"}
+            activeClassName={"active"}
+          />
+        </Col>
       </Row>
     </Container>
   );

@@ -1,3 +1,8 @@
+body {
+  font-family: "Pretendard";
+  font-weight: 300;
+}
+
 .text-ellipsis {
   white-space: nowrap;
   overflow: hidden;
