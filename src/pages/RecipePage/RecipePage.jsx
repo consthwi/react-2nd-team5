@@ -68,7 +68,7 @@ const RecipePage = () => {
   const totalPage = Math.ceil(sortedRecipes.length / ITEM_PER_PAGE);
 
   return (
-    <Container>
+    <Container className="recipe-page">
       <Row>
         <Col>
           <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>

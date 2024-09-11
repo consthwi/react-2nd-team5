@@ -9,6 +9,10 @@ xxl: break: 1400,   maxWidth: 1320px,   padding: 15px
 */
 
 .header {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 5px;
+}
+
+.header .header-wrapper {
   min-height: 105px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -21,9 +25,11 @@ xxl: break: 1400,   maxWidth: 1320px,   padding: 15px
 .header .header-logo {
   /* logo너비 소폭 감소 */
   /* width: 184px; */
-  width: 160px;
+  width: 140px;
   min-height: 60px;
   margin: 0;
+  cursor: pointer;
+  font-size: 0;
 }
 
 .header .header-logo img {
@@ -53,19 +59,20 @@ xxl: break: 1400,   maxWidth: 1320px,   padding: 15px
 .header .header-nav-bar a {
   color: #191919;
   text-decoration: none;
-  padding: 20px 10px;
+  padding: 20px 1.5vw;
   transition: 0.3s all;
+  font-size: min(2vw, 18px);
 }
 
 .header .header-right {
+  width: 140px;
+  min-height: 60px;
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
-  min-height: 60px;
-
 }
 
 .header .header-right li {
@@ -86,8 +93,8 @@ xxl: break: 1400,   maxWidth: 1320px,   padding: 15px
 }
 
 .header .header-right svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   color: #191919;
   transition: 0.3s color;
 }
@@ -108,11 +115,15 @@ xxl: break: 1400,   maxWidth: 1320px,   padding: 15px
 
 /* Hide .header-search and .header-mobile-menu on PC */
 @media (max-width: 768px) {
-  .header {
+  .header .header-wrapper {
     min-height: 60px;
   }
   .header .header-logo {
     width: 120px;
+  }
+
+  .header .header-right {
+    width: auto;
   }
 
   .header .header-search,
@@ -122,5 +133,10 @@ xxl: break: 1400,   maxWidth: 1320px,   padding: 15px
 
   .header .header-nav-bar {
     display: none;
+  }
+
+  .header .header-right svg {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
