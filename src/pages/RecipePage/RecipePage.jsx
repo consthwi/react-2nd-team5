@@ -6,6 +6,7 @@ import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
+import SelectMenu from "./components/SelectMenu";
 
 const ITEM_PER_PAGE = 12;
 const ITEM_CAT = ["반찬", "국&찌개", "후식", "일품", "밥", "기타"]; // 데이터가 가지고 있는 카테고리
@@ -15,6 +16,8 @@ const RecipePage = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
+  const [selectValue, setSelectValue] = useState("");
+
   const dispatch = useDispatch();
   // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
   // console.log(bookmarkedRecipes);
@@ -33,19 +36,23 @@ const RecipePage = () => {
   }, [data]);
 
   // 필터의 상태를 정의
-  const handleFilterClick = (filterType) => {
-    if (filter === filterType) {
-      setFilter("");
-    } else {
-      setFilter(filterType);
-    }
-  };
+  // const handleFilterClick = (filterType) => {
+  //   if (filter === filterType) {
+  //     setFilter("");
+  //   } else {
+  //     setFilter(filterType);
+  //   }
+  // };
   const handleSortClick = (sortType) => {
     if (sort === sortType) {
       setSort("");
     } else {
       setSort(sortType);
     }
+  };
+  const handleSelectChange = (event) => {
+    setFilter(event.target.value);
+    setSelectValue(event.target.value);
   };
 
   //필터가 있으면 필터 데이터 없으면 기존 데이터
@@ -107,8 +114,12 @@ const RecipePage = () => {
       </Row>
       <Row className="mb-5">
         <Col className="text-center">
+          <SelectMenu
+            selectValue={selectValue}
+            handleSelectChange={handleSelectChange}
+          />
           <div>
-            {ITEM_CAT.map((item) => (
+            {/* {ITEM_CAT.map((item) => (
               <Button
                 key={item}
                 size="lg"
@@ -118,7 +129,7 @@ const RecipePage = () => {
               >
                 {item}
               </Button>
-            ))}
+            ))} */}
 
             <Button
               variant="primary"
