@@ -12,6 +12,7 @@ const RecipePage = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [originalData, setOriginalData] = useState([]);
   const [filter, setFilter] = useState("");
+  const [sort, setSort] = useState("");
 
   const { data, isLoading, error } = useRecipeDataQuery();
 
@@ -34,12 +35,24 @@ const RecipePage = () => {
       setFilter(filterType);
     }
   };
+  const handleSortClick = (sortType) => {
+    if (sort === sortType) {
+      setSort("");
+    } else {
+      setSort(sortType);
+    }
+  };
 
   //필터가 있으면 필터 데이터 없으면 기존 데이터
   const filterRecipe =
     filter.length > 0
       ? originalData.filter((recipe) => recipe.RCP_PAT2.includes(filter))
       : originalData;
+
+  const sortRecipe =
+    sort.length > 0
+      ? [...filterRecipe].sort((a, b) => a[sort] - b[sort])
+      : filterRecipe;
 
   //북마크를 위한 코드
   // 누른 북마크의 일련번호를 활용 일련번호가 일치할시 북미크 여부를 토글
@@ -72,8 +85,8 @@ const RecipePage = () => {
   //토탈페이지는 필터데이터를 렌더링 갯수로 나눈 수
   const startIndex = currentPage * ITEM_PER_PAGE;
   const endIndex = startIndex + ITEM_PER_PAGE;
-  const paginateRecipes = filterRecipe.slice(startIndex, endIndex);
-  const totalPage = Math.ceil(filterRecipe.length / ITEM_PER_PAGE);
+  const paginateRecipes = sortRecipe.slice(startIndex, endIndex);
+  const totalPage = Math.ceil(sortRecipe.length / ITEM_PER_PAGE);
 
   return (
     <Container className="recipe-page">
@@ -96,19 +109,21 @@ const RecipePage = () => {
               </Button>
             ))}
 
-            <Button variant="primary" size="lg" className="me-2">
+            <Button
+              variant="primary"
+              size="lg"
+              className="me-2"
+              onClick={() => handleSortClick("INFO_ENG")}
+            >
               저열량 레시피
             </Button>
             <Button
               // variant={sortState === "sortByLowSodium" ? "success" : "primary"}
               size="lg"
               className="me-2"
-              // onClick={sortByLowSodium}
+              onClick={() => handleSortClick("INFO_NA")}
             >
               저염식 레시피
-            </Button>
-            <Button variant="primary" size="lg">
-              채식 레시피
             </Button>
           </div>
         </Col>
