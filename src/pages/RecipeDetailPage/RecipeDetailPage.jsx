@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { useRecipeDetailDataQuery } from "../../hooks/useRecipeDetailData";
 import StepComponent from "./components/StepComponent";
 import { MdOutlineTipsAndUpdates } from "react-icons/md";
+import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
 
 const RecipeDetailPage = () => {
   const location = useLocation();
