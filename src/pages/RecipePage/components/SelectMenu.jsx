@@ -5,7 +5,7 @@ const SelectMenu = ({ selectValue, handleSelectChange }) => {
   return (
     <Form.Group>
       <Form.Select value={selectValue} onChange={handleSelectChange}>
-        <option value="">종류</option>
+        <option value="">분류</option>
         <option value="반찬">반찬</option>
         <option value="국&찌개">국&찌개</option>
         <option value="후식">후식</option>

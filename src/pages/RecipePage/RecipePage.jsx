@@ -9,7 +9,6 @@ import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
 import SelectMenu from "./components/SelectMenu";
 
 const ITEM_PER_PAGE = 12;
-const ITEM_CAT = ["반찬", "국&찌개", "후식", "일품", "밥", "기타"]; // 데이터가 가지고 있는 카테고리
 
 const RecipePage = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -112,25 +111,10 @@ const RecipePage = () => {
           <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
         </Col>
       </Row>
-      <Row className="mb-5">
-        <Col className="text-center">
-          <SelectMenu
-            selectValue={selectValue}
-            handleSelectChange={handleSelectChange}
-          />
-          <div>
-            {/* {ITEM_CAT.map((item) => (
-              <Button
-                key={item}
-                size="lg"
-                className="me-2"
-                variant={filter === item ? "success" : "primary"}
-                onClick={() => handleFilterClick(item)}
-              >
-                {item}
-              </Button>
-            ))} */}
 
+      <Row className="mb-5 ">
+        <Col className="text-center">
+          <div>
             <Button
               variant="primary"
               size="lg"
@@ -140,7 +124,6 @@ const RecipePage = () => {
               저열량 레시피
             </Button>
             <Button
-              // variant={sortState === "sortByLowSodium" ? "success" : "primary"}
               size="lg"
               className="me-2"
               onClick={() => handleSortClick("INFO_NA")}
@@ -148,6 +131,14 @@ const RecipePage = () => {
               저염식 레시피
             </Button>
           </div>
+        </Col>
+      </Row>
+      <Row className="justify-content-end mb-3">
+        <Col xs="auto">
+          <SelectMenu
+            selectValue={selectValue}
+            handleSelectChange={handleSelectChange}
+          />
         </Col>
       </Row>
       <Row className="g-3">
