@@ -51,7 +51,7 @@ const ModalMain = ({ isOpen, menuList, toggleMenu }) => {
         <div className="modal-deco-bottom">
           <div className="modal-deco-clip"></div>
           <div className="modal-deco-img">
-            <img src={`${process.env.PUBLIC_URL}/image03.png`} />
+            <img src={`${process.env.PUBLIC_URL}/image03.png`} alt="modal-img" />
           </div>
         </div>
       </div>
