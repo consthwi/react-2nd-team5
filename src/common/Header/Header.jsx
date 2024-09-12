@@ -50,22 +50,22 @@ const Header = () => {
             {/* mobile일 경우 btn-search, btn-mobile-menu addClass active */}
             <li className="header-search">
               <Link>
-                <FiSearch className="btn-search" />
+                <FiSearch className="btn-search" size="25px" />
               </Link>
             </li>
             <li className="header-user">
               <Link>
-                <BsPerson className="btn-login" />
+                <BsPerson className="btn-login" size="25px" />
               </Link>
             </li>
             <li className="header-cart">
               <Link>
-                <PiBookmarkSimple className="btn-cart" />
+                <PiBookmarkSimple className="btn-cart" size="28px" />
               </Link>
             </li>
             <li className="header-mobile-menu" onClick={toggleMenu}>
               <Link>
-                <BsList className="btn-mobile-menu" />
+                <BsList className="btn-mobile-menu" size="30px" />
               </Link>
             </li>
           </ul>
