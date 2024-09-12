@@ -4,6 +4,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import "./RecipePage.style.css";
 import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
 
 const ITEM_PER_PAGE = 12;
 const ITEM_CAT = ["반찬", "국&찌개", "후식", "일품", "밥", "기타"]; // 데이터가 가지고 있는 카테고리
@@ -13,6 +15,9 @@ const RecipePage = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
+  const dispatch = useDispatch();
+  // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
+  // console.log(bookmarkedRecipes);
 
   const { data, isLoading, error } = useRecipeDataQuery();
 
@@ -57,13 +62,18 @@ const RecipePage = () => {
   //북마크를 위한 코드
   // 누른 북마크의 일련번호를 활용 일련번호가 일치할시 북미크 여부를 토글
   const handleBookMark = (recipeId) => {
-    setOriginalData((prevRecipes) =>
-      prevRecipes.map((recipe) =>
-        recipe.RCP_SEQ === recipeId
-          ? { ...recipe, isBookmarked: !recipe.isBookmarked }
-          : recipe
-      )
+    const updatedRecipes = originalData.map((recipe) =>
+      recipe.RCP_SEQ === recipeId
+        ? { ...recipe, isBookmarked: !recipe.isBookmarked }
+        : recipe
     );
+
+    setOriginalData(updatedRecipes);
+
+    const updateRecipe = updatedRecipes.find(
+      (recipe) => recipe.RCP_SEQ === recipeId
+    );
+    dispatch(toggleBookmark(updateRecipe));
   };
 
   // 필터가 바뀔떄마다 페이지네이션을 1페이지로 이동
@@ -78,7 +88,7 @@ const RecipePage = () => {
   if (error) {
     return <div>Error loading data</div>;
   }
-  console.log(filterRecipe);
+  // console.log(filterRecipe);
 
   //제공 데이터에 페이지와 아이템 갯수가 없어서 직접 구현
   // 12개씩 잘라서 랜더링
@@ -100,6 +110,7 @@ const RecipePage = () => {
           <div>
             {ITEM_CAT.map((item) => (
               <Button
+                key={item}
                 size="lg"
                 className="me-2"
                 variant={filter === item ? "success" : "primary"}
