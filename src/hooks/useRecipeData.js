@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import api from "../untils/api";
+import api from "../utils/api";
 
 const fetchRecipeData = () => {
   return api.get(`1/500`);
