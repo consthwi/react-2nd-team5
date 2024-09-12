@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { RxBookmarkFilled, RxBookmark } from "react-icons/rx";
+import { PiBookmarkSimpleThin, PiBookmarkSimpleFill } from "react-icons/pi";
 import "./CardComponent.style.css";
 import { useNavigate } from "react-router-dom";
 
@@ -21,21 +21,27 @@ const CardComponent = ({ recipe, handleBookMark }) => {
         <Card.Body>
           <Row>
             <Col xs={9} sm={9} md={9}>
-              <Card.Text>{recipe.RCP_PAT2}</Card.Text>
-              <Card.Title onClick={handleCardClick}>{recipe.RCP_NM}</Card.Title>
-              <Card.Text className="text-ellipsis" onClick={handleCardClick}>
+              <div className="tag-text">
+                #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
+              </div>
+              <div className="title" onClick={handleCardClick}>
+                {recipe.RCP_NM}
+              </div>
+              <div className="text-ellipsis" onClick={handleCardClick}>
                 {recipe.RCP_NA_TIP}
-              </Card.Text>
+              </div>
             </Col>
-            <Col xs={3} sm={3} md={3} className="text-center">
+            <Col xs={3} sm={3} md={3} className="bookmark">
               {recipe.isBookmarked ? (
-                <RxBookmarkFilled
+                <PiBookmarkSimpleFill
                   className="bookmark-icon"
+                  size="3rem"
                   onClick={() => handleBookMark(recipe.RCP_SEQ)}
                 />
               ) : (
-                <RxBookmark
+                <PiBookmarkSimpleThin
                   className="bookmark-icon"
+                  size="3rem"
                   onClick={() => handleBookMark(recipe.RCP_SEQ)}
                 />
               )}
