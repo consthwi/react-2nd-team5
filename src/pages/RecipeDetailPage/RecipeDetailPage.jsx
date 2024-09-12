@@ -74,17 +74,7 @@ const RecipeDetailPage = () => {
         </Col>
       </Row>
     </Container>
-<<<<<<< HEAD
 
-  
-  )
-}
-
-
-
-=======
-  )
-}
->>>>>>> 0901b7be2a47811358275dd75f022e4c66ca5780
-
+        )
+      }
 export default RecipeDetailPage;
