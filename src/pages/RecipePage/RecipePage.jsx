@@ -6,65 +6,58 @@ import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
 
 const ITEM_PER_PAGE = 12;
+const ITEM_CAT = ["반찬", "국&찌개", "후식", "일품", "밥", "기타"]; // 데이터가 가지고 있는 카테고리
 
 const RecipePage = () => {
-  const [filter, setFilter] = useState("");
-  const [initialRecipes, setInitialRecipes] = useState([]);
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
-  const [sortedRecipes, setSortedRecipes] = useState([]);
-  const [sortState, setSortState] = useState("all");
   const [currentPage, setCurrentPage] = useState(0);
+  const [originalData, setOriginalData] = useState([]);
+  const [filter, setFilter] = useState("");
+  const [sort, setSort] = useState("");
 
   const { data, isLoading, error } = useRecipeDataQuery();
 
+  // 북마크의 여부를 확인하기 위해 기존 데이터에 북마크 여부를 추가한 후 저장
   useEffect(() => {
     if (data) {
       const recipesWithBookmark = data.map((recipe) => ({
         ...recipe,
         isBookmarked: false,
       }));
-      setInitialRecipes(recipesWithBookmark);
-      setFilteredRecipes(recipesWithBookmark);
-      setSortedRecipes(recipesWithBookmark);
+      setOriginalData(recipesWithBookmark);
     }
   }, [data]);
-  const sortByLowSodium = () => {
-    if (sortedRecipes.length > 0) {
-      const sorted = [...sortedRecipes].sort((a, b) => {
-        const naA = parseInt(a.INFO_NA, 10);
-        const naB = parseInt(b.INFO_NA, 10);
 
-        return naA - naB;
-      });
-      setSortedRecipes(sorted);
-      setSortState("sortByLowSodium");
-    }
-  };
-
-  //데이터가 가지고 있는 카테고리
-  //(6) ['반찬', '국&찌개', '후식', '일품', '밥', '기타']
-
+  // 필터의 상태를 정의
   const handleFilterClick = (filterType) => {
     if (filter === filterType) {
-      setFilteredRecipes(initialRecipes);
-      setSortState("all");
+      setFilter("");
     } else {
       setFilter(filterType);
-      if (filterType === "반찬") {
-        setFilteredRecipes(
-          initialRecipes.filter((recipe) =>
-            recipe.RCP_PAT2.includes(filterType)
-          )
-        );
-      }
     }
   };
-  const handleReset = () => {
-    setSortedRecipes(initialRecipes);
-    setSortState("all");
+  const handleSortClick = (sortType) => {
+    if (sort === sortType) {
+      setSort("");
+    } else {
+      setSort(sortType);
+    }
   };
+
+  //필터가 있으면 필터 데이터 없으면 기존 데이터
+  const filterRecipe =
+    filter.length > 0
+      ? originalData.filter((recipe) => recipe.RCP_PAT2.includes(filter))
+      : originalData;
+
+  const sortRecipe =
+    sort.length > 0
+      ? [...filterRecipe].sort((a, b) => a[sort] - b[sort])
+      : filterRecipe;
+
+  //북마크를 위한 코드
+  // 누른 북마크의 일련번호를 활용 일련번호가 일치할시 북미크 여부를 토글
   const handleBookMark = (recipeId) => {
-    setInitialRecipes((prevRecipes) =>
+    setOriginalData((prevRecipes) =>
       prevRecipes.map((recipe) =>
         recipe.RCP_SEQ === recipeId
           ? { ...recipe, isBookmarked: !recipe.isBookmarked }
@@ -72,9 +65,11 @@ const RecipePage = () => {
       )
     );
   };
+
+  // 필터가 바뀔떄마다 페이지네이션을 1페이지로 이동
   useEffect(() => {
     setCurrentPage(0);
-  }, [filteredRecipes, sortState]);
+  }, [filterRecipe]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -83,13 +78,15 @@ const RecipePage = () => {
   if (error) {
     return <div>Error loading data</div>;
   }
-  console.log(filteredRecipes);
-  console.log(sortedRecipes);
+  console.log(filterRecipe);
 
+  //제공 데이터에 페이지와 아이템 갯수가 없어서 직접 구현
+  // 12개씩 잘라서 랜더링
+  //토탈페이지는 필터데이터를 렌더링 갯수로 나눈 수
   const startIndex = currentPage * ITEM_PER_PAGE;
   const endIndex = startIndex + ITEM_PER_PAGE;
-  const paginateRecipes = filteredRecipes.slice(startIndex, endIndex);
-  const totalPage = Math.ceil(filteredRecipes.length / ITEM_PER_PAGE);
+  const paginateRecipes = sortRecipe.slice(startIndex, endIndex);
+  const totalPage = Math.ceil(sortRecipe.length / ITEM_PER_PAGE);
 
   return (
     <Container className="recipe-page">
@@ -101,27 +98,32 @@ const RecipePage = () => {
       <Row className="mb-5">
         <Col className="text-center">
           <div>
+            {ITEM_CAT.map((item) => (
+              <Button
+                size="lg"
+                className="me-2"
+                variant={filter === item ? "success" : "primary"}
+                onClick={() => handleFilterClick(item)}
+              >
+                {item}
+              </Button>
+            ))}
+
             <Button
-              variant={sortState === "반찬" ? "success" : "primary"}
+              variant="primary"
               size="lg"
               className="me-2"
-              onClick={() => handleFilterClick("반찬")}
+              onClick={() => handleSortClick("INFO_ENG")}
             >
-              반찬
-            </Button>
-            <Button variant="primary" size="lg" className="me-2">
               저열량 레시피
             </Button>
             <Button
-              variant={sortState === "sortByLowSodium" ? "success" : "primary"}
+              // variant={sortState === "sortByLowSodium" ? "success" : "primary"}
               size="lg"
               className="me-2"
-              onClick={sortByLowSodium}
+              onClick={() => handleSortClick("INFO_NA")}
             >
               저염식 레시피
-            </Button>
-            <Button variant="primary" size="lg">
-              채식 레시피
             </Button>
           </div>
         </Col>
