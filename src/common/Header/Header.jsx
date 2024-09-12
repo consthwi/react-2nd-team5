@@ -37,13 +37,13 @@ const Header = () => {
           </h1>
           <ul className="header-nav-bar">
             <li>
-              <Link to="/">{menuList[0]}</Link>
+              <Link to="/recipes">{menuList[0]}</Link>
             </li>
             <li>
-              <Link to="/">{menuList[1]}</Link>
+              <Link to="/recipes">{menuList[1]}</Link>
             </li>
             <li>
-              <Link to="/">{menuList[2]}</Link>
+              <Link to="/recipes">{menuList[2]}</Link>
             </li>
           </ul>
           <ul className="header-right">
