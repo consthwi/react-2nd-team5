@@ -7,8 +7,8 @@ import { Card, Col, Row } from 'react-bootstrap'
 const SliderCard = ({recipeitem,key}) => {
     const navigate = useNavigate();
     const godetail=()=>{
-        // navigate(`/recipes/${recipeitem?.RCP_NM}`)
-        navigate('/recipes')
+        navigate(`/recipes/${recipeitem?.RCP_NM}`)
+    
     }
   return (
     // <div style={{backgroundImage:"url("+`${recipeitem?.ATT_FILE_NO_MAIN}`+")"}} className="slidercard_url" onClick={godetail}>

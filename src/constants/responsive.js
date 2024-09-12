@@ -5,7 +5,7 @@ export const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 4 // 예를 들어 데스크탑에서는 4개의 카드가 보이도록 설정
+    items: 6 // 예를 들어 데스크탑에서는 4개의 카드가 보이도록 설정
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },

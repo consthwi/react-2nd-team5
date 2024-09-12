@@ -12,13 +12,22 @@ const RandomRecipeCard = () => {
 console.log("choice",choice)
 
 useEffect(() => {
-    if (choice && choice.length > 0) {
-      // 랜덤 인덱스 생성
+  if (choice && choice.length > 0) {
+    const selectRandomRecipe = () => {
       const randomIndex = Math.floor(Math.random() * choice.length);
-      // 랜덤 데이터 선택
       setRandomRecipe(choice[randomIndex]);
-    }
-  }, [choice]);
+    };
+
+    // 컴포넌트가 마운트될 때 초기 랜덤 레시피 설정
+    selectRandomRecipe();
+
+    // 5초마다 랜덤 
+    const intervalId = setInterval(selectRandomRecipe, 9000);
+
+    // 컴포넌트 언마운트 시 타이머 정리
+    return () => clearInterval(intervalId);
+  }
+}, [choice]);
 
   return (
     <Container>
