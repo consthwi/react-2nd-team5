@@ -8,7 +8,6 @@ import { useRecipeDetailDataQuery } from "../../hooks/useRecipeDetailData";
 
 const RecipeDetailPage = () => {
   const { recipeName } = useParams();
-  // const decodedRecipeName = decodeURIComponent(recipeName);
   const { data } = useRecipeDetailDataQuery(recipeName);
   console.log(data);
   return (

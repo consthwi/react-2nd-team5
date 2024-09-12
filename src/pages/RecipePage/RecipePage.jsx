@@ -6,6 +6,7 @@ import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
 
 const ITEM_PER_PAGE = 12;
+const ITEM_CAT = ["반찬", "국&찌개", "후식", "일품", "밥", "기타"];
 
 const RecipePage = () => {
   const [filter, setFilter] = useState("");
@@ -47,7 +48,7 @@ const RecipePage = () => {
   const handleFilterClick = (filterType) => {
     if (filter === filterType) {
       setFilteredRecipes(initialRecipes);
-      setSortState("all");
+      setFilter("");
     } else {
       setFilter(filterType);
       if (filterType === "반찬") {
@@ -57,12 +58,44 @@ const RecipePage = () => {
           )
         );
       }
+      if (filterType === "국&찌개") {
+        setFilteredRecipes(
+          initialRecipes.filter((recipe) =>
+            recipe.RCP_PAT2.includes(filterType)
+          )
+        );
+      }
+      if (filterType === "후식") {
+        setFilteredRecipes(
+          initialRecipes.filter((recipe) =>
+            recipe.RCP_PAT2.includes(filterType)
+          )
+        );
+      }
+      if (filterType === "일품") {
+        setFilteredRecipes(
+          initialRecipes.filter((recipe) =>
+            recipe.RCP_PAT2.includes(filterType)
+          )
+        );
+      }
+      if (filterType === "밥") {
+        setFilteredRecipes(
+          initialRecipes.filter((recipe) =>
+            recipe.RCP_PAT2.includes(filterType)
+          )
+        );
+      }
+      if (filterType === "기타") {
+        setFilteredRecipes(
+          initialRecipes.filter((recipe) =>
+            recipe.RCP_PAT2.includes(filterType)
+          )
+        );
+      }
     }
   };
-  const handleReset = () => {
-    setSortedRecipes(initialRecipes);
-    setSortState("all");
-  };
+
   const handleBookMark = (recipeId) => {
     setInitialRecipes((prevRecipes) =>
       prevRecipes.map((recipe) =>
@@ -101,8 +134,18 @@ const RecipePage = () => {
       <Row className="mb-5">
         <Col className="text-center">
           <div>
+            {ITEM_CAT.map((item) => (
+              <Button
+                size="lg"
+                className="me-2"
+                variant={filter === item ? "success" : "primary"}
+                onClick={() => handleFilterClick(item)}
+              >
+                {item}
+              </Button>
+            ))}
             <Button
-              variant={sortState === "반찬" ? "success" : "primary"}
+              variant={filter === "반찬" ? "success" : "primary"}
               size="lg"
               className="me-2"
               onClick={() => handleFilterClick("반찬")}
