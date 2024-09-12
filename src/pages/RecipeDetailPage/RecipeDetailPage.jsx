@@ -1,18 +1,34 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React,{ useEffect, useState } from "react";
+import { Container, Row, Col,Alert } from "react-bootstrap";
 import "./RecipeDetailPage.style.css";
 import { RxBookmark } from "react-icons/rx";
 import { PiShareNetwork } from "react-icons/pi";
 import { useParams } from "react-router-dom";
 import { useRecipeDetailDataQuery } from "../../hooks/useRecipeDetailData";
 import StepComponent from "./components/StepComponent";
-import { TiPin } from "react-icons/ti";
+import { MdOutlineTipsAndUpdates } from "react-icons/md";
+
 
 const RecipeDetailPage = () => {
+
   const { recipeName } = useParams();
   // const decodedRecipeName = decodeURIComponent(recipeName);
-  const { data } = useRecipeDetailDataQuery(recipeName);
+  const { data, isLoading, error} = useRecipeDetailDataQuery(recipeName);
   console.log(data);
+
+  const preItem = `${data?.RCP_PARTS_DTLS}`
+  const arrayItem = preItem.split(",");
+
+
+
+  if(isLoading){
+    return <h1>Loading...</h1>
+  }if(error){
+    return <Alert variant='danger'>{error.message}</Alert>
+}
+
+
+
   return (
     <Container className='mt-5'>
        
@@ -24,9 +40,9 @@ const RecipeDetailPage = () => {
       <Col className='title-area'>
       <div>
       <div className='tag'>#{data?.RCP_PAT2} #{data?.RCP_WAY2}</div>
-      <div className='text-1'>겹겹이 쌓인 신선한 야채와 따끈한 국물까지 완벽!</div>
       <div className='text-title'>{data?.RCP_NM}</div>
-      <div className='text-2 mt-3'><TiPin color="#ed0c0c" size="26px"/> {data?.RCP_NA_TIP} </div>
+      <div className="text-1 mt-5"><MdOutlineTipsAndUpdates color="#ed0c0c" size="24px"/>Tip!</div>
+      <div className='text-2 mt-2'> {data?.RCP_NA_TIP} </div>
       </div>
 
       <div className='button-two'>
@@ -40,6 +56,10 @@ const RecipeDetailPage = () => {
 
         <div className='item mt-5'>
         <div className='pre-title mb-2'>기본재료 </div>
+        <hr/>
+        <div className="pre"> {arrayItem.map((item)=>(
+      <div>{item}</div>
+      ))}</div>
         </div>
 
 
@@ -70,18 +90,10 @@ const RecipeDetailPage = () => {
       <hr className='mt-5'/>
       </Row>
 
-
-
-      <Row className='mb-5 mt-5'>
-       <Col><div style={{
-        backgroundImage:"url(https://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2023/04/11/20230411000085_0.jpg)" 
-     }} className='recipe-img'></div></Col>
-       <Col><div className='step-text'>STEP01</div>
-       
-      </Col>
-      </Row>
+      <StepComponent/>
     </Container>
   )
 }
 
 export default RecipeDetailPage
+

@@ -16,18 +16,19 @@ body {
 }
 .tag {
   color: #ed0c0c;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 20px;
 }
-.text-1 {
-  font-size: 20px;
-  font-weight: 400;
-  color: #191919;
-}
+
 .text-title {
   font-size: 33px;
   font-weight: bold;
   color: #191919;
+}
+.text-1 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ed0c0c;
 }
 .text-2 {
   width: 70%;
