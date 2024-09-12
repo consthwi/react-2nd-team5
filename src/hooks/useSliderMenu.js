@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import api from "../untils/api"
+import api from "../utils/api"
 const fetchslidermenu=()=>{
     return api.get('1/15')
 }
