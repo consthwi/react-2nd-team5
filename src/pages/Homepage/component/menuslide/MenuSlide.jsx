@@ -3,7 +3,7 @@ import { useRecipeDataQuery } from '../../../../hooks/useRecipeData'
 import { ClipLoader } from 'react-spinners';
 import { Alert } from 'bootstrap';
 import {responsive} from '../../../../constants/responsive';
-import HomepageSlider from '../../homecommon/Slider/HomepageSlider';
+import HomepageSlider from '../../../../common/Slider/HomepageSlider';
 
 const MenuSlide = () => {
   const {data,isError,error,isLoading} = useRecipeDataQuery()
