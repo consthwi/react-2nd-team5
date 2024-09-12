@@ -9,10 +9,10 @@ export const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 4// tablet에서 한 번에 5개의 카드가 보이도록 설정
+    items: 2// tablet에서 한 번에 5개의 카드가 보이도록 설정
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 3 // 모바일에서 한 번에 3개의 카드가 보이도록 설정
+    items: 1 // 모바일에서 한 번에 3개의 카드가 보이도록 설정
   }
 };

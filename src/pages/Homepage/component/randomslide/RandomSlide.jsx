@@ -21,14 +21,14 @@ useEffect(() => {
 
   return (
     <Container>
-        <Row>
+        <Row className="randomslide_h4">
             <h4 className="todays_menu">오늘은 이 메뉴 어떠세요?</h4>
         </Row>
         <Row>
-        <Col lg={6}>
+        <Col lg={6} sm={12}>
         <img src={randomRecipe.ATT_FILE_NO_MAIN}/>
         </Col>
-            <Col lg={6}>
+            <Col lg={6} sm={12}>
         <div>
      {randomRecipe.RCP_NM}
     </div>
