@@ -9,6 +9,6 @@ export const useRecipeDetailDataQuery = (recipeName) => {
   return useQuery({
     queryKey: ["recipe-detail-data", recipeName],
     queryFn: () => fetchRecipeDetailData(recipeName),
-    select: (result) => result.data.COOKRCP01.row,
+    select: (result) => result.data.COOKRCP01.row[0],
   });
 };
