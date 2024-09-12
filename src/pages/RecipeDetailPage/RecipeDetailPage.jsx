@@ -3,9 +3,14 @@ import { Container,Row,Col} from 'react-bootstrap';
 import './RecipeDetailPage.style.css'
 import { RxBookmark } from "react-icons/rx";
 import { PiShareNetwork } from "react-icons/pi";
+import { useParams } from 'react-router-dom';
+
 
 
 const RecipeDetailPage = () => {
+  // const {id}=useParams();
+  // const {data} = useRecipeNameDataQuery({id})
+  // console.log(data)
   return (
     <Container className='mt-5'>
        
@@ -52,6 +57,7 @@ const RecipeDetailPage = () => {
       <hr className='mt-5'/>
       </Row>
     </Container>
+  
   )
 }
 
