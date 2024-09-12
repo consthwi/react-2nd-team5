@@ -18,15 +18,15 @@ const RecipeDetailPage = () => {
        
     <Row className='mb-5'>
       <Col><div style={{
-        backgroundImage:`url(${data[0]?.ATT_FILE_NO_MK})` 
+        backgroundImage:`url(${data?.ATT_FILE_NO_MK})` 
      }} className='detail-img'></div></Col>
 
       <Col className='title-area'>
       <div>
-      <div className='tag'>#{data[0]?.RCP_PAT2} #{data[0]?.RCP_WAY2}</div>
+      <div className='tag'>#{data?.RCP_PAT2} #{data?.RCP_WAY2}</div>
       <div className='text-1'>겹겹이 쌓인 신선한 야채와 따끈한 국물까지 완벽!</div>
-      <div className='text-title'>{data[0]?.RCP_NM}</div>
-      <div className='text-2 mt-3'><TiPin color="#ed0c0c" size="26px"/> {data[0]?.RCP_NA_TIP} </div>
+      <div className='text-title'>{data?.RCP_NM}</div>
+      <div className='text-2 mt-3'><TiPin color="#ed0c0c" size="26px"/> {data?.RCP_NA_TIP} </div>
       </div>
 
       <div className='button-two'>
@@ -40,7 +40,6 @@ const RecipeDetailPage = () => {
 
         <div className='item mt-5'>
         <div className='pre-title mb-2'>기본재료 </div>
-        <div className='pre mb-1'><div><h5>{(data[0]?.RCP_PARTS_DTLS).substr(0,5)}</h5></div> {(data[0]?.RCP_PARTS_DTLS).substr(5)}</div>
         </div>
 
 
@@ -58,11 +57,11 @@ const RecipeDetailPage = () => {
           
           
           <Col className="info-box">
-          <div>{data[0]?.INFO_ENG} kcal</div>
-          <div>{data[0]?.INFO_CAR} g</div>
-          <div>{data[0]?.INFO_PRO} g</div>
-          <div>{data[0]?.INFO_FAT} g</div>
-          <div>{data[0]?.INFO_NA} mg</div>
+          <div>{data?.INFO_ENG} kcal</div>
+          <div>{data?.INFO_CAR} g</div>
+          <div>{data?.INFO_PRO} g</div>
+          <div>{data?.INFO_FAT} g</div>
+          <div>{data?.INFO_NA} mg</div>
           </Col>
         </Row>
         </div>
