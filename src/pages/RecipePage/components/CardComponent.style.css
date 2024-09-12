@@ -12,3 +12,8 @@
   height: 40rem;
   cursor: pointer;
 }
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

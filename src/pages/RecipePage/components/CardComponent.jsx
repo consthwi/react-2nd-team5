@@ -3,13 +3,14 @@ import { Card, Col, Row } from "react-bootstrap";
 import { RxBookmarkFilled, RxBookmark } from "react-icons/rx";
 import "./CardComponent.style.css";
 import { useNavigate } from "react-router-dom";
-const CardComponent = ({ recipe, index, handleBookMark }) => {
+
+const CardComponent = ({ recipe, handleBookMark }) => {
   const navigate = useNavigate();
   const handleCardClick = () => {
-    navigate(`/recipes/${recipe.RCP_SEQ}`);
+    navigate(`/recipes/${recipe.RCP_NM}`);
   };
   return (
-    <Col md={4} key={index}>
+    <Col md={4} key={recipe.RCP_SEQ}>
       <Card className="card-container">
         <Card.Img
           className="card-img"
@@ -30,12 +31,12 @@ const CardComponent = ({ recipe, index, handleBookMark }) => {
               {recipe.isBookmarked ? (
                 <RxBookmarkFilled
                   className="bookmark-icon"
-                  onClick={() => handleBookMark(index)}
+                  onClick={() => handleBookMark(recipe.RCP_SEQ)}
                 />
               ) : (
                 <RxBookmark
                   className="bookmark-icon"
-                  onClick={() => handleBookMark(index)}
+                  onClick={() => handleBookMark(recipe.RCP_SEQ)}
                 />
               )}
             </Col>
