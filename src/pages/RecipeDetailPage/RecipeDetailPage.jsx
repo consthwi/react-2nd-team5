@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./RecipeDetailPage.style.css";
 import { RxBookmark } from "react-icons/rx";
 import { PiShareNetwork } from "react-icons/pi";
+
 import { useParams } from "react-router-dom";
 import { useRecipeDetailDataQuery } from "../../hooks/useRecipeDetailData";
 import { TiPin } from "react-icons/ti";
@@ -73,7 +74,17 @@ const RecipeDetailPage = () => {
         </Col>
       </Row>
     </Container>
+<<<<<<< HEAD
+
+  
   )
 }
+
+
+
+=======
+  )
+}
+>>>>>>> 0901b7be2a47811358275dd75f022e4c66ca5780
 
 export default RecipeDetailPage;
