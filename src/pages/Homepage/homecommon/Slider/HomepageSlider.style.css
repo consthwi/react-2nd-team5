@@ -1,0 +1,17 @@
+.carousel-container{
+    overflow: hidden;
+    height:440px;
+   
+   
+}
+.slidertitle{
+    text-align:center;
+}
+
+@media(max-width:180px){
+    .carousel-container{
+        height:330px;
+        display:flex;
+        justify-content:space-between;
+    }
+}
