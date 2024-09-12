@@ -16,7 +16,7 @@ body {
 }
 .tag {
   color: #ed0c0c;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 20px;
 }
 
@@ -28,7 +28,7 @@ body {
 .text-1 {
   font-size: 16px;
   font-weight: 700;
-  color: #ed0c0c;
+  color: #191919;
 }
 .text-2 {
   width: 70%;
@@ -47,6 +47,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .button-two {
   display: flex;
