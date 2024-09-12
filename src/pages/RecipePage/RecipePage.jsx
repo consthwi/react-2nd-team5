@@ -6,15 +6,17 @@ import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
+import SelectMenu from "./components/SelectMenu";
 
 const ITEM_PER_PAGE = 12;
-const ITEM_CAT = ["반찬", "국&찌개", "후식", "일품", "밥", "기타"]; // 데이터가 가지고 있는 카테고리
 
 const RecipePage = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [originalData, setOriginalData] = useState([]);
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
+  const [selectValue, setSelectValue] = useState("");
+
   const dispatch = useDispatch();
   // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
   // console.log(bookmarkedRecipes);
@@ -33,19 +35,23 @@ const RecipePage = () => {
   }, [data]);
 
   // 필터의 상태를 정의
-  const handleFilterClick = (filterType) => {
-    if (filter === filterType) {
-      setFilter("");
-    } else {
-      setFilter(filterType);
-    }
-  };
+  // const handleFilterClick = (filterType) => {
+  //   if (filter === filterType) {
+  //     setFilter("");
+  //   } else {
+  //     setFilter(filterType);
+  //   }
+  // };
   const handleSortClick = (sortType) => {
     if (sort === sortType) {
       setSort("");
     } else {
       setSort(sortType);
     }
+  };
+  const handleSelectChange = (event) => {
+    setFilter(event.target.value);
+    setSelectValue(event.target.value);
   };
 
   //필터가 있으면 필터 데이터 없으면 기존 데이터
@@ -105,21 +111,10 @@ const RecipePage = () => {
           <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
         </Col>
       </Row>
-      <Row className="mb-5">
+
+      <Row className="mb-5 ">
         <Col className="text-center">
           <div>
-            {ITEM_CAT.map((item) => (
-              <Button
-                key={item}
-                size="lg"
-                className="me-2"
-                variant={filter === item ? "success" : "primary"}
-                onClick={() => handleFilterClick(item)}
-              >
-                {item}
-              </Button>
-            ))}
-
             <Button
               variant="primary"
               size="lg"
@@ -129,7 +124,6 @@ const RecipePage = () => {
               저열량 레시피
             </Button>
             <Button
-              // variant={sortState === "sortByLowSodium" ? "success" : "primary"}
               size="lg"
               className="me-2"
               onClick={() => handleSortClick("INFO_NA")}
@@ -137,6 +131,14 @@ const RecipePage = () => {
               저염식 레시피
             </Button>
           </div>
+        </Col>
+      </Row>
+      <Row className="justify-content-end mb-3">
+        <Col xs="auto">
+          <SelectMenu
+            selectValue={selectValue}
+            handleSelectChange={handleSelectChange}
+          />
         </Col>
       </Row>
       <Row className="g-3">
