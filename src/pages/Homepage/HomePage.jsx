@@ -3,6 +3,7 @@ import MenuSlide from "./component/menuslide/MenuSlide";
 import "./HomePage.style.css";
 import RandomSlide from "./component/randomslide/RandomSlide";
 import { IoSearch } from "react-icons/io5";
+import TopSlide from "./component/TopSlide/TopSlide";
 
 const HomePage = () => {
   return (
@@ -14,37 +15,13 @@ const HomePage = () => {
         </div>
         <div className="input-box">
           <input></input>
-          <IoSearch size="24px" color="#ed0c0c" className="mb-2" />
+          <IoSearch size="26px" color="#ed0c0c" className="mb-2" />
         </div>
       </div>
-
-      <div classNmae="home_page_banner_container">
-        <div
-          style={{
-            backgroundImage:
-              "url(https://cdn.pixabay.com/photo/2021/09/20/06/55/spaghetti-6639970_1280.jpg)",
-          }}
-          className="hompage_img mainbanner_big_container"
-        >
-          <h5 className="homepage_banner_name">
-            <span class="homepage_spanstyle">오늘 저녁은 뭐먹지?!</span>
-          </h5>
-          <p className="hompage_banner_p">
-            <span class="homepage_spanstyle">
-              지금 한 번 냉장고를 열어보세요~
-            </span>
-          </p>
-          <div>
-            <span className="homepage_banner_span homepage_spanstyle ">
-              '냉털한 한끼'
-            </span>
-            <span className="hompage_banner_p2 homepage_spanstyle">
-              가 뭐든 맛있게 해드리겠습니다~!
-            </span>
-          </div>
-        </div>
-        {/* <Baner/> */}
+      <div className="top-slide-area">
+        <TopSlide />
       </div>
+      <div classNmae="home_page_banner_container">{/* <Baner/> */}</div>
       <div>
         <MenuSlide />
         <RandomSlide />
