@@ -18,30 +18,16 @@ const RecipePage = () => {
   const [selectValue, setSelectValue] = useState("");
 
   const dispatch = useDispatch();
-  // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
-  // console.log(bookmarkedRecipes);
-
+  const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
+  console.log(bookmarkedRecipes);
   const { data, isLoading, error } = useRecipeDataQuery();
 
-  // 북마크의 여부를 확인하기 위해 기존 데이터에 북마크 여부를 추가한 후 저장
   useEffect(() => {
     if (data) {
-      const recipesWithBookmark = data.map((recipe) => ({
-        ...recipe,
-        isBookmarked: false,
-      }));
-      setOriginalData(recipesWithBookmark);
+      setOriginalData(data);
     }
   }, [data]);
 
-  // 필터의 상태를 정의
-  // const handleFilterClick = (filterType) => {
-  //   if (filter === filterType) {
-  //     setFilter("");
-  //   } else {
-  //     setFilter(filterType);
-  //   }
-  // };
   const handleSortClick = (sortType) => {
     if (sort === sortType) {
       setSort("");
@@ -61,26 +47,11 @@ const RecipePage = () => {
       : originalData;
 
   const sortRecipe =
-    sort.length > 0
-      ? [...filterRecipe].sort((a, b) => a[sort] - b[sort])
-      : filterRecipe;
-
-  //북마크를 위한 코드
-  // 누른 북마크의 일련번호를 활용 일련번호가 일치할시 북미크 여부를 토글
-  const handleBookMark = (recipeId) => {
-    const updatedRecipes = originalData.map((recipe) =>
-      recipe.RCP_SEQ === recipeId
-        ? { ...recipe, isBookmarked: !recipe.isBookmarked }
-        : recipe
-    );
-
-    setOriginalData(updatedRecipes);
-
-    const updateRecipe = updatedRecipes.find(
-      (recipe) => recipe.RCP_SEQ === recipeId
-    );
-    dispatch(toggleBookmark(updateRecipe));
-  };
+    sort.length > 0 && sort === "INFO_PRO"
+      ? [...filterRecipe].sort((a, b) => b[sort] - a[sort])
+      : sort.length > 0
+        ? [...filterRecipe].sort((a, b) => a[sort] - b[sort])
+        : filterRecipe;
 
   // 필터가 바뀔떄마다 페이지네이션을 1페이지로 이동
   useEffect(() => {
@@ -116,7 +87,13 @@ const RecipePage = () => {
         <Col className="text-center">
           <div>
             <Button
-              variant="primary"
+              variant="outline-primary"
+              style={{
+                backgroundColor:
+                  sort === "INFO_ENG" ? "#ED0C0C" : "transparent",
+                color: sort === "INFO_ENG" ? "white" : "black", // default color for outline-primary
+                borderColor: sort === "INFO_ENG" ? "white" : "black", // maintain border color
+              }}
               size="lg"
               className="me-2"
               onClick={() => handleSortClick("INFO_ENG")}
@@ -124,11 +101,31 @@ const RecipePage = () => {
               저열량 레시피
             </Button>
             <Button
+              variant="outline-primary"
+              style={{
+                backgroundColor: sort === "INFO_NA" ? "#ED0C0C" : "transparent",
+                color: sort === "INFO_NA" ? "white" : "black", // default color for outline-primary
+                borderColor: sort === "INFO_NA" ? "white" : "black", // maintain border color
+              }}
               size="lg"
               className="me-2"
               onClick={() => handleSortClick("INFO_NA")}
             >
               저염식 레시피
+            </Button>
+            <Button
+              variant="outline-primary"
+              style={{
+                backgroundColor:
+                  sort === "INFO_PRO" ? "#ED0C0C" : "transparent",
+                color: sort === "INFO_PRO" ? "white" : "black", // default color for outline-primary
+                borderColor: sort === "INFO_PRO" ? "white" : "black", // maintain border color
+              }}
+              size="lg"
+              className="me-2"
+              onClick={() => handleSortClick("INFO_PRO")}
+            >
+              고단백 레시피
             </Button>
           </div>
         </Col>
@@ -143,13 +140,22 @@ const RecipePage = () => {
       </Row>
       <Row className="g-3">
         {paginateRecipes &&
-          paginateRecipes.map((recipe) => (
-            <CardComponent
-              key={recipe.RCP_SEQ}
-              recipe={recipe}
-              handleBookMark={() => handleBookMark(recipe.RCP_SEQ)}
-            />
-          ))}
+          paginateRecipes.map((recipe) => {
+            const isBookmarked =
+              bookmarkedRecipes.length > 0
+                ? bookmarkedRecipes.some(
+                    (item) => item.RCP_SEQ === recipe.RCP_SEQ
+                  )
+                : false;
+            return (
+              <CardComponent
+                key={recipe.RCP_SEQ}
+                recipe={recipe}
+                isBookmarked={isBookmarked}
+                handleBookMark={() => dispatch(toggleBookmark(recipe))}
+              />
+            );
+          })}
       </Row>
       <Row className="mt-4">
         <Col className="text-center">

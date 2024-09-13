@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import "./RecipeDetailPage.style.css";
-import { RxBookmark } from "react-icons/rx";
+import { RxBookmark, RxBookmarkFilled } from "react-icons/rx";
 import { PiShareNetwork } from "react-icons/pi";
 import { useParams } from "react-router-dom";
 import { useRecipeDetailDataQuery } from "../../hooks/useRecipeDetailData";
 import StepComponent from "./components/StepComponent";
 import { MdOutlineTipsAndUpdates } from "react-icons/md";
 import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 const RecipeDetailPage = () => {
   const location = useLocation();
@@ -16,6 +17,9 @@ const RecipeDetailPage = () => {
   useEffect(() => {
     console.log("지금유알엘", location);
   }, [location]);
+
+  const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
+  const dispatch = useDispatch();
 
   const { recipeName } = useParams();
   // const decodedRecipeName = decodeURIComponent(recipeName);
@@ -75,9 +79,20 @@ const RecipeDetailPage = () => {
             <div className="text-2 mt-2"> {data?.RCP_NA_TIP} </div>
           </div>
           <div className="button-two">
-            <div className="button">
+            <div
+              className="button"
+              onClick={() => dispatch(toggleBookmark(data))}
+            >
               찜하기
-              <RxBookmark className="ms-1" size="25px" color="#616161" />
+              {isBookmarked ? (
+                <RxBookmarkFilled
+                  className="ms-1"
+                  size="25px"
+                  color="#616161"
+                />
+              ) : (
+                <RxBookmark className="ms-1" size="25px" color="#616161" />
+              )}
             </div>
             <div
               className="button ms-2"

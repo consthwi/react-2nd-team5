@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 import { Card, Col, Row } from 'react-bootstrap'
+import { PiBookmarkSimpleThin, PiBookmarkSimpleFill } from "react-icons/pi";
 const SliderCard = ({recipeitem,key}) => {
     const navigate = useNavigate();
     const godetail=()=>{
@@ -27,6 +28,10 @@ const SliderCard = ({recipeitem,key}) => {
             <Card.Title className="slidercard_rcp_nm"><FontAwesomeIcon icon={faUtensils} /> {recipeitem?.RCP_NM}</Card.Title>
             <Card.Text >
             {/* <div className="recipeitem">{recipeitem?.HASH_TAG}</div> */}
+            <PiBookmarkSimpleThin
+                  className="bookmark-icon-inSlidercard"
+                  size="3rem"
+                />
             <div className="recipeitem">{recipeitem?.RCP_WAY2}</div>
             </Card.Text>
           </Card.Body>
