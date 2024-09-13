@@ -1,0 +1,7 @@
+.form-group .form-select {
+  border: none;
+  cursor: pointer;
+}
+.form-group .form-select:focus {
+  box-shadow: none;
+}

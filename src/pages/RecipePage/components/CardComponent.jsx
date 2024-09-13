@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { PiBookmarkSimpleThin, PiBookmarkSimpleFill } from "react-icons/pi";
 import "./CardComponent.style.css";
 import { useNavigate } from "react-router-dom";
 import { RxBookmark, RxBookmarkFilled } from "react-icons/rx";
