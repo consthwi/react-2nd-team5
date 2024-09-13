@@ -17,4 +17,9 @@
         display:flex;
         justify-content:space-between;
     }
+    .slidertitle{
+        text-align:center;
+        margin-top:10px;
+        padding:8px;
+    }
 }

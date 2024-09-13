@@ -53,7 +53,7 @@ const RandomRecipeCard = () => {
               lg={6}
               md={11}
               sm={12}
-              className="randomslide_col_2 plusmargin"
+              className="randomslide_col_2 plusmargin2"
             >
               <div className="randomslide-col2-bigcontainer"></div>
               <div className="random_dtls random_rcp red">
