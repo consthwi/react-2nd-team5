@@ -36,10 +36,14 @@
 }
 .random_dtls{
     font-weight:700;
+   
 }
-
+.red{
+    color:red;
+}
 .random_rcp{
     font-size:22px;
+  
 }
 .randomslide_col_2{
     display:flex;
@@ -86,6 +90,7 @@
     
     .random_rcp{
         font-size:15px;
+        
     }
     .randomslide_col_2{
         display:flex;

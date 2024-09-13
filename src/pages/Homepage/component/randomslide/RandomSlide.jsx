@@ -47,9 +47,9 @@ useEffect(() => {
             <Col lg={6} md={11} sm={12} className="randomslide_col_2 plusmargin">
           
             <div className="randomslide-col2-bigcontainer"></div>
-            <div className="random_dtls random_rcp"> # {randomRecipe.RCP_PAT2} </div>
+            <div className="random_dtls random_rcp red"> # {randomRecipe.RCP_PAT2} </div>
         <div className="randomslide_rcp_nm_style">
-          <span><FontAwesomeIcon icon={faUtensils} /></span><span  className="randomslide_rcp_nm_style"> {randomRecipe.RCP_NM} </span><span><FontAwesomeIcon icon={faUtensils} /></span>
+         <span  className="randomslide_rcp_nm_style"> {randomRecipe.RCP_NM} </span>
         
     </div>
     <div >
