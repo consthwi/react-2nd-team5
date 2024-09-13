@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react';
 
 
 import { useRecipeDataQuery } from '../../../../hooks/useRecipeData';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import'./RandomSlide.style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils,faSpoon } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom';
 const RandomRecipeCard = () => {
     const [randomRecipe, setRandomRecipe] = useState("");
   const { data: choice } = useRecipeDataQuery();
 console.log("choice",choice)
-
+const navigate=useNavigate();
+const gomore=()=>{
+  navigate(`/recipes/${randomRecipe.RCP_NM}`)
+}
 useEffect(() => {
   if (choice && choice.length > 0) {
     const selectRandomRecipe = () => {
@@ -30,27 +34,34 @@ useEffect(() => {
 }, [choice]);
 
   return (
+    <div className="bigRandomSlideContainer">
     <Container>
         <Row className="randomslide_h4">
-            <h4 className="todays_menu slidertitle"><FontAwesomeIcon icon={faSpoon} /> 오늘은 이런 메뉴 어때요?</h4>
+            <h2 className="todays_menu slidertitle"><FontAwesomeIcon icon={faSpoon} /> 오늘은 이런 메뉴 어때요?</h2>
         </Row>
         <Row>
         <Col lg={6} sm={12} className="randomslide_img plusmargin">
         <img src={randomRecipe.ATT_FILE_NO_MAIN} className="random_img_style"/>
         </Col>
-            <Col lg={6} sm={12} className="randomslide_col_2 plusmargin">
+            <Col lg={6} sm={7} className="randomslide_col_2 plusmargin">
+            <div className="random_dtls random_rcp"> # {randomRecipe.RCP_PAT2} </div>
         <div className="randomslide_rcp_nm_style">
-        <FontAwesomeIcon icon={faUtensils} />  {randomRecipe.RCP_NM}  <FontAwesomeIcon icon={faUtensils} />
+          <span><FontAwesomeIcon icon={faUtensils} /></span><span  className="randomslide_rcp_nm_style"> {randomRecipe.RCP_NM} </span><span><FontAwesomeIcon icon={faUtensils} /></span>
+        
     </div>
-    <div>
+    <div >
     <span><FontAwesomeIcon icon={faSpoon} /> </span><span className="random_dtls random_rcp"> 재료 </span><span className="random_rcp"> {randomRecipe.RCP_PARTS_DTLS}</span> 
     </div>
-    <div>
+    <div >
     <span><FontAwesomeIcon icon={faSpoon} /></span><span className="random_dtls random_rcp"> 꿀팁 </span><span  className="random_rcp">{randomRecipe.RCP_NA_TIP}</span> 
+    </div>
+    <div className="buttonstyle">
+    <Button variant="outline-secondary" className="random_rcp random_dtls " onClick={gomore}>자세히 보기</Button>
     </div>
     </Col>
         </Row>
     </Container>
+    </div>
   );
 };
 
