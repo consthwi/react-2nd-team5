@@ -41,26 +41,29 @@ const SliderCard = ({ recipeitem }) => {
             className="card_img"
             onClick={godetail}
           />
-          <Card.Body className="card_text">
-            <Card.Title className="slidercard_rcp_nm" onClick={godetail}>
-              <FontAwesomeIcon icon={faUtensils} /> {recipeitem?.RCP_NM}
-            </Card.Title>
-            <Card.Text>
-              {isBookmarkded ? (
-                <RxBookmarkFilled
-                  className="bookmark-icon-inSlidercard"
-                  size="3rem"
-                  onClick={() => dispatch(toggleBookmark(recipeitem))}
-                />
-              ) : (
-                <RxBookmark
-                  className="bookmark-icon-inSlidercard"
-                  size="3rem"
-                  onClick={() => dispatch(toggleBookmark(recipeitem))}
-                />
-              )}
-              <div className="recipeitem">{recipeitem?.RCP_WAY2}</div>
-            </Card.Text>
+          <Card.Body>
+            <div className="card-body-content">
+              <div className="slidercard_rcp_nm" onClick={godetail}>
+                <div className="recipeitem">{recipeitem?.RCP_WAY2}</div>
+                <div>{recipeitem?.RCP_NM}</div>
+              </div>
+              <div>
+                {isBookmarkded ? (
+                  <RxBookmarkFilled
+                    className="bookmark-icon-inSlidercard"
+                    size="3rem"
+                    onClick={() => dispatch(toggleBookmark(recipeitem))}
+                  />
+                ) : (
+                  <RxBookmark
+                    className="bookmark-icon-inSlidercard"
+                    size="3rem"
+                    onClick={() => dispatch(toggleBookmark(recipeitem))}
+                  />
+                )}
+                {/* <div className="recipeitem">{recipeitem?.RCP_WAY2}</div> */}
+              </div>
+            </div>
           </Card.Body>
         </Card>
       </Col>
