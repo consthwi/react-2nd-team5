@@ -5,12 +5,11 @@ import "./Header.style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BsList } from "react-icons/bs";
 import { BsPerson } from "react-icons/bs";
-
-import ModalMain from "../ModalMain/ModalMain";
 import { FiSearch } from "react-icons/fi";
 import { PiBookmarkSimple } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducer/authReducer";
+import AuthModal from "../AuthModal/AuthModal";
 
 const menuList = ["든든하게,건강식", "바쁠땐,간편식", "출출할때?간식"];
 
@@ -52,7 +51,12 @@ const Header = () => {
 
   return (
     <>
-      <ModalMain isOpen={isOpen} menuList={menuList} toggleMenu={toggleMenu} />
+      <AuthModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        menuList={menuList}
+        toggleMenu={toggleMenu}
+      />
       <div className="header">
         <Container className="header-wrapper">
           <h1 onClick={goToHome} className="header-logo">
@@ -78,7 +82,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="header-user">
-              <Link to={ user ? '/wish/user' : '/login' }>
+              <Link to={user ? "/wish/user" : "/login"}>
                 <BsPerson className="btn-login" size="25px" />
               </Link>
             </li>
@@ -92,7 +96,11 @@ const Header = () => {
                 <BsList className="btn-mobile-menu" size="30px" />
               </Link>
             </li>
-            <Button onClick={handleAuthAction} variant={user ? 'outline-danger' : 'danger'} size="sm">
+            <Button
+              onClick={handleAuthAction}
+              variant={user ? "outline-danger" : "danger"}
+              size="sm"
+            >
               {user ? "로그아웃" : "로그인"}
             </Button>
           </ul>
