@@ -11,7 +11,7 @@ import { MdOutlineTipsAndUpdates } from "react-icons/md";
 import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
 import { useDispatch, useSelector } from "react-redux";
 
-const RecipeDetailPage = () => {
+const RecipeDetailPage = ({isBookmarked}) => {
   const location = useLocation();
 
   useEffect(() => {

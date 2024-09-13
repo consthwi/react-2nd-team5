@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.style.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,12 +9,17 @@ import { BsPerson } from "react-icons/bs";
 import ModalMain from "../ModalMain/ModalMain";
 import { FiSearch } from "react-icons/fi";
 import { PiBookmarkSimple } from "react-icons/pi";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/reducer/authReducer";
 
 const menuList = ["든든하게,건강식", "바쁠땐,간편식", "출출할때?간식"];
 
 const Header = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
 
   // 모바일 모달 핸들러
   const toggleMenu = () => {
@@ -25,6 +30,17 @@ const Header = () => {
   const goToHome = () => {
     navigate("/");
   };
+
+  // 로그인/로그아웃 버튼 클릭 핸들러
+  const handleAuthAction = () => {
+    if (user) {
+      dispatch(logout());
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  };
+
 
   return (
     <>
@@ -54,7 +70,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="header-user">
-              <Link>
+              <Link to={ user ? '/user' : '/login' }>
                 <BsPerson className="btn-login" size="25px" />
               </Link>
             </li>
@@ -68,6 +84,9 @@ const Header = () => {
                 <BsList className="btn-mobile-menu" size="30px" />
               </Link>
             </li>
+            <Button onClick={handleAuthAction}>
+              {user ? "로그아웃" : "로그인"}
+            </Button>
           </ul>
         </Container>
       </div>
