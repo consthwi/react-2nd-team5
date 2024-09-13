@@ -11,7 +11,7 @@ import { MdOutlineTipsAndUpdates } from "react-icons/md";
 import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
 import { useDispatch, useSelector } from "react-redux";
 
-const RecipeDetailPage = ({isBookmarked}) => {
+const RecipeDetailPage = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -54,6 +54,11 @@ const RecipeDetailPage = ({isBookmarked}) => {
     .map((key) => data[key]) // 필터링된 키의 값만 추출
     .filter((value) => value); // 빈 값("")은 제외
   console.log("레ㅔ시피배열", manualText);
+
+  const isBookmarked =
+    bookmarkedRecipes.length > 0
+      ? bookmarkedRecipes.some((item) => item.RCP_SEQ === data.RCP_SEQ)
+      : false;
 
   return (
     <Container className="mt-5">
