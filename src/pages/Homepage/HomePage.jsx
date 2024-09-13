@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import MenuSlide from "./component/menuslide/MenuSlide";
 import "./HomePage.style.css";
 import RandomSlide from "./component/randomslide/RandomSlide";
 import { IoSearch } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+  const searchByKeyword = (e) => {
+    e.preventDefault();
+    navigate(`recipes?q=${keyword}`);
+    setKeyword("");
+  };
   return (
     <div>
       <div className="top-area">
@@ -12,10 +20,15 @@ const HomePage = () => {
           냉장고 속 재료로
           <br /> 레시피를 검색하세요!
         </div>
-        <div className="input-box">
-          <input></input>
-          <IoSearch size="24px" color="#ed0c0c" className="mb-2" />
-        </div>
+        <form onSubmit={searchByKeyword}>
+          <div className="input-box">
+            <input
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+            ></input>
+            <IoSearch size="24px" color="#ed0c0c" className="mb-2" />
+          </div>
+        </form>
       </div>
 
       <div classNmae="home_page_banner_container">
