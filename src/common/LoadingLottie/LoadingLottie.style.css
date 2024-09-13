@@ -1,4 +1,4 @@
-.loading-gif {
+.loading-lottie {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,7 +6,8 @@
   height: 100vh; /* 화면 전체 높이 */
 }
 
-.loading-gif img {
+.loading-lottie .lottie-img {
+  border: 3px solid red;
   max-width: 100px; /* 이미지 크기 조정 */
   height: auto;
 }
