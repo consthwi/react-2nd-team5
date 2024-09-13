@@ -15,7 +15,7 @@ const TopSlide = () => {
   }
 
   console.log(data);
-  return <HomePageTopSlider data={data} responsive={responsiveTop} />;
+  return <HomePageTopSlider data={data} responsiveTop={responsiveTop} />;
 };
 
 export default TopSlide;

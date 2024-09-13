@@ -6,7 +6,7 @@ import "./HomePageTopSlider.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpoon } from "@fortawesome/free-solid-svg-icons";
 
-const HomePageTopSlider = ({ data, responsive }) => {
+const HomePageTopSlider = ({ data, responsiveTop }) => {
   // data가 배열이 아닌 경우 빈 배열로 설정
   const sliderData = Array.isArray(data) ? data : [];
 
@@ -19,7 +19,7 @@ const HomePageTopSlider = ({ data, responsive }) => {
           centerMode={true}
           itemClass="recipe-slider p-1"
           containerClass="carousel-container2"
-          responsive={responsive}
+          responsive={responsiveTop}
           autoPlay={true} // 자동 재생 활성화
           autoPlaySpeed={5000}
         >
