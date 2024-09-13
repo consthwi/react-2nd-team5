@@ -42,14 +42,14 @@ const AuthModal = ({ isOpen, setIsOpen, menuList, toggleMenu }) => {
           <div className="bar"></div>
           <div className="bar"></div>
         </div>
-        {/* {console.log(user)} */}
+        {console.log(user)}
         {/* 로그인 상태에 따라 guest 또는 auth 내용을 렌더링 */}
         {isLoggedIn ? (
           <div className="modal-content-top auth">
             <div className="greeting">Welcome</div>
             <p>반갑습니다</p>
             <p>
-              요리왕 <span>{user?.username}</span>님
+              요리왕 <span>{user?.userId}</span>님
             </p>
           </div>
         ) : (
