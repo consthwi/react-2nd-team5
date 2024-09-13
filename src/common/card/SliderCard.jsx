@@ -51,13 +51,13 @@ const SliderCard = ({ recipeitem }) => {
                 {isBookmarkded ? (
                   <RxBookmarkFilled
                     className="bookmark-icon-inSlidercard"
-                    size="3rem"
+                    size="2rem"
                     onClick={() => dispatch(toggleBookmark(recipeitem))}
                   />
                 ) : (
                   <RxBookmark
                     className="bookmark-icon-inSlidercard"
-                    size="3rem"
+                    size="2rem"
                     onClick={() => dispatch(toggleBookmark(recipeitem))}
                   />
                 )}
