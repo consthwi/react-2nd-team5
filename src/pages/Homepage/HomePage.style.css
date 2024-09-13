@@ -1,84 +1,110 @@
 * {
-    font-family: 'Pretendard';
+  font-family: "Pretendard";
 }
 
 .homepage_4 {
-    text-align: center;
-    font-weight: 700;
+  text-align: center;
+  font-weight: 700;
 }
 
 .slidertitle {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .hompage_img {
-    width: 100%;
-    height: 450px;
-    border-radius: 5px;
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    border-radius: 5px; 
-    opacity: 0.7;
-    z-index: 1;
-    position: relative;
+  width: 100%;
+  height: 450px;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  opacity: 0.7;
+  z-index: 1;
+  position: relative;
 }
 
 .homepage_banner_name {
-    color: red;
-    font-weight: 600;
-    font-size: 2vw; /* 비율 기반 크기 */
-    z-index: 2; 
-    margin-right: 40px;
-    margin-bottom: 25px;
-    width: 60%; /* 비율 기반 너비 */
-    position: absolute;
-    left: 5%;
-    top: 17%;
+  color: red;
+  font-weight: 600;
+  font-size: 2vw; /* 비율 기반 크기 */
+  z-index: 2;
+  margin-right: 40px;
+  margin-bottom: 25px;
+  width: 60%; /* 비율 기반 너비 */
+  position: absolute;
+  left: 5%;
+  top: 17%;
 }
 
 .hompage_banner_p {
-    font-weight: 500;
-    font-size: 1.8vw; 
-    color: black;
-    z-index: 2;
-    position: absolute;
-    left: 5%;
-    top: 45%;
+  font-weight: 500;
+  font-size: 1.8vw;
+  color: black;
+  z-index: 2;
+  position: absolute;
+  left: 5%;
+  top: 45%;
 }
 
 .homepage_spanstyle {
-    background-color: rgba(235, 235, 235, 0.103);
-    border-radius: 15px;
-    padding: 5px;
+  background-color: rgba(235, 235, 235, 0.103);
+  border-radius: 15px;
+  padding: 5px;
 }
 
 .hompage_banner_p2 {
-    font-weight: 500;
-    font-size: 1.8vw; 
-    color: black;
-    z-index: 2;
-    position: absolute;
-    left: 15%;
-    top: 60%;
+  font-weight: 500;
+  font-size: 1.8vw;
+  color: black;
+  z-index: 2;
+  position: absolute;
+  left: 15%;
+  top: 60%;
 }
 
 .homepage_banner_span {
-    color: red !important;
-    font-size:1.8vw; 
-    font-weight: 500;
-    z-index: 2;
-    position: absolute;
-    left: 5%;
-    top: 60%;
+  color: red !important;
+  font-size: 1.8vw;
+  font-weight: 500;
+  z-index: 2;
+  position: absolute;
+  left: 5%;
+  top: 60%;
 }
 
 @media (orientation: portrait) {
-    .hompage_img {
-        height: 200px;
-    }
-    .home_page_banner_container {
-        width: 100%;
-        height: auto;
-    }
+  .hompage_img {
+    height: 200px;
+  }
+  .home_page_banner_container {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.top-text {
+  width: 340px;
+  font-size: 33px;
+  font-weight: 700;
+  color: #303030;
+}
+.top-area {
+  display: flex;
+  justify-content: center;
+  height: 190px;
+  align-items: center;
+}
+input {
+  font-size: 24px;
+  border: none;
+  width: 200px;
+  margin-left: 10px;
+}
+
+.input-box {
+  width: 260px;
+  border: 3px solid #ed0c0c;
+  border-radius: 30px;
+  padding: 5px;
 }
