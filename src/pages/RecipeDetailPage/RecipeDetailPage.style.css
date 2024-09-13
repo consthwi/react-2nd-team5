@@ -9,10 +9,11 @@ body {
 }
 .detail-img {
   width: 95%;
-  min-width: 500px;
+  min-width: 400px;
   height: 380px;
   background-size: cover;
   border-radius: 25px;
+  background-position: center;
 }
 .tag {
   color: #ed0c0c;
@@ -54,7 +55,21 @@ body {
 }
 
 .item {
+  background-color: #f6f6f6;
+  border-radius: 20px;
   width: 400px;
+  padding: 25px;
+  margin-right: 20px;
+}
+
+hr {
+  background: rgb(144, 144, 144);
+  height: 1px;
+  border: 0;
+}
+.item-start {
+  width: 830px;
+  margin-top: 80px;
 }
 .pre {
   font-size: 18px;

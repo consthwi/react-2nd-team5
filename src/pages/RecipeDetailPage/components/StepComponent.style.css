@@ -1,0 +1,42 @@
+.step-img {
+  width: 320px;
+  border-radius: 10px;
+}
+.recipe-step {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+
+.step-text {
+  font-size: 20px;
+  font-weight: 400;
+  width: 30%;
+}
+
+.repeat-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 63rem) {
+  .step-img {
+    width: 228px;
+    border-radius: 5px;
+  }
+
+  .step-text {
+    font-size: 16px;
+    font-weight: 400;
+    width: 40%;
+  }
+
+  .recipe-step {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 100px;
+  }
+}
