@@ -3,8 +3,12 @@ import { Form } from "react-bootstrap";
 import "./SelectMenu.style.css";
 const SelectMenu = ({ selectValue, handleSelectChange }) => {
   return (
-    <Form.Group>
-      <Form.Select value={selectValue} onChange={handleSelectChange}>
+    <Form.Group className="form-group">
+      <Form.Select
+        className="form-select"
+        value={selectValue}
+        onChange={handleSelectChange}
+      >
         <option value="">분류</option>
         <option value="반찬">반찬</option>
         <option value="국&찌개">국&찌개</option>

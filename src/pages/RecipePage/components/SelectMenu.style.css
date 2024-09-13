@@ -1,7 +1,7 @@
-.form-select {
+.form-group .form-select {
   border: none;
   cursor: pointer;
-  &:focus {
-    box-shadow: none;
-  }
+}
+.form-group .form-select:focus {
+  box-shadow: none;
 }
