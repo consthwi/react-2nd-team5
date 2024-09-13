@@ -1,24 +1,20 @@
-import React from 'react'
-import { Container, Row, Col,Alert } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col, Alert } from "react-bootstrap";
+import "./StepComponent.style.css";
 
-
-const StepComponent = ({step}) => {
+const StepComponent = ({ manualImg, manualText }) => {
   return (
-    <div>
-      <Row className='mb-5 mt-5'>
-       <Col><div style={{
-        backgroundImage:"url(https://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2023/04/11/20230411000085_0.jpg)" 
-     }} className='recipe-img'></div></Col>
-       <Col><div className='step-text'>STEP01</div>
-       
-      </Col>
-      </Row>
+    <div className="recipe-step">
+      {manualImg.map((img, index) => (
+        <div className="repeat-box" key={index}>
+          <span>
+            <img className="step-img" src={img} />
+          </span>
+          <span className="ms-4 step-text">{manualText[index].substr(2)}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-
-      {step}
-      
-      </div>
-  )
-}
-
-export default StepComponent
+export default StepComponent;

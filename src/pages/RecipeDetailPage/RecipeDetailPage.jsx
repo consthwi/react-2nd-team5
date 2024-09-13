@@ -40,6 +40,17 @@ const RecipeDetailPage = () => {
     return <Alert variant="danger">{error.message}</Alert>;
   }
 
+  const manualImg = Object.keys(data)
+    .filter((key) => key.includes("MANUAL_IMG")) // "MANUAL"이 포함된 키만 필터링
+    .map((key) => data[key]) // 필터링된 키의 값만 추출
+    .filter((value) => value); // 빈 값("")은 제외
+
+  const manualText = Object.keys(data)
+    .filter((key) => key.includes("MANUAL0")) // "MANUAL"이 포함된 키만 필터링
+    .map((key) => data[key]) // 필터링된 키의 값만 추출
+    .filter((value) => value); // 빈 값("")은 제외
+  console.log("레ㅔ시피배열", manualText);
+
   return (
     <Container className="mt-5">
       <Row className="mb-5">
@@ -82,41 +93,49 @@ const RecipeDetailPage = () => {
           </div>
         </Col>
       </Row>
-      <Row className="pre-item">
-        <div className="item mt-5">
-          <div className="pre-title mb-2">기본재료 </div>
-          <hr />
-          <div className="pre">
-            {" "}
-            {arrayItem.map((item) => (
-              <div>{item}</div>
-            ))}
+      <Container>
+        <Row className="pre-item">
+          <div className="item mt-5">
+            <div className="pre-title mb-2">기본재료 </div>
+            <hr />
+            <div className="pre">
+              {" "}
+              {arrayItem.map((item) => (
+                <div>{item}</div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="item mt-5 ms-4">
-          <div className="pre-title mb-2">영양성분</div>
-          <hr />
-          <div className="pre mb-1">
-            <Row>
-              <Col>
-                <div>열량</div>
-                <div>탄수화물</div>
-                <div>단백질</div>
-                <div>지방</div>
-                <div>나트륨</div>
-              </Col>
-              <Col className="info-box">
-                <div>{data?.INFO_ENG} kcal</div>
-                <div>{data?.INFO_CAR} g</div>
-                <div>{data?.INFO_PRO} g</div>
-                <div>{data?.INFO_FAT} g</div>
-                <div>{data?.INFO_NA} mg</div>
-              </Col>
-            </Row>
+          <div className="item mt-5">
+            <div className="pre-title mb-2">영양성분</div>
+            <hr />
+            <div className="pre mb-1">
+              <Row>
+                <Col>
+                  <div>열량</div>
+                  <div>탄수화물</div>
+                  <div>단백질</div>
+                  <div>지방</div>
+                  <div>나트륨</div>
+                </Col>
+                <Col className="info-box">
+                  <div>{data?.INFO_ENG} kcal</div>
+                  <div>{data?.INFO_CAR} g</div>
+                  <div>{data?.INFO_PRO} g</div>
+                  <div>{data?.INFO_FAT} g</div>
+                  <div>{data?.INFO_NA} mg</div>
+                </Col>
+              </Row>
+            </div>
           </div>
-        </div>
-      </Row>
-      <StepComponent />
+
+          <div className="item-start">
+            <div className="pre-title mb-2">만들어볼까요? </div>
+            <hr />
+          </div>
+        </Row>
+      </Container>
+
+      <StepComponent manualImg={manualImg} manualText={manualText} />
     </Container>
   );
 };
