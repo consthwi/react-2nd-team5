@@ -7,7 +7,6 @@
 }
 
 .loading-lottie .lottie-img {
-  border: 3px solid red;
   max-width: 100px; /* 이미지 크기 조정 */
   height: auto;
 }
