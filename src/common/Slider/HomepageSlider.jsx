@@ -11,7 +11,7 @@ const HomepageSlider = ({data,responsive}) => {
   return (
   //container바꿈.
     <div>
-      <div  className="slidertitle_big"><h2 className="slidertitle"> <FontAwesomeIcon icon={faSpoon} /> 뭘 좋아할지 몰라서 다!</h2></div>
+      <div  className="slidertitle_big"><h3 className="slidertitle"> <FontAwesomeIcon icon={faSpoon} /> 뭘 좋아할지 몰라서 다!</h3></div>
         
          <Carousel
  infinite={true}

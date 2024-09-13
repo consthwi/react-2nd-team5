@@ -16,7 +16,17 @@
     width:650px;
     height:450px;
     border-radius:25px;
+    object-fit: cover;
 }
+
+/* .random_img_style {
+    max-width: 1000px; 
+    max-height: 600px;
+    width: auto; 
+    height: auto; 
+    object-fit: contain; 
+    border-radius:25px;
+  } */
 
 .randomslide_rcp_nm_style{
     font-size:30px;
@@ -58,19 +68,22 @@
 
 @media(orientation:portrait){
     .random_img_style{
+        max-width:500px;
+        max-height:500px;
         width:350px;
         height:200px;
         width:auto;
         height:auto;
-        border-radius:10px;
+        border-radius:25px;
         padding:5px;
     }
     .randomslide_rcp_nm_style{
         font-size:23px;
         font-weight:300;
-        text-align:center;
+        /* text-align:center; */
         color:gray;
     }
+    
     .random_rcp{
         font-size:15px;
     }
@@ -93,5 +106,9 @@
     .plusmargin{
         margin-top:5px;
         margin-bottom:10px;
+    }
+    .randomslide-col2-bigcontainer{
+        display:flex;
+        justify-content:center;
     }
 }

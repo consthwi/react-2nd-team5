@@ -9,6 +9,9 @@
     border-radius:5px; 
     margin-bottom:10px;
 }
+.slidercard_url:hover{
+    transform:scale(1.05);
+}
 .slidercard_rcp_nm{
     font-family: 'Pretendard';
     font-weight:400;
@@ -69,6 +72,9 @@
         transition:0.5s;
         border-radius:3px; 
         margin-bottom:5px;
+    }
+    .slidercard_url:hover{
+        transform:scale(1.05);
     }
     .slidercard_rcp_nm{
         font-family: 'Pretendard';
