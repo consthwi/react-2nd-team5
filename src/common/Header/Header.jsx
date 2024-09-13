@@ -31,6 +31,15 @@ const Header = () => {
     navigate("/");
   };
 
+  // 북마크 페이지로 이동 핸들러
+  const handleWishlist = () => {
+    if (user) {
+      navigate("/wish/user");
+    } else {
+      navigate("/wish/guest");
+    }
+  };
+
   // 로그인/로그아웃 버튼 클릭 핸들러
   const handleAuthAction = () => {
     if (user) {
@@ -40,7 +49,6 @@ const Header = () => {
       navigate("/login");
     }
   };
-
 
   return (
     <>
@@ -70,11 +78,11 @@ const Header = () => {
               </Link>
             </li>
             <li className="header-user">
-              <Link to={ user ? '/user' : '/login' }>
+              <Link to={ user ? '/wish/user' : '/login' }>
                 <BsPerson className="btn-login" size="25px" />
               </Link>
             </li>
-            <li className="header-cart">
+            <li className="header-cart" onClick={handleWishlist}>
               <Link>
                 <PiBookmarkSimple className="btn-cart" size="28px" />
               </Link>
@@ -84,7 +92,7 @@ const Header = () => {
                 <BsList className="btn-mobile-menu" size="30px" />
               </Link>
             </li>
-            <Button onClick={handleAuthAction}>
+            <Button onClick={handleAuthAction} variant={user ? 'outline-danger' : 'danger'} size="sm">
               {user ? "로그아웃" : "로그인"}
             </Button>
           </ul>

@@ -10,7 +10,8 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import LoginPage from "./pages/Login/LoginPage";
 import PrivateRoute from "./pages/components/PrivateRoute";
-import UserPage from "./pages/UserPage/UserPage";
+import UserPage from "./pages/Wish/UserPage";
+import GestPage from "./pages/Wish/GestPage";
 
 function App() {
   return (
@@ -23,7 +24,10 @@ function App() {
             <Route path=":recipeName" element={<RecipeDetailPage />} />
           </Route>
           <Route path="login" element={<LoginPage />} />
-          <Route path="user" element={<PrivateRoute><UserPage /></PrivateRoute>} />
+          <Route path="wish">
+            <Route path="guest" element={<GestPage />} />
+            <Route path="user" element={<PrivateRoute><UserPage /></PrivateRoute>} />
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
