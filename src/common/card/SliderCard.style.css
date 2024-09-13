@@ -63,6 +63,12 @@
  
 }
 
+.bookmark-icon-inSlidercard{
+    position:absolute;
+    bottom: 43px;
+    right: 5px;
+}
+
 @media (orientation:portrait){
     .slidercard_url{
         width: auto;

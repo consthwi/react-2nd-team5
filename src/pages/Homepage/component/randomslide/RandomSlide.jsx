@@ -35,7 +35,7 @@ useEffect(() => {
 
   return (
     <div className="bigRandomSlideContainer">
-    <Container>
+    {choice&&<Container>
         <Row className="randomslide_h4">
             <h3 className="todays_menu slidertitle"><FontAwesomeIcon icon={faSpoon} /> 오늘은 이런 메뉴 어때요?</h3>
         </Row>
@@ -65,7 +65,7 @@ useEffect(() => {
     </Col>
     
         </Row>
-    </Container>
+    </Container>}
     </div>
   );
 };
