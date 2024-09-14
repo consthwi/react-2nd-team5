@@ -1,43 +1,76 @@
-import { Col, Container, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { useBookmark } from "../../../hooks/useBookmark";
+
 
 const Wishlist = ({ isGuest }) => {
-  const user = useSelector((state) => state.auth.user);
-  const guestBookmarks = useSelector((state) => state.bookmark.guestBookmarks);
-  const userBookmarks = useSelector((state) =>
-    state.bookmark.userBookmarks[user?.id]
-  );
+  const { bookmarkedRecipes, toggleBookmark } = useBookmark();
 
   return (
-    <Container>
+    <Container className="wish-list-wrap">
       <Row>
-        <Col>
-          {/* 로그인한 유저일 경우 */}
-          {!isGuest && user ? (
+        <Col className="wish-list-items" style={{ textAlign: 'center' }}>
+          {!isGuest ? (
             <>
-              <h1>{`${user.userId}님의 찜목록`}</h1>
-              {userBookmarks && userBookmarks.length > 0 ? (
-                <ul>
-                  {userBookmarks.map((recipe) => (
-                    <li key={recipe.RCP_SEQ}>{recipe.RCP_NM}</li>
+              <h1>찜목록</h1>
+              {bookmarkedRecipes && bookmarkedRecipes.length > 0 ? (
+                <div>
+                  {bookmarkedRecipes.map((recipe) => (
+                    <Row
+                      style={{ backgroundColor: "#fff", marginBottom: "1rem" }}
+                      key={recipe.RCP_SEQ}
+                    >
+                      <Col>
+                        <Image className="card-img" src={recipe.ATT_FILE_NO_MAIN} rounded />
+                      </Col>
+                      <Col>
+                        <div className="tag-text">#{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}</div>
+                        <div className="title">{recipe.RCP_NM}</div>
+                      </Col>
+                      <Col>
+                        <Button
+                          variant="outline-secondary"
+                          onClick={() => toggleBookmark(recipe)}
+                        >
+                          삭제
+                        </Button>
+                      </Col>
+                    </Row>
                   ))}
-                </ul>
+                </div>
               ) : (
-                <p>찜한 항목이 없습니다.</p>
+                <p>찜한 항목이 없습니다</p>
               )}
             </>
           ) : (
-            /* 게스트일 경우 */
             <>
               <h1>게스트의 찜목록</h1>
-              {guestBookmarks && guestBookmarks.length > 0 ? (
-                <ul>
-                  {guestBookmarks.map((recipe) => (
-                    <li key={recipe.RCP_SEQ}>{recipe.RCP_NM}</li>
+              {bookmarkedRecipes && bookmarkedRecipes.length > 0 ? (
+                <div>
+                  {bookmarkedRecipes.map((recipe) => (
+                    <Row
+                      style={{ backgroundColor: "#fff", marginBottom: "1rem" }}
+                      key={recipe.RCP_SEQ}
+                    >
+                      <Col>
+                        <Image className="card-img" src={recipe.ATT_FILE_NO_MAIN} rounded />
+                      </Col>
+                      <Col>
+                        <div className="tag-text">#{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}</div>
+                        <div className="title">{recipe.RCP_NM}</div>
+                      </Col>
+                      <Col>
+                        <Button
+                          variant="outline-secondary"
+                          onClick={() => toggleBookmark(recipe)}
+                        >
+                          삭제
+                        </Button>
+                      </Col>
+                    </Row>
                   ))}
-                </ul>
+                </div>
               ) : (
-                <p>찜한 항목이 없습니다.</p>
+                <p>찜한 항목이 없습니다</p>
               )}
             </>
           )}
