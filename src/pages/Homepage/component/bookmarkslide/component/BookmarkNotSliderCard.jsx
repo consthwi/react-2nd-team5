@@ -17,7 +17,7 @@ const BookmarkNotSliderCard = (guestBookmarks, key) => {
             <Card.Img
               variant="top"
               src={guestBookmarks?.guestBookmarks?.ATT_FILE_NO_MAIN}
-              className="card_img"
+              className="card_img_booknotslidercard"
               onClick={godetail}
             />
             <Card.Body>

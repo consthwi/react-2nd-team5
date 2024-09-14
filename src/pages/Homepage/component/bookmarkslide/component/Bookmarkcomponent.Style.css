@@ -6,6 +6,11 @@
 .bookmarknotslidercard_container{
     margin-right:20px;
 }
+.card_img_booknotslidercard{
+    width:auto;
+    height:75%;
+    border-radius:25px 25px 0 0;
+}
 @media(orientation:portrait){
     .card_list{
         display:flex;

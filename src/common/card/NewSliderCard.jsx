@@ -25,7 +25,7 @@ const NewSliderCard = ({ recipeitem }) => {
           <Card.Img
             variant="top"
             src={recipeitem?.ATT_FILE_NO_MAIN}
-            className="card_img"
+            className="card_img_newslidercard"
             onClick={godetail}
           />
           <Card.Body>
