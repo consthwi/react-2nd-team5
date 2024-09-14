@@ -1,13 +1,9 @@
 .slidercard_url{
-    width: 350px;
+    width: 310px;
     height:450px;
-   /* width: 100%px;
-    height:400px;  */
-    /* background-size:cover; */
     cursor:pointer;
     transition:0.5s;
-    border-radius:15px; 
-    /* margin-bottom:10px; */
+    border-radius:25px; 
    
 
 }
@@ -49,9 +45,9 @@
 }
 
 .card_img{
-    weight:auto;
+    width:auto;
     height:75%;
-    border-radius:15px;
+    border-radius:25px;
 }
 
 /* .card_text{
@@ -65,13 +61,13 @@
 .card-body-content{
     display:flex;
     align-items:center;
-    border-radius:15px;
+    border-radius:25px;
     justify-content:space-between;
    
 }
 .recipeitem{
 
- font-size:15px;
+ font-size:25px;
  color:gray;
  
 }
@@ -88,7 +84,7 @@ align-self:flex-end;
         background-size:cover;
         cursor:pointer;
         transition:0.5s;
-        border-radius:15px; 
+        border-radius:25px; 
         margin-bottom:5px;
     }
     .slidercard_url:hover{

@@ -12,13 +12,22 @@
 .step-text {
   font-size: 20px;
   font-weight: 400;
-  width: 30%;
+  width: 80%;
 }
 
 .repeat-box {
   display: flex;
-  justify-content: center;
   margin-bottom: 50px;
+}
+.step-num {
+  color: white;
+  text-align: center;
+  background-color: #ed0c0c;
+  border-radius: 30px;
+  padding: 7px 10px 7px 10px;
+  font-weight: 500;
+  width: 90px;
+  margin-bottom: 8px;
 }
 
 @media screen and (max-width: 63rem) {
