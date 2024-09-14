@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import PrivateRoute from "../components/PrivateRoute";
 import { Navigate, useParams } from "react-router-dom";
 import Wishlist from "./components/WishList";
+import "./components/WishList.style.css"
 
 const WishPage = () => {
   const { type } = useParams();  // URL의 type 파라미터를 가져옴
@@ -13,7 +14,7 @@ const WishPage = () => {
   }
 
   return (
-    <div>
+    <div className="wish-page">
       {type === "user" ? (
         <PrivateRoute>
           <Wishlist isGuest={false} />

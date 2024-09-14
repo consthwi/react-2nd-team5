@@ -1,0 +1,15 @@
+.wish-page {
+  background-color: #F8F8F8;
+}
+
+.wish-list-wrap {
+  backgroundColor: #FFF;
+}
+
+.wish-list-items {
+  padding: 60px 0;
+}
+.wish-list-items > h1 {
+  padding-bottom: 60px;
+  font-weight: 700;
+}
