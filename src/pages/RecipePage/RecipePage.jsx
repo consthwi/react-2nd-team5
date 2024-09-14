@@ -187,15 +187,24 @@ const RecipePage = () => {
       <Row className="mt-4">
         <Col className="text-center">
           <ReactPaginate
-            previousLabel={"‹"}
-            nextLabel={"›"}
-            breakLabel={"..."}
-            pageCount={totalPage}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
+            nextLabel=">"
             onPageChange={(selected) => setCurrentPage(selected.selected)}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={2}
+            pageCount={totalPage}
+            previousLabel="<"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="previous"
+            previousLinkClassName="previous-link"
+            nextClassName="next"
+            nextLinkClassName="next-link"
+            breakLabel="..."
+            breakClassName="page-item"
+            breakLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+            renderOnZeroPageCount={null}
           />
         </Col>
       </Row>
