@@ -1,7 +1,7 @@
 export const responsiveTop = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 1.6, // 예를 들어 데스크탑에서는 4개의 카드가 보이도록 설정
+    items: 1.8, // 예를 들어 데스크탑에서는 4개의 카드가 보이도록 설정
   },
   tablet: {
     breakpoint: { max: 1224, min: 754 },
