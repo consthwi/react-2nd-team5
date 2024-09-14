@@ -64,31 +64,32 @@ const RecipeDetailPage = () => {
   //     : false;
 
   return (
-    <Container className="mt-5">
-      <Row className="mb-5">
-        <Col>
-          <div
-            style={{
-              backgroundImage: `url(${data?.ATT_FILE_NO_MK})`,
-            }}
-            className="detail-img"
-          ></div>
-        </Col>
-        <Col className="title-area">
+    <div>
+      <div className="mo-detail-top-section">
+        <div
+          style={{
+            backgroundImage: `url(${data?.ATT_FILE_NO_MK})`,
+          }}
+          className="detail-page-mo-img"
+        ></div>
+
+        <div className="mo-recipe-info">
           <div>
             <div className="tag">
               #{data?.RCP_PAT2} #{data?.RCP_WAY2}
             </div>
             <div className="text-title">{data?.RCP_NM}</div>
-            <div className="text-1 mt-5">
+            <div className="text-1 mt-4">
               <MdOutlineTipsAndUpdates color="#191919" size="24px" />
               Tip!
             </div>
-            <div className="text-2 mt-2"> {data?.RCP_NA_TIP} </div>
+            <div className="mo-text-2 mt-2"> {data?.RCP_NA_TIP} </div>
           </div>
           <div className="button-two">
             <div
-              className={isBookmarked(data) ? "button-jjim" : "button"}
+              className={
+                isBookmarked(data) ? "mo-page-button-jjim" : "mo-page-button"
+              }
               // onClick={() => dispatch(toggleBookmark(data))}
               // useBookmark 훅에서 가져온 toggleBookmark 함수 사용
               onClick={() => toggleBookmark(data)}
@@ -106,7 +107,7 @@ const RecipeDetailPage = () => {
               )}
             </div>
             <div
-              className="button ms-2"
+              className="mo-page-button ms-2"
               onClick={() =>
                 handleCopyClipBoard(
                   `https://bejewelled-cuchufli-22921c.netlify.app${location.pathname}`
@@ -117,51 +118,116 @@ const RecipeDetailPage = () => {
               <PiShareNetwork className="ms-1" size="25px" color="#616161" />
             </div>
           </div>
-        </Col>
-      </Row>
-      <Container>
-        <Row className="pre-item">
-          <div className="item mt-5">
-            <div className="pre-title mb-2">기본재료 </div>
-            <hr />
-            <div className="pre">
-              {" "}
-              {arrayItem.map((item) => (
-                <div>{item}</div>
-              ))}
+        </div>
+      </div>
+      <Container className="mt-5">
+        <Row className="detail-top-section mb-5">
+          <Col>
+            <div
+              style={{
+                backgroundImage: `url(${data?.ATT_FILE_NO_MK})`,
+              }}
+              className="detail-img"
+            ></div>
+          </Col>
+          <Col className="title-area">
+            <div>
+              <div className="tag">
+                #{data?.RCP_PAT2} #{data?.RCP_WAY2}
+              </div>
+              <div className="text-title">{data?.RCP_NM}</div>
+              <div className="text-1 mt-5">
+                <MdOutlineTipsAndUpdates color="#191919" size="24px" />
+                Tip!
+              </div>
+              <div className="text-2 mt-2"> {data?.RCP_NA_TIP} </div>
             </div>
-          </div>
-          <div className="item mt-5">
-            <div className="pre-title mb-2">영양성분</div>
-            <hr />
-            <div className="pre mb-1">
-              <Row>
-                <Col>
-                  <div>열량</div>
-                  <div>탄수화물</div>
-                  <div>단백질</div>
-                  <div>지방</div>
-                  <div>나트륨</div>
-                </Col>
-                <Col className="info-box">
-                  <div>{data?.INFO_ENG} kcal</div>
-                  <div>{data?.INFO_CAR} g</div>
-                  <div>{data?.INFO_PRO} g</div>
-                  <div>{data?.INFO_FAT} g</div>
-                  <div>{data?.INFO_NA} mg</div>
-                </Col>
-              </Row>
+            <div className="button-two">
+              <div
+                className={isBookmarked(data) ? "button-jjim" : "button"}
+                // onClick={() => dispatch(toggleBookmark(data))}
+                // useBookmark 훅에서 가져온 toggleBookmark 함수 사용
+                onClick={() => toggleBookmark(data)}
+              >
+                찜하기
+                {/* {isBookmarked ? ( */}
+                {isBookmarked(data) ? ( // useBookmark 훅에서 가져온 isBookmarked 함수 사용
+                  <RxBookmarkFilled
+                    className="ms-1"
+                    size="25px"
+                    color="#ED0C0C"
+                  />
+                ) : (
+                  <RxBookmark className="ms-1" size="25px" color="#616161" />
+                )}
+              </div>
+              <div
+                className="button ms-2"
+                onClick={() =>
+                  handleCopyClipBoard(
+                    `https://bejewelled-cuchufli-22921c.netlify.app${location.pathname}`
+                  )
+                }
+              >
+                URL복사하기
+                <PiShareNetwork className="ms-1" size="25px" color="#616161" />
+              </div>
             </div>
-          </div>
-
-          <div className="item-start">
-            <div className="pre-title mb-2">만들어볼까요? </div>
-            <hr />
-            <StepComponent manualImg={manualImg} manualText={manualText} />
-          </div>
+          </Col>
         </Row>
       </Container>
-    </Container>
+
+      <div className="pre-item">
+        <div className="item-info mt-5">
+          <div className="pre-title mb-2">기본재료 </div>
+          <hr />
+          <div className="pre">
+            {" "}
+            {arrayItem.map((item) => (
+              <div>{item}</div>
+            ))}
+          </div>
+        </div>
+        <div className="item-info mt-5">
+          <div className="pre-title mb-2">영양성분</div>
+          <hr />
+          <div className="pre mb-1">
+            <div className="food-info">
+              <div>
+                <div>열량</div>
+                <div>탄수화물</div>
+                <div>단백질</div>
+                <div>지방</div>
+                <div>나트륨</div>
+              </div>
+              <div className="info-box">
+                <div>
+                  <b>{data?.INFO_ENG}</b> kcal
+                </div>
+                <div>
+                  <b>{data?.INFO_CAR}</b> g
+                </div>
+                <div>
+                  <b>{data?.INFO_PRO}</b> g
+                </div>
+                <div>
+                  <b>{data?.INFO_FAT}</b> g
+                </div>
+                <div>
+                  <b>{data?.INFO_NA}</b> mg
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="item-start">
+        <div className="pre-title mb-2">만들어볼까요? </div>
+        <hr />
+        <StepComponent manualImg={manualImg} manualText={manualText} />
+      </div>
+    </div>
   );
 };
 
