@@ -1,0 +1,18 @@
+/* BookmarkSlider */
+.card_list{
+    display:flex;
+    justify-content:center;
+}
+.bookmarknotslidercard_container{
+    margin-right:20px;
+}
+@media(orientation:portrait){
+    .card_list{
+        display:flex;
+       flex-direction:column;
+    }
+    .bookmarknotslidercard_container{
+        margin-right:20px;
+        margin-left:20px;
+    }
+}
