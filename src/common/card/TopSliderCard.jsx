@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import "./TopSliderCard.style.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { Card, Col, Row } from "react-bootstrap";
 import { PiBookmarkSimpleThin, PiBookmarkSimpleFill } from "react-icons/pi";
 
 const TopSliderCard = ({ recipeitem, key }) => {
@@ -32,7 +29,7 @@ const TopSliderCard = ({ recipeitem, key }) => {
         style={{
           backgroundImage: `url(${recipeitem?.ATT_FILE_NO_MK})`,
         }}
-        className="item-card fadeoutImage"
+        className="top-item-card"
         onClick={godetail}
       >
         <div className="sub_text">#{recipeitem?.RCP_PAT2}</div>

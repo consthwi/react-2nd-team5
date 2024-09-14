@@ -128,7 +128,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 900px) {
   .top-text {
     width: 340px;
     min-width: 340px;
@@ -163,10 +163,6 @@
     background-color: none;
     padding-right: 20px;
     background: transparent;
-  }
-
-  .top-slide-area {
-    margin-bottom: 100px;
   }
 }
 
