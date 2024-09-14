@@ -20,16 +20,13 @@ const CardComponent = ({ recipe, handleBookMark, isBookmarked }) => {
         />
         <Card.Body>
           <Row>
-            <Col xs={9} sm={9} md={9}>
-              <div className="tag-text">
-                #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
-              </div>
-              <div className="title" onClick={handleCardClick}>
-                {recipe.RCP_NM}
-              </div>
-              <div className="text-ellipsis" onClick={handleCardClick}>
-                {recipe.RCP_NA_TIP}
-              </div>
+            <Col xs={12} sm={12} md={12} className="tag-text">
+              #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
+            </Col>
+          </Row>
+          <Row className="align-items-center">
+            <Col xs={9} sm={9} md={9} className="title-container">
+              <div onClick={handleCardClick}>{recipe.RCP_NM}</div>
             </Col>
             <Col xs={3} sm={3} md={3} className="bookmark">
               {isBookmarked ? (
@@ -45,6 +42,13 @@ const CardComponent = ({ recipe, handleBookMark, isBookmarked }) => {
                   onClick={handleBookMark}
                 />
               )}
+            </Col>
+          </Row>
+          <Row className="py-1">
+            <Col xs={9} sm={9} md={9}>
+              <div className="text-ellipsis" onClick={handleCardClick}>
+                {recipe.RCP_NA_TIP}
+              </div>
             </Col>
           </Row>
         </Card.Body>
