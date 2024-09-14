@@ -9,6 +9,7 @@ import ReactPaginate from "react-paginate";
 import { useBookmark } from "../../hooks/useBookmark"; // useBookmark 훅 사용
 import SelectMenu from "./components/SelectMenu";
 import { useSearchParams } from "react-router-dom";
+import LoadingLottie from "../../common/LoadingLottie/LoadingLottie";
 const ITEM_PER_PAGE = 12;
 
 const RecipePage = () => {
@@ -77,7 +78,7 @@ const RecipePage = () => {
   }, [filterRecipe, sortRecipe]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingLottie />;
   }
 
   if (error) {
@@ -221,7 +222,6 @@ const RecipePage = () => {
             containerClassName="pagination"
             activeClassName="active"
             renderOnZeroPageCount={null}
-            // forcePage={currentPage}
           />
         </Col>
       </Row>
