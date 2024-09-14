@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import MenuSlide from "./component/menuslide/MenuSlide";
 import "./HomePage.style.css";
-import RandomSlide from "./component/randomslide/RandomSlide";
 import { IoSearch } from "react-icons/io5";
 import TopSlide from "./component/TopSlide/TopSlide";
 import { useNavigate } from "react-router-dom";
 import BookmarkInfo from "./component/bookmarkslide/BookmarkInfo";
+import RandomRecipe from "./component/RandomRecipe/RandomRecipe";
 
 const HomePage = () => {
   const [keyword, setKeyword] = useState("");
@@ -33,7 +33,8 @@ const HomePage = () => {
       <div classNmae="home_page_banner_container">{/* <Baner/> */}</div>
       <div>
         <MenuSlide />
-        <RandomSlide />
+        {/* RandomSlide에서 RandomeRecipe로 변경 */}
+        <RandomRecipe />
         <BookmarkInfo />
       </div>
     </div>
