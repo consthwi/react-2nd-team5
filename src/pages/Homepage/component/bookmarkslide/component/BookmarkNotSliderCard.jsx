@@ -23,10 +23,12 @@ const BookmarkNotSliderCard = (guestBookmarks, key) => {
             <Card.Body>
               <div className="card-body-content">
                 <div className="slidercard_rcp_nm" onClick={godetail}>
-                  <div className="recipeitem">
-                    {guestBookmarks?.guestBookmarks?.RCP_WAY2}
+                  <div className="not_bookmark_recipeitem">
+                    # {guestBookmarks?.guestBookmarks?.RCP_WAY2}
                   </div>
-                  <div>{guestBookmarks?.guestBookmarks?.RCP_NM}</div>
+                  <div className="not_bookmark_nm">
+                    {guestBookmarks?.guestBookmarks?.RCP_NM}
+                  </div>
                 </div>
               </div>
             </Card.Body>

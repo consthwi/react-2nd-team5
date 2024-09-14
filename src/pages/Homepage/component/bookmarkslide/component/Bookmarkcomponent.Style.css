@@ -11,6 +11,13 @@
     height:75%;
     border-radius:25px 25px 0 0;
 }
+.not_bookmark_recipeitem{
+font-size:20px;
+color:gray;
+}
+.not_bookmark_nm{
+font-size:25px;
+}
 @media(orientation:portrait){
     .card_list{
         display:flex;
