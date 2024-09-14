@@ -28,48 +28,57 @@ const LoginPage = () => {
   };
 
   return (
-    <Container
-      fluid
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "70vh",
-      }}
-    >
-      <Row xs={12} sm={8} md={6} lg={12}>
-        <Col xs={12} sm={8} md={6} lg={12}>
-          <h3 className="title">로그인</h3>
-          <Form onSubmit={handleLogin}>
-            <Form.Group controlId="formUserId" className="mb-3">
-              <Form.Control
-                type="text"
-                value={userId}
-                onChange={(e) => setUserId(e.target.value)}
-                placeholder="아이디를 입력해주세요"
-              />
-            </Form.Group>
+    <div className="login-background">
+      <Container
+        fluid
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <Row>
+          <Col>
+            <h3 className="title">로그인</h3>
 
-            <Form.Group controlId="formPassword" className="mb-5">
-              <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="비밀번호를 입력해주세요"
-              />
-            </Form.Group>
+            <div className="login-box">
+              <div className="move-down">
+                <Form onSubmit={handleLogin}>
+                  <Form.Group controlId="formUserId" className="mb-3">
+                    <Form.Control
+                      type="text"
+                      className="login-text-input"
+                      value={userId}
+                      onChange={(e) => setUserId(e.target.value)}
+                      placeholder="아이디를 입력해주세요"
+                    />
+                  </Form.Group>
 
-            <Form.Group className="text-center">
-              <div className="d-grid gap-2">
-                <Button variant="danger" type="submit" size="lg">
-                  로그인
-                </Button>
+                  <Form.Group controlId="formPassword" className="mb-4">
+                    <Form.Control
+                      type="password"
+                      className="login-text-input"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="비밀번호를 입력해주세요"
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="text-center">
+                    <div className="d-grid gap-2">
+                      <Button className="login-btn" type="submit">
+                        로그인
+                      </Button>
+                    </div>
+                  </Form.Group>
+                </Form>
               </div>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
