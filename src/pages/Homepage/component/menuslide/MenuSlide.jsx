@@ -3,12 +3,12 @@ import { useRecipeDataQuery } from "../../../../hooks/useRecipeData";
 import { Alert } from "bootstrap";
 import { responsive } from "../../../../constants/responsive";
 import HomepageSlider from "../../../../common/Slider/HomepageSlider";
-import LoadingGifImage from "../../../../common/LoadingGif/LoadingGif";
+import LoadingLottie from "../../../../common/LoadingLottie/LoadingLottie";
 
 const MenuSlide = () => {
   const { data, isError, error, isLoading } = useRecipeDataQuery();
   if (isLoading) {
-    return <LoadingGifImage sectionHeight={"300px"} />;
+    return <LoadingLottie sectionHeight={"750px"} />;
   }
   if (isError) {
     return <Alert varient="danger">{error.message}</Alert>;

@@ -7,7 +7,7 @@ import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
 import SelectMenu from "./components/SelectMenu";
-
+import { useSearchParams } from "react-router-dom";
 const ITEM_PER_PAGE = 12;
 
 const RecipePage = () => {
@@ -16,8 +16,11 @@ const RecipePage = () => {
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
   const [selectValue, setSelectValue] = useState("");
+  const [query, setQuery] = useSearchParams();
+  const [keyword, setKeyword] = useState(query.get("q") || "");
 
   const dispatch = useDispatch();
+
   const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
   console.log(bookmarkedRecipes);
   const { data, isLoading, error } = useRecipeDataQuery();
@@ -39,12 +42,21 @@ const RecipePage = () => {
     setFilter(event.target.value);
     setSelectValue(event.target.value);
   };
+  const handleReset = () => {
+    setKeyword("");
+    setFilter("");
+    setSort("");
+  };
+
+  const searchRecipe = keyword
+    ? originalData.filter((recipe) => recipe.RCP_NM.includes(keyword))
+    : originalData;
 
   //필터가 있으면 필터 데이터 없으면 기존 데이터
   const filterRecipe =
     filter.length > 0
-      ? originalData.filter((recipe) => recipe.RCP_PAT2.includes(filter))
-      : originalData;
+      ? searchRecipe.filter((recipe) => recipe.RCP_PAT2.includes(filter))
+      : searchRecipe;
 
   const sortRecipe =
     sort.length > 0 && sort === "INFO_PRO"
@@ -77,7 +89,7 @@ const RecipePage = () => {
 
   return (
     <Container className="recipe-page">
-      <Row>
+      <Row className="py-5">
         <Col>
           <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
         </Col>
@@ -88,11 +100,26 @@ const RecipePage = () => {
           <div>
             <Button
               variant="outline-primary"
+              size="lg"
+              className="me-2"
+              onClick={handleReset}
+              style={{
+                backgroundColor: sort ? "transparent" : "#ED0C0C",
+                color: sort ? "black" : "white",
+                borderColor: sort ? "black" : "white",
+                borderRadius: "2rem",
+              }}
+            >
+              전체 보기
+            </Button>
+            <Button
+              variant="outline-primary"
               style={{
                 backgroundColor:
                   sort === "INFO_ENG" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_ENG" ? "white" : "black", // default color for outline-primary
-                borderColor: sort === "INFO_ENG" ? "white" : "black", // maintain border color
+                color: sort === "INFO_ENG" ? "white" : "black",
+                borderColor: sort === "INFO_ENG" ? "white" : "black",
+                borderRadius: "2rem",
               }}
               size="lg"
               className="me-2"
@@ -104,8 +131,9 @@ const RecipePage = () => {
               variant="outline-primary"
               style={{
                 backgroundColor: sort === "INFO_NA" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_NA" ? "white" : "black", // default color for outline-primary
-                borderColor: sort === "INFO_NA" ? "white" : "black", // maintain border color
+                color: sort === "INFO_NA" ? "white" : "black",
+                borderColor: sort === "INFO_NA" ? "white" : "black",
+                borderRadius: "2rem",
               }}
               size="lg"
               className="me-2"
@@ -118,8 +146,9 @@ const RecipePage = () => {
               style={{
                 backgroundColor:
                   sort === "INFO_PRO" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_PRO" ? "white" : "black", // default color for outline-primary
-                borderColor: sort === "INFO_PRO" ? "white" : "black", // maintain border color
+                color: sort === "INFO_PRO" ? "white" : "black",
+                borderColor: sort === "INFO_PRO" ? "white" : "black",
+                borderRadius: "2rem",
               }}
               size="lg"
               className="me-2"

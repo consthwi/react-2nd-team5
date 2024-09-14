@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import MenuSlide from "./component/menuslide/MenuSlide";
 import "./HomePage.style.css";
 import RandomSlide from "./component/randomslide/RandomSlide";
 import { IoSearch } from "react-icons/io5";
 import TopSlide from "./component/TopSlide/TopSlide";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+  const searchByKeyword = (e) => {
+    e.preventDefault();
+    navigate(`recipes?q=${keyword}`);
+    setKeyword("");
+  };
   return (
     <div>
       <div className="top-area">
