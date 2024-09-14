@@ -1,25 +1,38 @@
-.carousel-container2{
-    /* overflow: hidden; */
-    height:460px;
-     width:100%; 
-    
-   
-}
-.slidertitle{
-    text-align:center;
-    /* margin-top:10px; */
-    padding:15px;
+.home-page-top-slider {
+    margin-bottom: 100px;
+    position: relative;
 }
 
-@media(max-width:180px){
-    .carousel-container{
-        height:330px;
-        display:flex;
-        justify-content:space-between;
+.home-page-top-slider .react-multi-carousel-dot-list  {
+    position: absolute;
+    bottom: -50px;
+}
+
+.home-page-top-slider .react-multi-carousel-dot button {
+    width: 20px;
+    border-radius: 0;
+    border: none;
+    margin-right: 0;
+}
+
+.home-page-top-slider .react-multi-carousel-dot--active button {
+    background-color: #000;
+}
+
+@media(max-width: 1024px){
+    .home-page-top-slider .react-multi-carousel-dot button {
+        width: 10px;
+    } 
+}
+
+@media(max-width: 768px){
+    .home-page-top-slider {
+        margin: 50px 0;
     }
-    .slidertitle{
-        text-align:center;
-        margin-top:10px;
-        padding:8px;
-    }
+}
+
+@media(max-width: 550px){
+    .home-page-top-slider .react-multi-carousel-dot button {
+        width: 7px;
+    } 
 }

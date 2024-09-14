@@ -24,7 +24,7 @@ const TopSliderCard = ({ recipeitem, key }) => {
   };
 
   return (
-    <div>
+    <div className="top-slider-card">
       <div
         style={{
           backgroundImage: `url(${recipeitem?.ATT_FILE_NO_MK})`,
@@ -32,24 +32,28 @@ const TopSliderCard = ({ recipeitem, key }) => {
         className="top-item-card"
         onClick={godetail}
       >
-        <div className="sub_text">#{recipeitem?.RCP_PAT2}</div>
-        <div className="title_text">{recipeitem?.RCP_NM} </div>
-
-        {beBookmarked ? (
-          <PiBookmarkSimpleFill
-            className="bookmark-icon-card"
-            size="3rem"
-            color="#ffffff"
-            onClick={handleToggleBookmark}
-          />
-        ) : (
-          <PiBookmarkSimpleThin
-            className="bookmark-icon-card"
-            size="3rem"
-            color="#ffffff"
-            onClick={handleToggleBookmark}
-          />
-        )}
+        <div className="top-item-card-overlay">top-item-card-overlay</div>
+        <div className="top-item-card-contents">
+          <div className="top-item-card-text">
+            <div className="top-item-card-tag">#{recipeitem?.RCP_PAT2} </div>
+            <div className="top-item-card-des">{recipeitem?.RCP_NM}</div>
+          </div>
+          {beBookmarked ? (
+            <PiBookmarkSimpleFill
+              className="bookmark-icon-card"
+              size="3rem"
+              color="#ffffff"
+              onClick={handleToggleBookmark}
+            />
+          ) : (
+            <PiBookmarkSimpleThin
+              className="bookmark-icon-card"
+              size="3rem"
+              color="#ffffff"
+              onClick={handleToggleBookmark}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
