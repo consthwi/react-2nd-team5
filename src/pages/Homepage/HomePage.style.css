@@ -3,7 +3,7 @@
 }
 
 .home-page .top-box-area {
-  min-height: 340px;
+  min-height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,9 +21,8 @@
 }
 
 .home-page .top-box-area .top-box-area-contents {
-  /* border: 3px solid green; */
   width: 80%;
-  max-width: 730px;
+  max-width: 650px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,6 +55,7 @@
   font-size: 35px;
   font-weight: 700;
   color: #303030;
+  line-height: 1.2;
   /* border: 2px solid blue; */
 }
 
@@ -76,6 +76,10 @@
 
 
 @media (max-width: 768px) {
+  .home-page .top-box-area {
+    min-height: 340px;
+  }
+  
   .home-page .top-box-area .top-box-area-contents {
     flex-direction: column;
     gap: 20px;
