@@ -10,6 +10,47 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.pagination .page-item,
+.nextLink,
+.previous {
+  margin: 0 5px;
+}
+
+.pagination .page-link,
+.next-link,
+.previous-link,
+.next,
+.previous {
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.pagination .page-link:hover,
+.next-link:hover,
+.previous-link:hover {
+  background-color: #ed0c0c;
+  color: white;
+  box-shadow: none;
+}
+
+.pagination .active .page-link {
+  background-color: #ed0c0c;
+  color: white;
+  box-shadow: none;
+}
+
 @media (max-width: 767px) {
   .mobile-button-spacing .btn {
     margin-bottom: 20px; /* 버튼 사이의 여백 */

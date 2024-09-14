@@ -4,8 +4,9 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import "./RecipePage.style.css";
 import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
+// import { useDispatch, useSelector } from "react-redux";
+// import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
+import { useBookmark } from "../../hooks/useBookmark"; // useBookmark 훅 사용
 import SelectMenu from "./components/SelectMenu";
 import { useSearchParams } from "react-router-dom";
 const ITEM_PER_PAGE = 12;
@@ -16,14 +17,18 @@ const RecipePage = () => {
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
   const [selectValue, setSelectValue] = useState("");
-  const [query, setQuery] = useSearchParams();
+  const [query] = useSearchParams();
   const [keyword, setKeyword] = useState(query.get("q") || "");
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
-  console.log(bookmarkedRecipes);
+  // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
+  // console.log(bookmarkedRecipes);
+  
+  const { bookmarkedRecipes, isBookmarked, toggleBookmark } = useBookmark(); // 훅 사용
   const { data, isLoading, error } = useRecipeDataQuery();
+  console.log("bookmarkedRecipes from RecipePage:", bookmarkedRecipes);
+  
 
   useEffect(() => {
     if (data) {
@@ -166,7 +171,7 @@ const RecipePage = () => {
         </Col>
       </Row>
       <Row className="g-3">
-        {paginateRecipes &&
+        {/* {paginateRecipes &&
           paginateRecipes.map((recipe) => {
             const isBookmarked =
               bookmarkedRecipes.length > 0
@@ -182,20 +187,38 @@ const RecipePage = () => {
                 handleBookMark={() => dispatch(toggleBookmark(recipe))}
               />
             );
-          })}
+          })} */}
+                {paginateRecipes &&
+          paginateRecipes.map((recipe) => (
+            <CardComponent
+              key={recipe.RCP_SEQ}
+              recipe={recipe}
+              isBookmarked={isBookmarked(recipe)} // 훅을 통해 북마크 상태 확인
+              handleBookMark={() => toggleBookmark(recipe)} // 북마크 토글
+            />
+          ))}
       </Row>
       <Row className="mt-4">
         <Col className="text-center">
           <ReactPaginate
-            previousLabel={"‹"}
-            nextLabel={"›"}
-            breakLabel={"..."}
-            pageCount={totalPage}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
+            nextLabel=">"
             onPageChange={(selected) => setCurrentPage(selected.selected)}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={2}
+            pageCount={totalPage}
+            previousLabel="<"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="previous"
+            previousLinkClassName="previous-link"
+            nextClassName="next"
+            nextLinkClassName="next-link"
+            breakLabel="..."
+            breakClassName="page-item"
+            breakLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+            renderOnZeroPageCount={null}
           />
         </Col>
       </Row>
