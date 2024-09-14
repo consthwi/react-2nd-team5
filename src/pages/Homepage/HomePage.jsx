@@ -26,7 +26,7 @@ const HomePage = () => {
         <div className="input-box">
           <Form className="d-flex" onSubmit={searchByKeyword}>
             <input
-              type="search"
+              type="text"
               className="me-2"
               aria-label="Search"
               value={keyword}
