@@ -146,6 +146,7 @@
   width: 50%;
   box-shadow: rgba(0, 0, 0, 0.3) -3px 0px 10px;
   position: relative;
+  z-index: 1;
 }
 
 .random-recipe-container .random-recipe-img .random-recipe-img-overlay {
