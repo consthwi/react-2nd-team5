@@ -1,8 +1,8 @@
-@media screen and (max-width: 63rem) {
-  .item-card {
+@media screen and (max-width: 753px) {
+  .top-item-card {
     background-size: cover;
-    width: 380px;
-    height: 280px;
+    width: 97%;
+    height: 260px;
     background-position: center;
     border-radius: 25px;
     cursor: pointer;
@@ -35,15 +35,15 @@
   }
 }
 
-@media (min-width: 992px) {
-  .item-card {
+@media (min-width: 754px) {
+  .top-item-card {
     width: 96%;
-    height: 375px;
+    height: 300px;
     border-radius: 35px;
     cursor: pointer;
     background-position: center;
     background-size: cover;
-    position: absolute;
+    top: -200px;
   }
   .bookmark-icon-card {
     position: absolute;
@@ -68,14 +68,15 @@
   }
 }
 
-@media (min-width: 1200px) {
-  .item-card {
+@media (min-width: 1224px) {
+  .top-item-card {
     width: 96%;
     height: 375px;
     border-radius: 35px;
     cursor: pointer;
     background-position: center;
     background-size: cover;
+    top: -200px;
   }
   .bookmark-icon-card {
     position: absolute;
