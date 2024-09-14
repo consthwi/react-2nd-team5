@@ -44,17 +44,24 @@
     
 }
 
+.cr_bookmark_rcpnm{
+    font-size:25px;
+}
 .card_img_bookmarkcardlist{
     width:auto;
     height:75%;
     border-radius:25px 25px 0 0;
 }
 
+.cr_recipeitem_rcpway2{
+    font-size:20px;
+    color:gray;
+}
 /* .card_text{
  position:relative;
  display:flex;
  border-radius:15px;
-
+.
  
 
 } */
