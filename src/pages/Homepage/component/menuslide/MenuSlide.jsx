@@ -8,7 +8,7 @@ import LoadingLottie from "../../../../common/LoadingLottie/LoadingLottie";
 const MenuSlide = () => {
   const { data, isError, error, isLoading } = useRecipeDataQuery();
   if (isLoading) {
-    return <LoadingLottie sectionHeight={"750px"} />;
+    return <LoadingLottie sectionHeight={"600px"} />;
   }
   if (isError) {
     return <Alert varient="danger">{error.message}</Alert>;

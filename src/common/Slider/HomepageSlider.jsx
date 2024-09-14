@@ -1,10 +1,10 @@
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css'
-import React from 'react'
-import SliderCard from '../card/SliderCard'
-import './HomepageSlider.style.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpoon } from '@fortawesome/free-solid-svg-icons'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import React from "react";
+import SliderCard from "../card/SliderCard";
+import "./HomepageSlider.style.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpoon } from "@fortawesome/free-solid-svg-icons";
 
 const HomepageSlider = ({ data, responsive }) => {
   // data가 배열이 아닌 경우 빈 배열로 설정
@@ -25,7 +25,7 @@ const HomepageSlider = ({ data, responsive }) => {
           itemClass="recipe-slider p-1"
           containerClass="carousel-container2"
           responsive={responsive}
-          autoPlay={true}                  // 자동 재생 활성화
+          autoPlay={true} // 자동 재생 활성화
           autoPlaySpeed={3000}
         >
           {sliderData.map((recipeitem, index) => (

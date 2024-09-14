@@ -4,6 +4,7 @@ import "./HomePage.style.css";
 import RandomSlide from "./component/randomslide/RandomSlide";
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import BookmarkInfo from "./component/bookmarkslide/BookmarkInfo";
 
 const HomePage = () => {
   const [keyword, setKeyword] = useState("");
@@ -61,6 +62,7 @@ const HomePage = () => {
       <div>
         <MenuSlide />
         <RandomSlide />
+        <BookmarkInfo />
       </div>
     </div>
   );
