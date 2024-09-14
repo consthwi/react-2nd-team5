@@ -17,6 +17,10 @@ const AuthModal = ({ isOpen, setIsOpen, menuList, toggleMenu }) => {
     setIsOpen(false);
   };
 
+  const notWorked = () => {
+    alert("작업 중입니다");
+  };
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -65,18 +69,34 @@ const AuthModal = ({ isOpen, setIsOpen, menuList, toggleMenu }) => {
         )}
 
         <ul className={`modal-nav`}>
-          {menuList.map((menu, idx) => {
-            return (
-              <li
-                className={`modal-nav-menu ${isOpen ? "active" : ""}`}
-                key={idx}
-              >
-                <Link className="modal-nav-a" to="/login">
-                  {menu}
-                </Link>
-              </li>
-            );
-          })}
+          <li className={`modal-nav-menu ${isOpen ? "active" : ""}`}>
+            <Link
+              to="/recipes"
+              onClick={() => setIsOpen(false)} // 페이지 이동 시 모달 닫기
+            >
+              {menuList[0]}
+            </Link>
+          </li>
+          <li
+            onClick={notWorked}
+            className={`modal-nav-menu ${isOpen ? "active" : ""}`}
+          >
+            <Link
+              onClick={() => setIsOpen(false)} // 페이지 이동 시 모달 닫기
+            >
+              {menuList[1]}
+            </Link>
+          </li>
+          <li
+            onClick={notWorked}
+            className={`modal-nav-menu ${isOpen ? "active" : ""}`}
+          >
+            <Link
+              onClick={() => setIsOpen(false)} // 페이지 이동 시 모달 닫기
+            >
+              {menuList[2]}
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
