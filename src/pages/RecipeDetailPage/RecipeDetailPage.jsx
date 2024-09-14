@@ -23,7 +23,7 @@ const RecipeDetailPage = () => {
   const { recipeName } = useParams();
   // const decodedRecipeName = decodeURIComponent(recipeName);
   const { data, isLoading, error } = useRecipeDetailDataQuery(recipeName);
-    
+
   // useBookmark 훅을 사용하여 북마크 관련 상태와 함수 가져옴
   const { isBookmarked, toggleBookmark } = useBookmark();
 
@@ -88,18 +88,18 @@ const RecipeDetailPage = () => {
           </div>
           <div className="button-two">
             <div
-              className="button"
+              className={isBookmarked(data) ? "button-jjim" : "button"}
               // onClick={() => dispatch(toggleBookmark(data))}
               // useBookmark 훅에서 가져온 toggleBookmark 함수 사용
               onClick={() => toggleBookmark(data)}
             >
               찜하기
               {/* {isBookmarked ? ( */}
-              {isBookmarked(data) ? (  // useBookmark 훅에서 가져온 isBookmarked 함수 사용
+              {isBookmarked(data) ? ( // useBookmark 훅에서 가져온 isBookmarked 함수 사용
                 <RxBookmarkFilled
                   className="ms-1"
                   size="25px"
-                  color="#616161"
+                  color="#ED0C0C"
                 />
               ) : (
                 <RxBookmark className="ms-1" size="25px" color="#616161" />
