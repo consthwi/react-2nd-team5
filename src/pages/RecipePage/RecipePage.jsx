@@ -24,11 +24,10 @@ const RecipePage = () => {
 
   // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
   // console.log(bookmarkedRecipes);
-  
+
   const { bookmarkedRecipes, isBookmarked, toggleBookmark } = useBookmark(); // 훅 사용
   const { data, isLoading, error } = useRecipeDataQuery();
   console.log("bookmarkedRecipes from RecipePage:", bookmarkedRecipes);
-  
 
   useEffect(() => {
     if (data) {
@@ -188,7 +187,7 @@ const RecipePage = () => {
               />
             );
           })} */}
-                {paginateRecipes &&
+        {paginateRecipes &&
           paginateRecipes.map((recipe) => (
             <CardComponent
               key={recipe.RCP_SEQ}
@@ -202,7 +201,10 @@ const RecipePage = () => {
         <Col className="text-center">
           <ReactPaginate
             nextLabel=">"
-            onPageChange={(selected) => setCurrentPage(selected.selected)}
+            onPageChange={(selected) => {
+              setCurrentPage(selected.selected);
+              window.scrollTo(0, 0);
+            }}
             pageRangeDisplayed={2}
             marginPagesDisplayed={2}
             pageCount={totalPage}
@@ -219,6 +221,7 @@ const RecipePage = () => {
             containerClassName="pagination"
             activeClassName="active"
             renderOnZeroPageCount={null}
+            // forcePage={currentPage}
           />
         </Col>
       </Row>

@@ -36,9 +36,13 @@
   text-decoration: none;
   box-shadow: none;
 }
-
-.pagination .page-link:hover,
-.next-link:hover,
+.pagination .page-link:hover {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  box-shadow: none;
+}
+.pagination .next-link:hover,
 .previous-link:hover {
   background-color: #ed0c0c;
   color: white;
