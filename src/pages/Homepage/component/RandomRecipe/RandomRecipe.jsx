@@ -2,17 +2,29 @@ import React, { useEffect, useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import { useRecipeDataQuery } from "../../../../hooks/useRecipeData";
 import "./RandomRecipe.style.css"; // 스타일을 위한 CSS 파일
+import LoadingLottie from "../../../../common/LoadingLottie/LoadingLottie";
+import { useNavigate } from "react-router-dom";
 
 const RandomRecipe = () => {
   const { data, isLoading, isError } = useRecipeDataQuery(); // 데이터 로드
   const [randomRecipe, setRandomRecipe] = useState(null);
+  const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
+
+  const goMore = () => {
+    navigate(`/recipes/${randomRecipe.RCP_NM}`);
+  };
 
   // 랜덤으로 하나의 레시피 선택
   useEffect(() => {
     if (data) {
       const updateRandomRecipe = () => {
+        setIsActive(true);
         const randomIndex = Math.floor(Math.random() * data.length);
         setRandomRecipe(data[randomIndex]);
+        setTimeout(function () {
+          setIsActive(false);
+        }, 8500);
       };
 
       // 컴포넌트 로드 시 한 번 레시피 선택
@@ -27,11 +39,11 @@ const RandomRecipe = () => {
   }, [data]); // data가 업데이트되면 실행
 
   if (isLoading) {
-    return <div>Loading...</div>; // 로딩 상태 처리
+    return <LoadingLottie sectionHeight={"300px"} />; // 로딩 상태 처리
   }
 
   if (isError || !randomRecipe) {
-    return <div>Something went wrong...</div>; // 에러 처리
+    return <h2>데이터를 불러오지 못했습니다</h2>; // 에러 처리
   }
 
   return (
@@ -45,14 +57,18 @@ const RandomRecipe = () => {
       <h2>오늘의 추천요리!</h2>
       <Container className="random-recipe-container">
         <div className="random-recipe-container-wrapper">
-          <div className="random-recipe-img">
+          <div
+            className={`random-recipe-img ${isActive ? "fade-in" : "fade-out"}`}
+          >
             <div className="random-recipe-img-overlay">img overlay</div>
             <img
               src={randomRecipe.ATT_FILE_NO_MAIN}
               alt={randomRecipe.RCP_NM}
             />
           </div>
-          <div className="random-recipe-content">
+          <div
+            className={`random-recipe-content ${isActive ? "fade-in" : "fade-out"}`}
+          >
             <div className="random-recipe-content-overlay">content overlay</div>
             <div className="random-recipe-tag1"># {randomRecipe.RCP_PAT2}</div>
             <h3>{randomRecipe.RCP_NM}</h3>
@@ -69,7 +85,7 @@ const RandomRecipe = () => {
                 ? randomRecipe.RCP_NA_TIP
                 : randomRecipe.RCP_NA_TIP.slice(0, 60) + "..."}
             </p>
-            <Button className="btn-detail" variant="primary" href="#">
+            <Button onClick={goMore} className="btn-detail" variant="primary">
               자세히보기 &gt;
             </Button>
           </div>
