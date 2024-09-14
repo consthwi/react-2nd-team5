@@ -100,6 +100,7 @@ input {
   border: none;
   width: 200px;
   margin-left: 10px;
+  outline: none;
 }
 
 .input-box {
@@ -107,4 +108,7 @@ input {
   border: 3px solid #ed0c0c;
   border-radius: 30px;
   padding: 5px;
+}
+.top-slide-area {
+  margin-bottom: 100px;
 }

@@ -1,22 +1,17 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React from "react";
-import SliderCard from "../card/SliderCard";
-import "./HomepageSlider.style.css";
+import TopSliderCard from "../card/TopSliderCard";
+import "./HomePageTopSlider.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpoon } from "@fortawesome/free-solid-svg-icons";
 
-const HomepageSlider = ({ data, responsive }) => {
+const HomePageTopSlider = ({ data, responsiveTop }) => {
   // data가 배열이 아닌 경우 빈 배열로 설정
   const sliderData = Array.isArray(data) ? data : [];
 
   return (
     <div>
-      <div className="slidertitle_big">
-        <h3 className="slidertitle">
-          <FontAwesomeIcon icon={faSpoon} /> 뭘 좋아할지 몰라서 다!
-        </h3>
-      </div>
       {/* sliderData가 존재하고 비어 있지 않은 경우에만 Carousel 렌더링 */}
       {sliderData.length > 0 ? (
         <Carousel
@@ -24,12 +19,12 @@ const HomepageSlider = ({ data, responsive }) => {
           centerMode={true}
           itemClass="recipe-slider p-1"
           containerClass="carousel-container2"
-          responsive={responsive}
+          responsive={responsiveTop}
           autoPlay={true} // 자동 재생 활성화
-          autoPlaySpeed={3000}
+          autoPlaySpeed={5000}
         >
           {sliderData.map((recipeitem, index) => (
-            <SliderCard recipeitem={recipeitem} key={index} />
+            <TopSliderCard recipeitem={recipeitem} key={index} />
           ))}
         </Carousel>
       ) : (
@@ -40,4 +35,4 @@ const HomepageSlider = ({ data, responsive }) => {
   );
 };
 
-export default HomepageSlider;
+export default HomePageTopSlider;
