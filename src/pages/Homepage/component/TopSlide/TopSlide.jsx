@@ -3,12 +3,12 @@ import { useRecipeDataQuery } from "../../../../hooks/useRecipeData";
 import { Alert } from "bootstrap";
 import { responsiveTop } from "../../../../constants/responsiveTop";
 import HomePageTopSlider from "../../../../common/Slider/HomePageTopSlider";
-import LoadingGifImage from "../../../../common/LoadingGif/LoadingGif";
+import LoadingLottie from "../../../../common/LoadingLottie/LoadingLottie";
 
 const TopSlide = () => {
   const { data, isError, error, isLoading } = useRecipeDataQuery();
   if (isLoading) {
-    return <LoadingGifImage sectionHeight={"300px"} />;
+    return <LoadingLottie sectionHeight={"300px"} />;
   }
   if (isError) {
     return <Alert varient="danger">{error.message}</Alert>;
