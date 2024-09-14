@@ -1,9 +1,3 @@
-.bookmark-icon {
-  margin-top: 1.5rem;
-  font-size: 4rem;
-  color: #616161;
-  cursor: pointer;
-}
 .card-img {
   height: 20rem;
   object-fit: cover;
@@ -15,12 +9,32 @@
   font-weight: 600;
 }
 
-.title {
-  font-size: 26px;
-  font-weight: 700;
+.bookmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.bookmark-icon {
+  font-size: 4rem;
+  color: #616161;
+  cursor: pointer;
+}
+.title-wrapper {
+  background-color: #ed0c0c;
+  display: flex;
+
+  align-items: center;
+}
+.title-container {
+  font-weight: 700;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+}
+
 .card-container {
-  height: 40rem;
+  height: 30rem;
   cursor: pointer;
   border-radius: 20px !important;
 }
@@ -33,8 +47,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-.bookmark {
-  display: flex;
-  justify-content: center;
+@media (max-width: 767px) {
+  .title-container {
+    font-weight: 700;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+  }
 }
