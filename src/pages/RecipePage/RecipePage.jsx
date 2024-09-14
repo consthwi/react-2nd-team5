@@ -38,10 +38,12 @@ const RecipePage = () => {
       setSort(sortType);
     }
   };
-  const handleSelectChange = (event) => {
-    setFilter(event.target.value);
-    setSelectValue(event.target.value);
+
+  const handleSelectChange = (selectedOption) => {
+    setFilter(selectedOption ? selectedOption.value : "");
+    setSelectValue(selectedOption ? selectedOption.value : "");
   };
+
   const handleReset = () => {
     setKeyword("");
     setFilter("");
@@ -68,7 +70,7 @@ const RecipePage = () => {
   // 필터가 바뀔떄마다 페이지네이션을 1페이지로 이동
   useEffect(() => {
     setCurrentPage(0);
-  }, [filterRecipe]);
+  }, [filterRecipe, sortRecipe]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -89,74 +91,70 @@ const RecipePage = () => {
 
   return (
     <Container className="recipe-page">
-      <Row className="py-5">
+      <Row className="text-wrapper">
         <Col>
           <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
         </Col>
       </Row>
 
       <Row className="mb-5 ">
-        <Col className="text-center">
-          <div>
-            <Button
-              variant="outline-primary"
-              size="lg"
-              className="me-2"
-              onClick={handleReset}
-              style={{
-                backgroundColor: sort ? "transparent" : "#ED0C0C",
-                color: sort ? "black" : "white",
-                borderColor: sort ? "black" : "white",
-                borderRadius: "2rem",
-              }}
-            >
-              전체 보기
-            </Button>
-            <Button
-              variant="outline-primary"
-              style={{
-                backgroundColor:
-                  sort === "INFO_ENG" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_ENG" ? "white" : "black",
-                borderColor: sort === "INFO_ENG" ? "white" : "black",
-                borderRadius: "2rem",
-              }}
-              size="lg"
-              className="me-2"
-              onClick={() => handleSortClick("INFO_ENG")}
-            >
-              저열량 레시피
-            </Button>
-            <Button
-              variant="outline-primary"
-              style={{
-                backgroundColor: sort === "INFO_NA" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_NA" ? "white" : "black",
-                borderColor: sort === "INFO_NA" ? "white" : "black",
-                borderRadius: "2rem",
-              }}
-              size="lg"
-              className="me-2"
-              onClick={() => handleSortClick("INFO_NA")}
-            >
-              저염식 레시피
-            </Button>
-            <Button
-              variant="outline-primary"
-              style={{
-                backgroundColor:
-                  sort === "INFO_PRO" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_PRO" ? "white" : "black",
-                borderColor: sort === "INFO_PRO" ? "white" : "black",
-                borderRadius: "2rem",
-              }}
-              size="lg"
-              className="me-2"
-              onClick={() => handleSortClick("INFO_PRO")}
-            >
-              고단백 레시피
-            </Button>
-          </div>
+        <Col className="text-center mobile-button-spacing ">
+          <Button
+            variant="outline-primary"
+            size="lg"
+            className="me-2"
+            onClick={handleReset}
+            style={{
+              backgroundColor: sort ? "transparent" : "#ED0C0C",
+              color: sort ? "black" : "white",
+              borderColor: sort ? "black" : "white",
+              borderRadius: "2rem",
+            }}
+          >
+            전체 보기
+          </Button>
+          <Button
+            variant="outline-primary"
+            style={{
+              backgroundColor: sort === "INFO_ENG" ? "#ED0C0C" : "transparent",
+              color: sort === "INFO_ENG" ? "white" : "black",
+              borderColor: sort === "INFO_ENG" ? "white" : "black",
+              borderRadius: "2rem",
+            }}
+            size="lg"
+            className="me-2"
+            onClick={() => handleSortClick("INFO_ENG")}
+          >
+            저열량 레시피
+          </Button>
+          <Button
+            variant="outline-primary"
+            style={{
+              backgroundColor: sort === "INFO_NA" ? "#ED0C0C" : "transparent",
+              color: sort === "INFO_NA" ? "white" : "black",
+              borderColor: sort === "INFO_NA" ? "white" : "black",
+              borderRadius: "2rem",
+            }}
+            size="lg"
+            className="me-2"
+            onClick={() => handleSortClick("INFO_NA")}
+          >
+            저염식 레시피
+          </Button>
+          <Button
+            variant="outline-primary"
+            style={{
+              backgroundColor: sort === "INFO_PRO" ? "#ED0C0C" : "transparent",
+              color: sort === "INFO_PRO" ? "white" : "black",
+              borderColor: sort === "INFO_PRO" ? "white" : "black",
+              borderRadius: "2rem",
+            }}
+            size="lg"
+            className="me-2"
+            onClick={() => handleSortClick("INFO_PRO")}
+          >
+            고단백 레시피
+          </Button>
         </Col>
       </Row>
       <Row className="justify-content-end mb-3">

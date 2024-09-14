@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
+import "./BookmarkCardList.style.css";
 const BookmarkCardList = (guestBookmarks, key) => {
   console.log("무지", guestBookmarks);
   const navigate = useNavigate();
