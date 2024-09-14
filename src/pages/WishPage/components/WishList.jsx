@@ -1,9 +1,15 @@
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { useBookmark } from "../../../hooks/useBookmark";
+import { useNavigate } from "react-router-dom";
 
 
 const Wishlist = ({ isGuest }) => {
   const { bookmarkedRecipes, toggleBookmark } = useBookmark();
+  const navigate = useNavigate();
+
+  const navigateToRecipe = (recipe) => {
+    navigate(`/recipes/${recipe.RCP_NM}`);
+  };
 
   return (
     <Container className="wish-list-wrap">
@@ -18,6 +24,7 @@ const Wishlist = ({ isGuest }) => {
                     <Row
                       style={{ backgroundColor: "#fff", marginBottom: "1rem" }}
                       key={recipe.RCP_SEQ}
+                        onClick={() => navigateToRecipe(recipe)}
                     >
                       <Col>
                         <Image className="card-img" src={recipe.ATT_FILE_NO_MAIN} rounded />
@@ -50,6 +57,7 @@ const Wishlist = ({ isGuest }) => {
                     <Row
                       style={{ backgroundColor: "#fff", marginBottom: "1rem" }}
                       key={recipe.RCP_SEQ}
+                      onClick={() => navigateToRecipe(recipe)}
                     >
                       <Col>
                         <Image className="card-img" src={recipe.ATT_FILE_NO_MAIN} rounded />
