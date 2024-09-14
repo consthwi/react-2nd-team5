@@ -17,7 +17,7 @@ const RandomRecipe = () => {
 
   // 랜덤으로 하나의 레시피 선택
   useEffect(() => {
-    if (data) {
+    if (data && data.length > 0) {
       const updateRandomRecipe = () => {
         setIsActive(true);
         const randomIndex = Math.floor(Math.random() * data.length);
