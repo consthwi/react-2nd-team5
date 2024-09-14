@@ -3,7 +3,7 @@ import { useRecipeDataQuery } from "../../../../hooks/useRecipeData";
 import { Alert } from "bootstrap";
 import { responsiveTop } from "../../../../constants/responsiveTop";
 import HomePageTopSlider from "../../../../common/Slider/HomePageTopSlider";
-import LoadingGifImage from "../../../../common/LoadingGif/LoadingGif";
+import LoadingGifImage from "../../../../common/LoadingLottie/LoadingLottie";
 
 const TopSlide = () => {
   const { data, isError, error, isLoading } = useRecipeDataQuery();
