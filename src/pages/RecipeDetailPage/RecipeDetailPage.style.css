@@ -50,6 +50,22 @@ body {
   justify-content: center;
   cursor: pointer;
 }
+
+.button-jjim {
+  border: 1px solid #ed0c0c;
+  width: 40%;
+  max-width: 280px;
+  height: 54px;
+  border-radius: 5px;
+  color: #ed0c0c;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .button-two {
   display: flex;
 }
