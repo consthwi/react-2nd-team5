@@ -73,8 +73,22 @@
   padding-right: 20px;
   background: transparent;
 }
-
-
+.up_css_container{
+display:flex;
+justify-content:flex-end;
+margin-right:10px;
+}
+.up_css{
+width:70px;
+height:70px;
+border-radius: 50px;
+background-color:rgb(255, 68, 0);
+color:white;
+display:flex;
+justify-content: center;
+align-items:center;
+margin-bottom:15px;
+}
 @media (max-width: 768px) {
   .home-page .top-box-area {
     min-height: 340px;
@@ -94,7 +108,17 @@
     color: #fff;
     font-size: 32px;
   }
-
+  .up_css{
+    width:60px;
+    height:60px;
+    border-radius: 50px;
+    background-color:rgb(255, 68, 0);
+    color:white;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    margin-bottom:15px;
+    }
 
 
 }
