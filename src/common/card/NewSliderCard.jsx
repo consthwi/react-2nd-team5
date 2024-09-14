@@ -51,7 +51,6 @@ const SliderCard = ({ recipeitem }) => {
                     onClick={() => dispatch(toggleBookmark(recipeitem))}
                   />
                 )}
-                {/* <div className="recipeitem">{recipeitem?.RCP_WAY2}</div> */}
               </div>
             </div>
           </Card.Body>
