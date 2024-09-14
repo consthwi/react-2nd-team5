@@ -6,7 +6,6 @@ import { faUtensils, faSpoon } from "@fortawesome/free-solid-svg-icons";
 import "./BookmarkInfo.style.css";
 import NoFindPage from "../../../../common/nofindpage/NoFindPage";
 import { useRecipeDataQuery } from "../../../../hooks/useRecipeData";
-
 const BookmarkInfo = () => {
   const { data: fornothing } = useRecipeDataQuery();
   const user = useSelector((state) => state.auth.user);

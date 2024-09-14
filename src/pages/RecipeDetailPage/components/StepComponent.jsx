@@ -7,10 +7,15 @@ const StepComponent = ({ manualImg, manualText }) => {
     <div className="recipe-step">
       {manualImg.map((img, index) => (
         <div className="repeat-box" key={index}>
-          <span>
+          <div>
             <img className="step-img" src={img} />
-          </span>
-          <span className="ms-4 step-text">{manualText[index].substr(2)}</span>
+          </div>
+          <div>
+            <div className="ms-4 step-text">
+              <div className="step-num">STEP{index + 1} </div>
+              {manualText[index].substr(2)}
+            </div>
+          </div>
         </div>
       ))}
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import "./RecipeDetailPage.style.css";
@@ -8,8 +8,7 @@ import { useParams } from "react-router-dom";
 import { useRecipeDetailDataQuery } from "../../hooks/useRecipeDetailData";
 import StepComponent from "./components/StepComponent";
 import { MdOutlineTipsAndUpdates } from "react-icons/md";
-import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
-import { useDispatch, useSelector } from "react-redux";
+import { useBookmark } from "../../hooks/useBookmark"; // useBookmark 훅을 불러옴
 
 const RecipeDetailPage = () => {
   const location = useLocation();
@@ -18,12 +17,16 @@ const RecipeDetailPage = () => {
     console.log("지금유알엘", location);
   }, [location]);
 
-  const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
-  const dispatch = useDispatch();
+  // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
+  // const dispatch = useDispatch();
 
   const { recipeName } = useParams();
   // const decodedRecipeName = decodeURIComponent(recipeName);
   const { data, isLoading, error } = useRecipeDetailDataQuery(recipeName);
+    
+  // useBookmark 훅을 사용하여 북마크 관련 상태와 함수 가져옴
+  const { isBookmarked, toggleBookmark } = useBookmark();
+
   console.log(data);
   const preItem = `${data?.RCP_PARTS_DTLS}`;
   const arrayItem = preItem.split(",");
@@ -55,10 +58,10 @@ const RecipeDetailPage = () => {
     .filter((value) => value); // 빈 값("")은 제외
   console.log("레ㅔ시피배열", manualText);
 
-  const isBookmarked =
-    bookmarkedRecipes.length > 0
-      ? bookmarkedRecipes.some((item) => item.RCP_SEQ === data.RCP_SEQ)
-      : false;
+  // const isBookmarked =
+  //   bookmarkedRecipes.length > 0
+  //     ? bookmarkedRecipes.some((item) => item.RCP_SEQ === data.RCP_SEQ)
+  //     : false;
 
   return (
     <Container className="mt-5">
@@ -86,10 +89,13 @@ const RecipeDetailPage = () => {
           <div className="button-two">
             <div
               className="button"
-              onClick={() => dispatch(toggleBookmark(data))}
+              // onClick={() => dispatch(toggleBookmark(data))}
+              // useBookmark 훅에서 가져온 toggleBookmark 함수 사용
+              onClick={() => toggleBookmark(data)}
             >
               찜하기
-              {isBookmarked ? (
+              {/* {isBookmarked ? ( */}
+              {isBookmarked(data) ? (  // useBookmark 훅에서 가져온 isBookmarked 함수 사용
                 <RxBookmarkFilled
                   className="ms-1"
                   size="25px"
@@ -151,11 +157,10 @@ const RecipeDetailPage = () => {
           <div className="item-start">
             <div className="pre-title mb-2">만들어볼까요? </div>
             <hr />
+            <StepComponent manualImg={manualImg} manualText={manualText} />
           </div>
         </Row>
       </Container>
-
-      <StepComponent manualImg={manualImg} manualText={manualText} />
     </Container>
   );
 };

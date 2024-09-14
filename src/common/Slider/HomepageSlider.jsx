@@ -1,7 +1,8 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React from "react";
-import SliderCard from "../card/SliderCard";
+
+import NewSliderCard from "../card/NewSliderCard";
 import "./HomepageSlider.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpoon } from "@fortawesome/free-solid-svg-icons";
@@ -29,7 +30,7 @@ const HomepageSlider = ({ data, responsive }) => {
           autoPlaySpeed={3000}
         >
           {sliderData.map((recipeitem, index) => (
-            <SliderCard recipeitem={recipeitem} key={index} />
+            <NewSliderCard recipeitem={recipeitem} key={index} />
           ))}
         </Carousel>
       ) : (

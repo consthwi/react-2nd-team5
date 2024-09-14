@@ -4,8 +4,9 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import "./RecipePage.style.css";
 import CardComponent from "./components/CardComponent";
 import ReactPaginate from "react-paginate";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
+// import { useDispatch, useSelector } from "react-redux";
+// import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
+import { useBookmark } from "../../hooks/useBookmark"; // useBookmark 훅 사용
 import SelectMenu from "./components/SelectMenu";
 import { useSearchParams } from "react-router-dom";
 const ITEM_PER_PAGE = 12;
@@ -16,14 +17,18 @@ const RecipePage = () => {
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
   const [selectValue, setSelectValue] = useState("");
-  const [query, setQuery] = useSearchParams();
+  const [query] = useSearchParams();
   const [keyword, setKeyword] = useState(query.get("q") || "");
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
-  console.log(bookmarkedRecipes);
+  // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
+  // console.log(bookmarkedRecipes);
+  
+  const { bookmarkedRecipes, isBookmarked, toggleBookmark } = useBookmark(); // 훅 사용
   const { data, isLoading, error } = useRecipeDataQuery();
+  console.log("bookmarkedRecipes from RecipePage:", bookmarkedRecipes);
+  
 
   useEffect(() => {
     if (data) {
@@ -91,74 +96,70 @@ const RecipePage = () => {
 
   return (
     <Container className="recipe-page">
-      <Row className="py-5">
+      <Row className="text-wrapper">
         <Col>
           <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
         </Col>
       </Row>
 
       <Row className="mb-5 ">
-        <Col className="text-center">
-          <div>
-            <Button
-              variant="outline-primary"
-              size="lg"
-              className="me-2"
-              onClick={handleReset}
-              style={{
-                backgroundColor: sort ? "transparent" : "#ED0C0C",
-                color: sort ? "black" : "white",
-                borderColor: sort ? "black" : "white",
-                borderRadius: "2rem",
-              }}
-            >
-              전체 보기
-            </Button>
-            <Button
-              variant="outline-primary"
-              style={{
-                backgroundColor:
-                  sort === "INFO_ENG" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_ENG" ? "white" : "black",
-                borderColor: sort === "INFO_ENG" ? "white" : "black",
-                borderRadius: "2rem",
-              }}
-              size="lg"
-              className="me-2"
-              onClick={() => handleSortClick("INFO_ENG")}
-            >
-              저열량 레시피
-            </Button>
-            <Button
-              variant="outline-primary"
-              style={{
-                backgroundColor: sort === "INFO_NA" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_NA" ? "white" : "black",
-                borderColor: sort === "INFO_NA" ? "white" : "black",
-                borderRadius: "2rem",
-              }}
-              size="lg"
-              className="me-2"
-              onClick={() => handleSortClick("INFO_NA")}
-            >
-              저염식 레시피
-            </Button>
-            <Button
-              variant="outline-primary"
-              style={{
-                backgroundColor:
-                  sort === "INFO_PRO" ? "#ED0C0C" : "transparent",
-                color: sort === "INFO_PRO" ? "white" : "black",
-                borderColor: sort === "INFO_PRO" ? "white" : "black",
-                borderRadius: "2rem",
-              }}
-              size="lg"
-              className="me-2"
-              onClick={() => handleSortClick("INFO_PRO")}
-            >
-              고단백 레시피
-            </Button>
-          </div>
+        <Col className="text-center mobile-button-spacing ">
+          <Button
+            variant="outline-primary"
+            size="lg"
+            className="me-2"
+            onClick={handleReset}
+            style={{
+              backgroundColor: sort ? "transparent" : "#ED0C0C",
+              color: sort ? "black" : "white",
+              borderColor: sort ? "black" : "white",
+              borderRadius: "2rem",
+            }}
+          >
+            전체 보기
+          </Button>
+          <Button
+            variant="outline-primary"
+            style={{
+              backgroundColor: sort === "INFO_ENG" ? "#ED0C0C" : "transparent",
+              color: sort === "INFO_ENG" ? "white" : "black",
+              borderColor: sort === "INFO_ENG" ? "white" : "black",
+              borderRadius: "2rem",
+            }}
+            size="lg"
+            className="me-2"
+            onClick={() => handleSortClick("INFO_ENG")}
+          >
+            저열량 레시피
+          </Button>
+          <Button
+            variant="outline-primary"
+            style={{
+              backgroundColor: sort === "INFO_NA" ? "#ED0C0C" : "transparent",
+              color: sort === "INFO_NA" ? "white" : "black",
+              borderColor: sort === "INFO_NA" ? "white" : "black",
+              borderRadius: "2rem",
+            }}
+            size="lg"
+            className="me-2"
+            onClick={() => handleSortClick("INFO_NA")}
+          >
+            저염식 레시피
+          </Button>
+          <Button
+            variant="outline-primary"
+            style={{
+              backgroundColor: sort === "INFO_PRO" ? "#ED0C0C" : "transparent",
+              color: sort === "INFO_PRO" ? "white" : "black",
+              borderColor: sort === "INFO_PRO" ? "white" : "black",
+              borderRadius: "2rem",
+            }}
+            size="lg"
+            className="me-2"
+            onClick={() => handleSortClick("INFO_PRO")}
+          >
+            고단백 레시피
+          </Button>
         </Col>
       </Row>
       <Row className="justify-content-end mb-3">
@@ -170,7 +171,7 @@ const RecipePage = () => {
         </Col>
       </Row>
       <Row className="g-3">
-        {paginateRecipes &&
+        {/* {paginateRecipes &&
           paginateRecipes.map((recipe) => {
             const isBookmarked =
               bookmarkedRecipes.length > 0
@@ -186,7 +187,16 @@ const RecipePage = () => {
                 handleBookMark={() => dispatch(toggleBookmark(recipe))}
               />
             );
-          })}
+          })} */}
+                {paginateRecipes &&
+          paginateRecipes.map((recipe) => (
+            <CardComponent
+              key={recipe.RCP_SEQ}
+              recipe={recipe}
+              isBookmarked={isBookmarked(recipe)} // 훅을 통해 북마크 상태 확인
+              handleBookMark={() => toggleBookmark(recipe)} // 북마크 토글
+            />
+          ))}
       </Row>
       <Row className="mt-4">
         <Col className="text-center">
