@@ -6,11 +6,13 @@ import { faUtensils, faSpoon } from "@fortawesome/free-solid-svg-icons";
 import "./BookmarkInfo.style.css";
 import NoFindPage from "../../../../common/nofindpage/NoFindPage";
 import { useRecipeDataQuery } from "../../../../hooks/useRecipeData";
-
 const BookmarkInfo = () => {
   const { data: fornothing } = useRecipeDataQuery();
   const user = useSelector((state) => state.auth.user);
-  const guestBookmarks = useSelector((state) => state.bookmark.items);
+  const guestBookmarks = useSelector((state) => state.bookmark.guestBookmarks);
+  const userBookmarks = useSelector(
+    (state) => state.bookmark.userBookmarks[user?.id]
+  );
   if (!fornothing) {
     return null;
   }
@@ -23,7 +25,7 @@ const BookmarkInfo = () => {
       </h3>
       <div>
         {user ? (
-          <BookmarkSliderH guestBookmarks={guestBookmarks} />
+          <BookmarkSliderH guestBookmarks={userBookmarks} />
         ) : (
           <NoFindPage user={user} />
         )}
