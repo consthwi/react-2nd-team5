@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BsList } from "react-icons/bs";
-import { BsPerson } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { PiBookmarkSimple } from "react-icons/pi";
+import { IoLogIn, IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducer/authReducer";
 import AuthModal from "../AuthModal/AuthModal";
@@ -81,10 +81,13 @@ const Header = () => {
                 <FiSearch className="btn-search" size="25px" />
               </Link>
             </li>
-            <li className="header-user">
-              <Link to={user ? "/wish/user" : "/login"}>
+            {/* <li className="header-user">
+              <Link to={user ? "/wish/user" : "/login"}>s
                 <BsPerson className="btn-login" size="25px" />
               </Link>
+            </li> */}
+            <li className="header-user">
+              {user ? <span>{user.userId}님</span> : ""}
             </li>
             <li className="header-cart" onClick={handleWishlist}>
               <Link>
@@ -95,14 +98,9 @@ const Header = () => {
               <Link>
                 <BsList className="btn-mobile-menu" size="30px" />
               </Link>
-            </li>
-            <Button
-              onClick={handleAuthAction}
-              variant={user ? "outline-danger" : "danger"}
-              size="sm"
-            >
-              {user ? "로그아웃" : "로그인"}
-            </Button>
+            </li>            
+            {user ? <IoLogOutOutline onClick={handleAuthAction} size="32px" />
+              : <IoLogIn onClick={handleAuthAction} size="35px" />}
           </ul>
         </Container>
       </div>
