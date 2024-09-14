@@ -53,6 +53,7 @@ const RecipePage = () => {
     setKeyword("");
     setFilter("");
     setSort("");
+    setCurrentPage(0);
   };
 
   const searchRecipe = keyword
@@ -222,6 +223,7 @@ const RecipePage = () => {
             containerClassName="pagination"
             activeClassName="active"
             renderOnZeroPageCount={null}
+            forcePage={currentPage}
           />
         </Col>
       </Row>
