@@ -151,11 +151,10 @@ const RecipeDetailPage = () => {
           <div className="item-start">
             <div className="pre-title mb-2">만들어볼까요? </div>
             <hr />
+            <StepComponent manualImg={manualImg} manualText={manualText} />
           </div>
         </Row>
       </Container>
-
-      <StepComponent manualImg={manualImg} manualText={manualText} />
     </Container>
   );
 };

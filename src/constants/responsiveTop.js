@@ -12,7 +12,7 @@ export const responsiveTop = {
     items: 1.5, // tablet에서 한 번에 5개의 카드가 보이도록 설정
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 754, min: 0 },
     items: 1, // 모바일에서 한 번에 3개의 카드가 보이도록 설정
   },
 };
