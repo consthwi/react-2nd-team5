@@ -8,7 +8,7 @@
 
 }
 .slidercard_url:hover{
-    transform:scale(1.05);
+    transform:scale(1.01);
 }
 .slidercard_rcp_nm{
     font-family: 'Pretendard';
@@ -65,11 +65,9 @@
     justify-content:space-between;
    
 }
-.recipeitem{
-
- font-size:25px;
- color:gray;
- 
+.rcp-way2_size{
+    font-size:20px;
+    color:gray;
 }
 
 /* .bookmark-icon-inSlidercard{
@@ -101,6 +99,12 @@ align-self:flex-end;
         right: 10px;
         font-size:16px;
         
+       }
+       .rcp-nm{
+        font-size:15px;
+       }
+       .rcp-way2_size{
+         font-size:12px;
        }
      
 }
