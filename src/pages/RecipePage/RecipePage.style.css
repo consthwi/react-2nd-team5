@@ -1,9 +1,21 @@
 .recipe-page {
   font-family: "Pretendard";
 }
-
+.text-wrapper {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 .text-ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+@media (max-width: 767px) {
+  .mobile-button-spacing .btn {
+    margin-bottom: 20px; /* 버튼 사이의 여백 */
+  }
+  .text-wrapper {
+    padding-top: 3rem;
+    padding-bottom: 0;
+  }
 }
