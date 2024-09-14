@@ -38,10 +38,12 @@ const RecipePage = () => {
       setSort(sortType);
     }
   };
-  const handleSelectChange = (event) => {
-    setFilter(event.target.value);
-    setSelectValue(event.target.value);
+
+  const handleSelectChange = (selectedOption) => {
+    setFilter(selectedOption ? selectedOption.value : "");
+    setSelectValue(selectedOption ? selectedOption.value : "");
   };
+
   const handleReset = () => {
     setKeyword("");
     setFilter("");
@@ -68,7 +70,7 @@ const RecipePage = () => {
   // 필터가 바뀔떄마다 페이지네이션을 1페이지로 이동
   useEffect(() => {
     setCurrentPage(0);
-  }, [filterRecipe]);
+  }, [filterRecipe, sortRecipe]);
 
   if (isLoading) {
     return <div>Loading...</div>;
