@@ -1,21 +1,13 @@
 import React from "react";
 import "./NewSliderCard.style.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
 import { RxBookmark, RxBookmarkFilled } from "react-icons/rx";
+import { useBookmark } from "../../hooks/useBookmark"; // 훅 가져오기
 
 const SliderCard = ({ recipeitem }) => {
-  const dispatch = useDispatch();
-  const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
+  const { isBookmarked, toggleBookmark } = useBookmark(); // 훅에서 가져오기
   const navigate = useNavigate();
-  const isBookmarkded =
-    bookmarkedRecipes.length > 0
-      ? bookmarkedRecipes.some((item) => item.RCP_SEQ === recipeitem.RCP_SEQ)
-      : false;
 
   const godetail = () => {
     navigate(`/recipes/${recipeitem?.RCP_NM}`);
@@ -38,20 +30,20 @@ const SliderCard = ({ recipeitem }) => {
                 <div>{recipeitem?.RCP_NM}</div>
               </div>
               <div>
-                {isBookmarkded ? (
+                {/* 북마크 아이콘 표시 및 토글 */}
+                {isBookmarked(recipeitem) ? (
                   <RxBookmarkFilled
                     className="bookmark-icon-inSlidercard"
                     size="2rem"
-                    onClick={() => dispatch(toggleBookmark(recipeitem))}
+                    onClick={() => toggleBookmark(recipeitem)}
                   />
                 ) : (
                   <RxBookmark
                     className="bookmark-icon-inSlidercard"
                     size="2rem"
-                    onClick={() => dispatch(toggleBookmark(recipeitem))}
+                    onClick={() => toggleBookmark(recipeitem)}
                   />
                 )}
-                {/* <div className="recipeitem">{recipeitem?.RCP_WAY2}</div> */}
               </div>
             </div>
           </Card.Body>

@@ -1,21 +1,18 @@
 import React from "react";
 import "./NewSliderCard.style.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils } from "@fortawesome/free-solid-svg-icons";
+
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleBookmark } from "../../redux/reducer/bookmarkReducer";
-import { RxBookmark, RxBookmarkFilled } from "react-icons/rx";
 
-const SliderCard = ({ recipeitem }) => {
-  const dispatch = useDispatch();
-  const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
+import { RxBookmark, RxBookmarkFilled } from "react-icons/rx";
+import { useBookmark } from "../../hooks/useBookmark"; // 훅 가져오기
+const NewSliderCard = ({ recipeitem }) => {
+  const { isBookmarked, toggleBookmark } = useBookmark();
   const navigate = useNavigate();
-  const isBookmarkded =
-    bookmarkedRecipes.length > 0
-      ? bookmarkedRecipes.some((item) => item.RCP_SEQ === recipeitem.RCP_SEQ)
-      : false;
+
+  const getShortName = (text, maxLength) => {
+    return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+  };
 
   const godetail = () => {
     navigate(`/recipes/${recipeitem?.RCP_NM}`);
@@ -34,21 +31,25 @@ const SliderCard = ({ recipeitem }) => {
           <Card.Body>
             <div className="card-body-content">
               <div className="slidercard_rcp_nm" onClick={godetail}>
-                <div className="recipeitem">{recipeitem?.RCP_WAY2}</div>
-                <div>{recipeitem?.RCP_NM}</div>
+                <div className="rcp-way2_size"># {recipeitem?.RCP_WAY2}</div>
+                {/* <div>{recipeitem?.RCP_NM}</div> */}
+                <div className="rcp-nm">
+                  {getShortName(recipeitem?.RCP_NM, 13)}{" "}
+                </div>
               </div>
+
               <div>
-                {isBookmarkded ? (
+                {isBookmarked(recipeitem) ? (
                   <RxBookmarkFilled
                     className="bookmark-icon-inSlidercard"
                     size="2rem"
-                    onClick={() => dispatch(toggleBookmark(recipeitem))}
+                    onClick={() => toggleBookmark(recipeitem)}
                   />
                 ) : (
                   <RxBookmark
                     className="bookmark-icon-inSlidercard"
                     size="2rem"
-                    onClick={() => dispatch(toggleBookmark(recipeitem))}
+                    onClick={() => toggleBookmark(recipeitem)}
                   />
                 )}
               </div>
@@ -60,4 +61,4 @@ const SliderCard = ({ recipeitem }) => {
   );
 };
 
-export default SliderCard;
+export default NewSliderCard;

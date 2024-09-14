@@ -1,7 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React from "react";
-import SliderCard from "../card/SliderCard";
+
 import NewSliderCard from "../card/NewSliderCard";
 import "./HomepageSlider.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
