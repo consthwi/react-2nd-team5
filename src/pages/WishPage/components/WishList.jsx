@@ -100,7 +100,7 @@ const Wishlist = ({ isGuest }) => {
                       </Col>
                     </Row>
                   ))}
-                  {bookmarkedRecipes.length > 3 && (
+                  {bookmarkedRecipes.length > 2 && (
                     <Button
                       variant="danger"
                       onClick={handleShowMore}
