@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { useBookmark } from "../../../hooks/useBookmark";
 import { useNavigate } from "react-router-dom";
