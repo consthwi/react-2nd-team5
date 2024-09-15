@@ -92,9 +92,9 @@ const Header = () => {
               </Link>
             </li>
             {user ? (
-              <SlLogout onClick={handleAuthAction} size="25px" />
+              <SlLogout className="login-icon" onClick={handleAuthAction} size="25px" />
             ) : (
-              <SlLogin onClick={handleAuthAction} size="25px" />
+              <SlLogin className="login-icon" onClick={handleAuthAction} size="25px" />
             )}
           </ul>
         </Container>
