@@ -58,3 +58,8 @@ body {
   border: 1px solid #ed0c0c;
   color: #ed0c0c;
 }
+.login-btn:active {
+  background-color: #ed0c0c !important;
+  border: none;
+}
+
