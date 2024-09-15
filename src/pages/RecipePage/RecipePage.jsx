@@ -101,7 +101,7 @@ const RecipePage = () => {
     <Container className="recipe-page">
       <Row className="text-wrapper">
         <Col>
-          <h1 className="text-center mt-3 mb-5">{title} 한끼 만들기</h1>
+          <h1 className="title-text text-center">{title} 한끼 만들기</h1>
         </Col>
       </Row>
 
