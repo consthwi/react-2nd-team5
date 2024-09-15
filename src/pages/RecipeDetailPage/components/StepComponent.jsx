@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
 import "./StepComponent.style.css";
 
 const StepComponent = ({ manualImg, manualText }) => {

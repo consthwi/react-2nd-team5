@@ -87,6 +87,12 @@ align-self:flex-end;
 
 } */
 
+/* 추가 부분 */
+/* 캐러셀형태일때 요리이름 line-height조정 */
+.bookm_rcpnm_rcpnm {
+    line-height: 1.2;
+}
+
 @media(max-width: 768px){
     .slidercard3_url{
         width: 198px;
