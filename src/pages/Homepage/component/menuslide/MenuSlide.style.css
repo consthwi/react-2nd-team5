@@ -20,19 +20,21 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    margin-bottom: 15px;
-    font-weight: 500;
-    font-size: 23px;
+    /*  margin-bottom: 15px; 
+     font-weight: 500;
+    font-size: 23px; */
+    margin-bottom:15px;
   }
 
   .Menuslide_title {
-    margin-top: 50px;
-    font-size: 30px;
-    font-weight: 700;
+    margin-top: 15px;
+    font-size: 23px;
+    font-weight: 500;
   }
 
   .Menuslide_title_container_main {
     margin-top: 50px;
     margin-bottom: 75px;
+    padding:10px;
   }
 }
