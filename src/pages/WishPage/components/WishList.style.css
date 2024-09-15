@@ -27,7 +27,7 @@ body {
 .wishlist-row {
   margin-bottom: 1rem;
   background-color: #FFF;
-
+  cursor: pointer;
 }
 
 .card-img {
