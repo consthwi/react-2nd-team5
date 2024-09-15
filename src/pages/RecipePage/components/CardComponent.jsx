@@ -13,7 +13,7 @@ const CardComponent = ({ recipe, handleBookMark, isBookmarked }) => {
     <Col md={4} key={recipe.RCP_SEQ}>
       <Card className="card-container">
         <Card.Img
-          className="card-img"
+          className="recipe-card-img"
           variant="top"
           src={recipe.ATT_FILE_NO_MAIN}
           onClick={handleCardClick}
