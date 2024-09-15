@@ -101,6 +101,10 @@ xxl: break: 1400,   maxWidth: 1320px,   padding: 15px
   transform: scale(1.2);
 }
 
+.header .header-right .login-icon {
+  cursor: pointer;
+}
+
 /* Hide .header-search and .header-mobile-menu on PC */
 @media (min-width: 768px) {
   .header .header-search,
