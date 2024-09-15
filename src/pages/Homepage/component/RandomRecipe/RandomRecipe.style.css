@@ -91,7 +91,7 @@
 }
 
 .random-title-text {
-  font-size: 35px;
+  font-size: 36px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -325,5 +325,13 @@
   .random-recipe-content.fade-out {
     animation: fadeOutToDown 0.5s both;
     animation-delay: 0.2s;
+  }
+  .random-title-text {
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    margin-bottom: 15px;
   }
 }
