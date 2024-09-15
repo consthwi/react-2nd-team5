@@ -1,6 +1,15 @@
-.card-img {
+.card-container {
+  height: 31rem !important;
+  cursor: pointer;
+  border-radius: 20px !important;
+}
+
+.card-container .recipe-card-img {
+  background-color: #ed0c0c;
+  width: 100%;
   height: 20rem;
   object-fit: cover;
+  border-radius: 20px 20px 0 0 !important;
 }
 
 .tag-text {
@@ -23,7 +32,6 @@
 .title-wrapper {
   background-color: #ed0c0c;
   display: flex;
-
   align-items: center;
 }
 .title-container {
@@ -33,15 +41,6 @@
   align-items: center;
 }
 
-.card-container {
-  height: 31rem !important;
-  cursor: pointer;
-  border-radius: 20px !important;
-}
-
-.card-img {
-  border-radius: 20px 20px 0 0 !important;
-}
 .text-ellipsis {
   white-space: nowrap;
   overflow: hidden;
