@@ -2,25 +2,14 @@ import React, { useState } from "react";
 import "./TopSliderCard.style.css";
 import { useNavigate } from "react-router-dom";
 import { PiBookmarkSimpleThin, PiBookmarkSimpleFill } from "react-icons/pi";
+import { useBookmark } from "../../hooks/useBookmark";
 
-const TopSliderCard = ({ recipeitem, key }) => {
+const TopSliderCard = ({ recipeitem }) => {
+  const { isBookmarked, toggleBookmark } = useBookmark();
   const navigate = useNavigate();
-  const [bookmarkStates, setBookmarkStates] = useState({});
-
-  const beBookmarked = bookmarkStates[key] || false;
 
   const godetail = () => {
     navigate(`/recipes/${recipeitem?.RCP_NM}`);
-  };
-
-  // 토글
-  const handleToggleBookmark = (event) => {
-    event.stopPropagation();
-    setBookmarkStates((prevStates) => {
-      const newState = { ...prevStates };
-      newState[key] = !newState[key];
-      return newState;
-    });
   };
 
   return (
@@ -38,19 +27,19 @@ const TopSliderCard = ({ recipeitem, key }) => {
             <div className="top-item-card-tag">#{recipeitem?.RCP_PAT2} </div>
             <div className="top-item-card-des">{recipeitem?.RCP_NM}</div>
           </div>
-          {beBookmarked ? (
+          {isBookmarked(recipeitem) ? (
             <PiBookmarkSimpleFill
               className="bookmark-icon-card"
               size="3rem"
               color="#ffffff"
-              onClick={handleToggleBookmark}
+              onClick={() => toggleBookmark(recipeitem)}
             />
           ) : (
             <PiBookmarkSimpleThin
               className="bookmark-icon-card"
               size="3rem"
               color="#ffffff"
-              onClick={handleToggleBookmark}
+              onClick={() => toggleBookmark(recipeitem)}
             />
           )}
         </div>

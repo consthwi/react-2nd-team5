@@ -52,9 +52,6 @@
  position:relative;
  display:flex;
  border-radius:15px;
-
- 
-
 } */
 .card-body-content-newslider {
   display: flex;
@@ -74,7 +71,6 @@
 
 /* .bookmark-icon-inSlidercard{
 align-self:flex-end;
-
 } */
 
 @media (max-width: 768px) {
