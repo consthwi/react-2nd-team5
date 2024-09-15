@@ -20,13 +20,9 @@ const RecipePage = () => {
   const [selectValue, setSelectValue] = useState("");
   const [query] = useSearchParams();
   const [keyword, setKeyword] = useState(query.get("q") || "");
+  const [title, setTitle] = useState("다양한");
 
-  // const dispatch = useDispatch();
-
-  // const bookmarkedRecipes = useSelector((state) => state.bookmark.items);
-  // console.log(bookmarkedRecipes);
-
-  const { bookmarkedRecipes, isBookmarked, toggleBookmark } = useBookmark(); // 훅 사용
+  const { bookmarkedRecipes, isBookmarked, toggleBookmark } = useBookmark();
   const { data, isLoading, error } = useRecipeDataQuery();
   console.log("bookmarkedRecipes from RecipePage:", bookmarkedRecipes);
 
@@ -36,11 +32,13 @@ const RecipePage = () => {
     }
   }, [data]);
 
-  const handleSortClick = (sortType) => {
+  const handleSortClick = (sortType, newTitle) => {
     if (sort === sortType) {
       setSort("");
+      setTitle("다양한");
     } else {
       setSort(sortType);
+      setTitle(newTitle);
     }
   };
 
@@ -54,6 +52,7 @@ const RecipePage = () => {
     setFilter("");
     setSort("");
     setCurrentPage(0);
+    setTitle("다양한");
   };
 
   const searchRecipe = keyword
@@ -99,7 +98,7 @@ const RecipePage = () => {
     <Container className="recipe-page">
       <Row className="text-wrapper">
         <Col>
-          <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
+          <h1 className="text-center mt-3 mb-5">{title} 한끼 만들기</h1>
         </Col>
       </Row>
 
@@ -129,7 +128,7 @@ const RecipePage = () => {
             }}
             size="lg"
             className="me-2"
-            onClick={() => handleSortClick("INFO_ENG")}
+            onClick={() => handleSortClick("INFO_ENG", "저열량")}
           >
             저열량 레시피
           </Button>
@@ -143,7 +142,7 @@ const RecipePage = () => {
             }}
             size="lg"
             className="me-2"
-            onClick={() => handleSortClick("INFO_NA")}
+            onClick={() => handleSortClick("INFO_NA", "저염식")}
           >
             저염식 레시피
           </Button>
@@ -157,7 +156,7 @@ const RecipePage = () => {
             }}
             size="lg"
             className="me-2"
-            onClick={() => handleSortClick("INFO_PRO")}
+            onClick={() => handleSortClick("INFO_PRO", "고단백")}
           >
             고단백 레시피
           </Button>
@@ -172,30 +171,13 @@ const RecipePage = () => {
         </Col>
       </Row>
       <Row className="g-3">
-        {/* {paginateRecipes &&
-          paginateRecipes.map((recipe) => {
-            const isBookmarked =
-              bookmarkedRecipes.length > 0
-                ? bookmarkedRecipes.some(
-                    (item) => item.RCP_SEQ === recipe.RCP_SEQ
-                  )
-                : false;
-            return (
-              <CardComponent
-                key={recipe.RCP_SEQ}
-                recipe={recipe}
-                isBookmarked={isBookmarked}
-                handleBookMark={() => dispatch(toggleBookmark(recipe))}
-              />
-            );
-          })} */}
         {paginateRecipes &&
           paginateRecipes.map((recipe) => (
             <CardComponent
               key={recipe.RCP_SEQ}
               recipe={recipe}
-              isBookmarked={isBookmarked(recipe)} // 훅을 통해 북마크 상태 확인
-              handleBookMark={() => toggleBookmark(recipe)} // 북마크 토글
+              isBookmarked={isBookmarked(recipe)}
+              handleBookMark={() => toggleBookmark(recipe)}
             />
           ))}
       </Row>
