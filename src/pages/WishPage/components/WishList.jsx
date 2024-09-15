@@ -12,7 +12,7 @@ const Wishlist = ({ isGuest }) => {
   };
 
   return (
-    <Container className="wish-list-wrap">
+    <Container className="wishlist-background">
       <Row>
         <Col className="wish-list-items" style={{ textAlign: 'center' }}>
           {!isGuest ? (
@@ -22,21 +22,25 @@ const Wishlist = ({ isGuest }) => {
                 <div>
                   {bookmarkedRecipes.map((recipe) => (
                     <Row
-                      style={{ backgroundColor: "#fff", marginBottom: "1rem" }}
+                      className="wishlist-row"
                       key={recipe.RCP_SEQ}
                         onClick={() => navigateToRecipe(recipe)}
                     >
                       <Col>
                         <Image className="card-img" src={recipe.ATT_FILE_NO_MAIN} rounded />
                       </Col>
-                      <Col>
+                      <Col className="card-content-box">
                         <div className="tag-text">#{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}</div>
-                        <div className="title">{recipe.RCP_NM}</div>
+                        <div className="card-content-title">{recipe.RCP_NM}</div>
                       </Col>
-                      <Col>
+                      <Col className="card-btn-box">
                         <Button
                           variant="outline-secondary"
-                          onClick={() => toggleBookmark(recipe)}
+                          size="lg"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleBookmark(recipe);
+                          }}
                         >
                           삭제
                         </Button>
@@ -55,21 +59,25 @@ const Wishlist = ({ isGuest }) => {
                 <div>
                   {bookmarkedRecipes.map((recipe) => (
                     <Row
-                      style={{ backgroundColor: "#fff", marginBottom: "1rem" }}
+                      className="wishlist-row"
                       key={recipe.RCP_SEQ}
                       onClick={() => navigateToRecipe(recipe)}
                     >
                       <Col>
                         <Image className="card-img" src={recipe.ATT_FILE_NO_MAIN} rounded />
                       </Col>
-                      <Col>
+                      <Col className="card-content-box">
                         <div className="tag-text">#{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}</div>
-                        <div className="title">{recipe.RCP_NM}</div>
+                        <div className="card-content-title">{recipe.RCP_NM}</div>
                       </Col>
-                      <Col>
+                      <Col className="card-btn-box">
                         <Button
                           variant="outline-secondary"
-                          onClick={() => toggleBookmark(recipe)}
+                          size="lg"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleBookmark(recipe);
+                          }}
                         >
                           삭제
                         </Button>

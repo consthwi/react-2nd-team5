@@ -1,15 +1,97 @@
+body {
+  font-family: "Pretendard";
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 .wish-page {
   background-color: #F8F8F8;
 }
 
-.wish-list-wrap {
-  backgroundColor: #FFF;
+.wishlist-background {
+  padding: 1rem;
 }
 
 .wish-list-items {
   padding: 60px 0;
+  text-align: center;
 }
+
 .wish-list-items > h1 {
   padding-bottom: 60px;
   font-weight: 700;
+}
+
+/* 기본 데스크탑 스타일 */
+.wishlist-row {
+  margin-bottom: 1rem;
+  background-color: #FFF;
+
+}
+
+.card-img {
+  padding: 2rem 1rem;
+  max-width: 100%;
+}
+
+.card-content-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card-content-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.card-btn-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+/* 모바일 버전 스타일 - 상단에 이미지, 하단에 콘텐츠 및 버튼 */
+@media (max-width: 768px) {
+  .wishlist-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-img {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .card-content-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-content-title {
+    font-size: 20px;
+  }
+
+  .card-btn-box {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  Button {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
 }
