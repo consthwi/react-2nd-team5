@@ -33,11 +33,28 @@
 }
 
 @media (max-width: 768px) {
+  .recipe-step .repeat-box {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    
+  }
   .recipe-step .repeat-box .step-img {
-    width: 240px;
+    width: 300px;
+    margin-bottom:10px;
   }
 
   .recipe-step .repeat-box .step-text {
     font-size: 18px;
+  }
+  .step-num {
+    color: white;
+    text-align: center;
+    background-color: #ed0c0c;
+    border-radius: 30px;
+    padding: 3px 5px 3px 5px;
+    font-weight: 500;
+    width: 90px;
+    margin-bottom: 10px;
   }
 }
