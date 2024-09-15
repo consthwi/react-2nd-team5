@@ -4,18 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { PiBookmarkSimpleThin, PiBookmarkSimpleFill } from "react-icons/pi";
 import { useBookmark } from "../../hooks/useBookmark";
 
-const TopSliderCard = ({ recipeitem, key }) => {
-  const navigate = useNavigate();
+const TopSliderCard = ({ recipeitem }) => {
   const { isBookmarked, toggleBookmark } = useBookmark();
+  const navigate = useNavigate();
 
   const godetail = () => {
     navigate(`/recipes/${recipeitem?.RCP_NM}`);
-  };
-
-  // 북마크 토글
-  const handleToggleBookmark = (event) => {
-    event.stopPropagation();
-    toggleBookmark(recipeitem);
   };
 
   return (
@@ -38,14 +32,14 @@ const TopSliderCard = ({ recipeitem, key }) => {
               className="bookmark-icon-card"
               size="3rem"
               color="#ffffff"
-              onClick={handleToggleBookmark}
+              onClick={() => toggleBookmark(recipeitem)}
             />
           ) : (
             <PiBookmarkSimpleThin
               className="bookmark-icon-card"
               size="3rem"
               color="#ffffff"
-              onClick={handleToggleBookmark}
+              onClick={() => toggleBookmark(recipeitem)}
             />
           )}
         </div>

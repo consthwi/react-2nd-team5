@@ -3,10 +3,10 @@ import "./NewSliderCard.style.css";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
 import { RxBookmark, RxBookmarkFilled } from "react-icons/rx";
-import { useBookmark } from "../../hooks/useBookmark"; // 훅 가져오기
+import { useBookmark } from "../../hooks/useBookmark";
 
 const SliderCard = ({ recipeitem }) => {
-  const { isBookmarked, toggleBookmark } = useBookmark(); // 훅에서 가져오기
+  const { isBookmarked, toggleBookmark } = useBookmark();
   const navigate = useNavigate();
 
   const godetail = () => {
@@ -30,7 +30,6 @@ const SliderCard = ({ recipeitem }) => {
                 <div>{recipeitem?.RCP_NM}</div>
               </div>
               <div>
-                {/* 북마크 아이콘 표시 및 토글 */}
                 {isBookmarked(recipeitem) ? (
                   <RxBookmarkFilled
                     className="bookmark-icon-inSlidercard"
