@@ -54,13 +54,20 @@
   color: white;
   box-shadow: none;
 }
-
+.recipe-page .text-wrapper .title-text {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
 @media (max-width: 767px) {
   .mobile-button-spacing .btn {
-    margin-bottom: 20px; /* 버튼 사이의 여백 */
+    margin-bottom: 0.7rem; /* 버튼 사이의 여백 */
   }
   .text-wrapper {
     padding-top: 3rem;
     padding-bottom: 0;
+  }
+  .recipe-page .text-wrapper .title-text {
+    margin-top: 0;
+    margin-bottom: 2rem;
   }
 }

@@ -99,11 +99,11 @@ const RecipePage = () => {
     <Container className="recipe-page">
       <Row className="text-wrapper">
         <Col>
-          <h1 className="text-center mt-3 mb-5">건강한 한끼 만들기</h1>
+          <h1 className="title-text text-center">건강한 한끼 만들기</h1>
         </Col>
       </Row>
 
-      <Row className="mb-5 ">
+      <Row className="mb-2 ">
         <Col className="text-center mobile-button-spacing ">
           <Button
             variant="outline-primary"
