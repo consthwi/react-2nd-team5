@@ -1,16 +1,13 @@
-/* 전체 레이아웃이 뷰포트 높이를 차지하고, 플렉스 박스를 사용해 푸터가 하단에 고정되도록 설정 */
 .app-layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* 전체 뷰포트 높이를 사용하도록 설정 */
+  min-height: 100vh;
 }
 
-/* 중간에 있는 Outlet이 남은 공간을 차지하게 함 */
 .app-layout > main {
   flex: 1;
 }
 
-/* 푸터의 스타일 */
 .footer {
   padding: 50px 0;
   background-color: #8E8686;
