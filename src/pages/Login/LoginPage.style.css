@@ -41,7 +41,8 @@ body {
 }
 .login-text-input:focus {
   outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
+  box-shadow: none;
+  border: 1px solid #ed0c0c;
 }
 .login-btn {
   background-color: #ed0c0c;
