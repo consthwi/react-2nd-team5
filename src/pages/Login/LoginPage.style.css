@@ -5,8 +5,6 @@ body {
   width: 100%;
 }
 .login-background {
-  background: url("https://images.unsplash.com/photo-1710947949965-8150d227d337?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-size: cover;
 }
 .login-box {
   width: 44vh;

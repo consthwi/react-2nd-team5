@@ -1,10 +1,8 @@
 import React from "react";
 import "./NewSliderCard.style.css";
-
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
-
-import { RxBookmark, RxBookmarkFilled } from "react-icons/rx";
+import { PiBookmarkSimpleThin, PiBookmarkSimpleFill } from "react-icons/pi";
 import { useBookmark } from "../../hooks/useBookmark"; // 훅 가져오기
 const NewSliderCard = ({ recipeitem }) => {
   const { isBookmarked, toggleBookmark } = useBookmark();
@@ -34,22 +32,22 @@ const NewSliderCard = ({ recipeitem }) => {
               <div className="slidercard_rcp_nm" onClick={godetail}>
                 <div className="rcp-way2_size"># {recipeitem?.RCP_WAY2}</div>
                 {/* <div>{recipeitem?.RCP_NM}</div> */}
-                <div className="rcp-nm">
+                <div className="rcp-nm-slide">
                   {getShortName(recipeitem?.RCP_NM, 13)}
                 </div>
               </div>
 
               <div>
                 {isBookmarked(recipeitem) ? (
-                  <RxBookmarkFilled
+                  <PiBookmarkSimpleFill
                     className="bookmark-icon-inSlidercard"
-                    size="2rem"
+                    size="2.4rem"
                     onClick={() => toggleBookmark(recipeitem)}
                   />
                 ) : (
-                  <RxBookmark
+                  <PiBookmarkSimpleThin
                     className="bookmark-icon-inSlidercard"
-                    size="2rem"
+                    size="2.4rem"
                     onClick={() => toggleBookmark(recipeitem)}
                   />
                 )}

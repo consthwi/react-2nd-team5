@@ -16,11 +16,11 @@ const MenuSlide = () => {
 
   console.log(data);
   return (
-    <div>
+    <div className="Menuslide_title_container_main">
       <div className="Menuslide_title_container">
-        <span className="Menuslide_title">뭘 좋아할지 몰라서 다!</span>
+        <div className="Menuslide_title">뭘 좋아할지 몰라서 다 준비했어요!</div>
       </div>
-      <HomepageSlider data={data} responsive={responsive} />;
+      <HomepageSlider data={data} responsive={responsive} />
     </div>
   );
 };
