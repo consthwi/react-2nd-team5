@@ -54,7 +54,7 @@ const RandomRecipe = () => {
           alt="random-recipe-bg"
         />
       </div>
-      <h2>오늘의 추천요리!</h2>
+      <div className="random-title-text">오늘의 추천요리!</div>
       <Container className="random-recipe-container">
         <div className="random-recipe-container-wrapper">
           <div

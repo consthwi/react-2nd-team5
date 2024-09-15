@@ -2,22 +2,22 @@
 @keyframes fadeInToDown {
   0% {
     opacity: 0;
-    transform: translateY(-10px)
+    transform: translateY(-10px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
 }
 
 @keyframes fadeOutToUp {
   0% {
     opacity: 1;
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
   100% {
     opacity: 0;
-    transform: translateY(-10px)
+    transform: translateY(-10px);
   }
 }
 
@@ -25,22 +25,22 @@
 @keyframes fadeInToLeft {
   0% {
     opacity: 0;
-    transform: translateX(10px)
+    transform: translateX(10px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0px)
+    transform: translateX(0px);
   }
 }
 
 @keyframes fadeOutToLeft {
   0% {
     opacity: 1;
-    transform: translateX(0px)
+    transform: translateX(0px);
   }
   100% {
     opacity: 0;
-    transform: translateX(-10px)
+    transform: translateX(-10px);
   }
 }
 
@@ -48,22 +48,22 @@
 @keyframes fadeInToUp {
   0% {
     opacity: 0;
-    transform: translateY(10px)
+    transform: translateY(10px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
 }
 
 @keyframes fadeOutToDown {
   0% {
     opacity: 1;
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
   100% {
     opacity: 0;
-    transform: translateY(10px)
+    transform: translateY(10px);
   }
 }
 
@@ -71,25 +71,33 @@
 @keyframes fadeInToRight {
   0% {
     opacity: 0;
-    transform: translateX(-10px)
+    transform: translateX(-10px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0px)
+    transform: translateX(0px);
   }
 }
 
 @keyframes fadeOutToRight {
   0% {
     opacity: 1;
-    transform: translateX(0px)
+    transform: translateX(0px);
   }
   100% {
     opacity: 0;
-    transform: translateX(10px)
+    transform: translateX(10px);
   }
 }
 
+.random-title-text {
+  font-size: 35px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: 15px;
+}
 .random-recipe {
   padding: 100px 0;
   position: relative;
@@ -156,7 +164,11 @@
   right: 0;
   width: 80px;
   height: 100%;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.3) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
 }
 
 .random-recipe-container .random-recipe-img img {
@@ -187,7 +199,11 @@
   left: 0;
   width: 80px;
   height: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .random-recipe-container .random-recipe-content .random-recipe-tag1 {
@@ -217,14 +233,13 @@
 
 .random-recipe-container .random-recipe-content .btn-detail:hover {
   border: 1px solid transparent;
-  background-color: #ED0C0C;
+  background-color: #ed0c0c;
   color: #fff;
 }
 
 .random-recipe-img.fade-in {
   animation: fadeInToLeft 0.5s both;
 }
-
 
 .random-recipe-img.fade-out {
   animation: fadeOutToLeft 0.5s both;
@@ -235,14 +250,12 @@
   animation-delay: 0.2s;
 }
 
-
 .random-recipe-content.fade-out {
   animation: fadeOutToRight 0.5s both;
   animation-delay: 0.2s;
 }
 
-
-@media(max-width: 768px){
+@media (max-width: 768px) {
   .random-recipe .random-recipe-container {
     max-width: 80%;
   }
@@ -259,7 +272,11 @@
   .random-recipe-container .random-recipe-img .random-recipe-img-overlay {
     width: 100%;
     height: 50px;
-    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
   }
 
   .random-recipe-container .random-recipe-content {
@@ -268,17 +285,23 @@
     padding: 40px 20px;
   }
 
-  .random-recipe-container .random-recipe-content .random-recipe-content-overlay {
+  .random-recipe-container
+    .random-recipe-content
+    .random-recipe-content-overlay {
     width: 100%;
     height: 50px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
   .random-recipe-container .random-recipe-content .random-recipe-tag1 {
     font-size: 16px;
     font-weight: 700;
   }
-  
+
   .random-recipe-container .random-recipe-content h3 {
     font-size: 24px;
     font-weight: 800;
@@ -296,8 +319,7 @@
   .random-recipe-img.fade-in {
     animation: fadeInToDown 0.5s both;
   }
-  
-  
+
   .random-recipe-img.fade-out {
     animation: fadeOutToUp 0.5s both;
   }
@@ -306,8 +328,7 @@
     animation: fadeInToUp 0.5s both;
     animation-delay: 0.2s;
   }
-  
-  
+
   .random-recipe-content.fade-out {
     animation: fadeOutToDown 0.5s both;
     animation-delay: 0.2s;
