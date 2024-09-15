@@ -95,7 +95,7 @@ align-self:flex-end;
 
 @media(max-width: 768px){
     .slidercard3_url{
-        width: 188px;
+        width: auto;
         height:300px;
         background-size:cover;
         cursor:pointer;
@@ -119,7 +119,7 @@ align-self:flex-end;
         
        }
        .card_img_bookmarkcardlist_list{
-        width:188px !important;
+        width:auto;
         height:240px !important;
         border-radius:25px 25px 0 0;
         /* object-fit: cover; */
