@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import BookmarkInfo from "./component/bookmarkslide/BookmarkInfo";
 import RandomRecipe from "./component/RandomRecipe/RandomRecipe";
 import { Form } from "react-bootstrap";
+import { CiCircleChevUp } from "react-icons/ci";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 const HomePage = () => {
@@ -60,8 +62,8 @@ const HomePage = () => {
         <BookmarkInfo />
       </div>
       <div className="up_css_container">
-        <div onClick={scrollToTop} className="up_css">
-          <h3>up</h3>
+        <div onClick={scrollToTop}>
+          <CiCircleChevUp size={65} color="#ed0c0c" className="mb-5 mr-4" />
         </div>
       </div>
     </div>
