@@ -54,12 +54,14 @@ const HomePage = () => {
       <div className="top-slide-area">
         <TopSlide />
       </div>
-      <div classNmae="home_page_banner_container">{/* <Baner/> */}</div>
-      <div>
+
+      <div className="menu-slide-turm">
         <MenuSlide />
         {/* RandomSlide에서 RandomeRecipe로 변경 */}
         <RandomRecipe />
-        <BookmarkInfo />
+        <div className="menu-slide-turm">
+          <BookmarkInfo />
+        </div>
       </div>
       <div className="up_css_container">
         <div onClick={scrollToTop}>
