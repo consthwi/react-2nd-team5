@@ -7,7 +7,10 @@ const Footer = () => {
     <div className="footer">
       <Container className="footer-wrapper">
         <div className="footer-logo">
-          <img src={`${process.env.PUBLIC_URL}/logo_5.png`} alt="footer-img" />
+          <img
+            src={`${process.env.PUBLIC_URL}/footer_logo.png`}
+            alt="footer-img"
+          />
         </div>
         <div className="footer-text">
           <strong>리액트 스터디 프로젝트 냉털한끼</strong>
