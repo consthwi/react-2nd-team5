@@ -39,14 +39,17 @@ const RecipePage = () => {
   const handleSortClick = (sortType) => {
     if (sort === sortType) {
       setSort("");
+      setCurrentPage(0);
     } else {
       setSort(sortType);
+      setCurrentPage(0);
     }
   };
 
   const handleSelectChange = (selectedOption) => {
     setFilter(selectedOption ? selectedOption.value : "");
     setSelectValue(selectedOption ? selectedOption.value : "");
+    setCurrentPage(0);
   };
 
   const handleReset = () => {
@@ -74,9 +77,9 @@ const RecipePage = () => {
         : filterRecipe;
 
   // 필터가 바뀔떄마다 페이지네이션을 1페이지로 이동
-  useEffect(() => {
-    setCurrentPage(0);
-  }, [filterRecipe, sortRecipe]);
+  // useEffect(() => {
+  //   setCurrentPage(0);
+  // }, []);
 
   if (isLoading) {
     return <LoadingLottie />;
@@ -112,8 +115,9 @@ const RecipePage = () => {
             onClick={handleReset}
             style={{
               backgroundColor: sort ? "transparent" : "#ED0C0C",
-              color: sort ? "black" : "white",
-              borderColor: sort ? "black" : "white",
+              color: sort ? "#848484" : "white",
+              borderColor: sort ? "#848484" : "#ED0C0C",
+
               borderRadius: "2rem",
             }}
           >
@@ -123,8 +127,8 @@ const RecipePage = () => {
             variant="outline-primary"
             style={{
               backgroundColor: sort === "INFO_ENG" ? "#ED0C0C" : "transparent",
-              color: sort === "INFO_ENG" ? "white" : "black",
-              borderColor: sort === "INFO_ENG" ? "white" : "black",
+              color: sort === "INFO_ENG" ? "white" : "#848484",
+              borderColor: sort === "INFO_ENG" ? "#ED0C0C" : "#848484",
               borderRadius: "2rem",
             }}
             size="lg"
@@ -137,8 +141,8 @@ const RecipePage = () => {
             variant="outline-primary"
             style={{
               backgroundColor: sort === "INFO_NA" ? "#ED0C0C" : "transparent",
-              color: sort === "INFO_NA" ? "white" : "black",
-              borderColor: sort === "INFO_NA" ? "white" : "black",
+              color: sort === "INFO_NA" ? "white" : "#848484",
+              borderColor: sort === "INFO_NA" ? "#ED0C0C" : "#848484",
               borderRadius: "2rem",
             }}
             size="lg"
@@ -151,8 +155,8 @@ const RecipePage = () => {
             variant="outline-primary"
             style={{
               backgroundColor: sort === "INFO_PRO" ? "#ED0C0C" : "transparent",
-              color: sort === "INFO_PRO" ? "white" : "black",
-              borderColor: sort === "INFO_PRO" ? "white" : "black",
+              color: sort === "INFO_PRO" ? "white" : "#848484",
+              borderColor: sort === "INFO_PRO" ? "#ED0C0C" : "#848484",
               borderRadius: "2rem",
             }}
             size="lg"
