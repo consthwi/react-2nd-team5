@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import MenuSlide from "./component/menuslide/MenuSlide";
 import "./HomePage.style.css";
 import { IoSearch } from "react-icons/io5";
@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import BookmarkInfo from "./component/bookmarkslide/BookmarkInfo";
 import RandomRecipe from "./component/RandomRecipe/RandomRecipe";
 import { Form } from "react-bootstrap";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 const HomePage = () => {
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
@@ -16,8 +17,15 @@ const HomePage = () => {
     navigate(`recipes?q=${keyword}`);
     setKeyword("");
   };
+  const topRef = useRef(null);
+
+  const scrollToTop = () => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
-    <div className="home-page">
+    <div className="home-page" ref={topRef}>
       <div className="top-box-area">
         <div className="top-box-area-overlay">top-box-overlay</div>
         <div className="top-box-area-contents">
@@ -50,6 +58,11 @@ const HomePage = () => {
         {/* RandomSlide에서 RandomeRecipe로 변경 */}
         <RandomRecipe />
         <BookmarkInfo />
+      </div>
+      <div className="up_css_container">
+        <div onClick={scrollToTop} className="up_css">
+          <h3>up</h3>
+        </div>
       </div>
     </div>
   );
