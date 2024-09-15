@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.style.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,9 +14,8 @@ import AuthModal from "../AuthModal/AuthModal";
 const menuList = ["든든하게,건강식", "바쁠땐,간편식", "출출할때?간식"];
 
 const Header = () => {
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
@@ -43,6 +42,7 @@ const Header = () => {
   const handleAuthAction = () => {
     if (user) {
       dispatch(logout());
+      alert("로그아웃되었습니다");
       navigate("/");
     } else {
       navigate("/login");
