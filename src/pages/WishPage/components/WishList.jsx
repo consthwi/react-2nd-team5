@@ -1,7 +1,7 @@
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { useBookmark } from "../../../hooks/useBookmark";
 import { useNavigate } from "react-router-dom";
-import "./WishList.style.css"
+import "./WishList.style.css";
 
 const Wishlist = ({ isGuest }) => {
   const { bookmarkedRecipes, toggleBookmark } = useBookmark();
@@ -23,7 +23,7 @@ const Wishlist = ({ isGuest }) => {
             <>
               <h1>찜목록</h1>
               {bookmarkedRecipes && bookmarkedRecipes.length > 0 ? (
-                <div>
+                <Row>
                   {bookmarkedRecipes.map((recipe) => (
                     <Row
                       className="wishlist-row"
@@ -37,27 +37,31 @@ const Wishlist = ({ isGuest }) => {
                           rounded
                         />
                       </Col>
-                      <Col className="wish-content-box">
-                        <div className="tag-text">
-                          #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
-                        </div>
-                        <div className="wish-content-title">{recipe.RCP_NM}</div>
-                      </Col>
-                      <Col className="wish-btn-box">
-                        <Button
-                          variant="outline-secondary"
-                          size="lg"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleBookmark(recipe);
-                          }}
-                        >
-                          삭제
-                        </Button>
-                      </Col>
+                      <Row className="wish-two-content">
+                        <Col className="wish-content-box">
+                          <div className="tag-text">
+                            #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
+                          </div>
+                          <div className="wish-content-title">
+                            {recipe.RCP_NM}
+                          </div>
+                        </Col>
+                        <Col className="wish-btn-box">
+                          <Button
+                            variant="outline-secondary"
+                            size="lg"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleBookmark(recipe);
+                            }}
+                          >
+                            삭제
+                          </Button>
+                        </Col>
+                      </Row>
                     </Row>
                   ))}
-                </div>
+                </Row>
               ) : (
                 <p>찜한 항목이 없습니다</p>
               )}
@@ -84,11 +88,14 @@ const Wishlist = ({ isGuest }) => {
                         <div className="tag-text">
                           #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
                         </div>
-                        <div className="wish-content-title">{recipe.RCP_NM}</div>
+                        <div className="wish-content-title">
+                          {recipe.RCP_NM}
+                        </div>
                       </Col>
                       <Col className="wish-btn-box">
                         <Button
                           variant="outline-secondary"
+                          className="wish-delete-button"
                           size="lg"
                           onClick={(e) => {
                             e.stopPropagation();
