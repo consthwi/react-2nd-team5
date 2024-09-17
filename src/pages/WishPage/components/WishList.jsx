@@ -37,28 +37,27 @@ const Wishlist = ({ isGuest }) => {
                           rounded
                         />
                       </Col>
-                      <Row className="wish-two-content">
-                        <Col className="wish-content-box">
-                          <div className="tag-text">
-                            #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
-                          </div>
-                          <div className="wish-content-title">
-                            {recipe.RCP_NM}
-                          </div>
-                        </Col>
-                        <Col className="wish-btn-box">
-                          <Button
-                            variant="outline-secondary"
-                            size="lg"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleBookmark(recipe);
-                            }}
-                          >
-                            삭제
-                          </Button>
-                        </Col>
-                      </Row>
+
+                      <Col className="wish-content-box">
+                        <div className="tag-text">
+                          #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
+                        </div>
+                        <div className="wish-content-title">
+                          {recipe.RCP_NM}
+                        </div>
+                      </Col>
+                      <Col className="wish-btn-box">
+                        <Button
+                          variant="outline-secondary"
+                          size="lg"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleBookmark(recipe);
+                          }}
+                        >
+                          삭제
+                        </Button>
+                      </Col>
                     </Row>
                   ))}
                 </Row>
@@ -95,7 +94,6 @@ const Wishlist = ({ isGuest }) => {
                       <Col className="wish-btn-box">
                         <Button
                           variant="outline-secondary"
-                          className="wish-delete-button"
                           size="lg"
                           onClick={(e) => {
                             e.stopPropagation();

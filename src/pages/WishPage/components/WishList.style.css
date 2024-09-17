@@ -72,14 +72,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-
+  font-size: 10px;
+  width: 80px;
   padding: 1rem 0;
   flex: 0 0 auto;
-  width: auto;
-}
-.wish-delete-button {
-  font-size: 16px;
-  width: 80px;
 }
 
 /* 모바일 버전 스타일 - 상단에 이미지, 하단에 콘텐츠 및 버튼 */
@@ -119,7 +115,7 @@ body {
   }
 
   .wish-content-title {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .wish-btn-box {
@@ -130,7 +126,7 @@ body {
   }
 
   Button {
-    font-size: 14px;
+    font-size: 10px;
     padding: 0.5rem 1rem;
   }
 }
