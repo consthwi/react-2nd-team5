@@ -69,29 +69,29 @@ const Wishlist = ({ isGuest }) => {
             <>
               <h1>게스트의 찜목록</h1>
               {bookmarkedRecipes && bookmarkedRecipes.length > 0 ? (
-                <div>
+                <div className="row">
                   {bookmarkedRecipes.slice(0, 2).map((recipe) => (
-                    <Row
-                      className="wishlist-row"
+                    <div
+                      className="wishlist-row col-xs-3 col-sm-12"
                       key={recipe.RCP_SEQ}
                       onClick={() => navigateToRecipe(recipe)}
                     >
-                      <Col className="wish-img-box">
+                      <div className="wish-img-box">
                         <Image
                           className="wish-img"
                           src={recipe.ATT_FILE_NO_MAIN}
                           rounded
                         />
-                      </Col>
-                      <Col className="wish-content-box">
+                      </div>
+                      <div className="wish-content-box">
                         <div className="tag-text">
                           #{recipe.RCP_PAT2} #{recipe?.RCP_WAY2}
                         </div>
                         <div className="wish-content-title">
                           {recipe.RCP_NM}
                         </div>
-                      </Col>
-                      <Col className="wish-btn-box">
+                      </div>
+                      <div className="wish-btn-box">
                         <Button
                           variant="outline-secondary"
                           size="lg"
@@ -102,18 +102,21 @@ const Wishlist = ({ isGuest }) => {
                         >
                           삭제
                         </Button>
-                      </Col>
-                    </Row>
+                      </div>
+                    </div>
                   ))}
-                  {bookmarkedRecipes.length > 2 && (
-                    <Button
-                      variant="danger"
-                      onClick={handleShowMore}
-                      style={{ marginTop: "20px" }}
-                    >
-                      더보기
-                    </Button>
-                  )}
+                  <div>
+                    {" "}
+                    {bookmarkedRecipes.length > 2 && (
+                      <Button
+                        variant="danger"
+                        onClick={handleShowMore}
+                        style={{ marginTop: "20px" }}
+                      >
+                        더보기
+                      </Button>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <p>찜한 항목이 없습니다</p>
